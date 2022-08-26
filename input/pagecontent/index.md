@@ -35,3 +35,17 @@ We will use "CP" to stand in for Colonoscopy Polyp:
 * CPPolypObservation
 * CPPolypDetailObservation
 
+The guidelines for follow-up are summarized as follows:
+
+colonoscopy finding | surveillance interval (years)
+---|:---:
+normal | 1
+1 to 2 tubular adenomas <10 mm | 7 - 10
+3 to 4 tubular adenomas <10 mm | 3-5
+5 to 10 tubular adenomas <10 mm | 3
+Adenoma ≥10 mm | 3
+Adenoma with tubulovillous or villous histology | 3
+Adenoma with high-grade dysplasia | 3
+| >10 adenomas on single examination | 1 |
+Piecemeal resection of adenoma ≥20 mm | 1/2
+
