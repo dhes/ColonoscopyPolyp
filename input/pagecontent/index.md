@@ -52,3 +52,22 @@ Piecemeal resection of adenoma ≥20 mm | 1/2
 Here is the high level information model: 
 
 ![](HighLevelInformationModel.png)
+
+FHIR version 4.01 is used for FHIR resources. FHIR U.S. Core 4.0.0 profiles will be used where possible, considering that we are using a U.S. practice guideline. 
+
+## Mapping to FHIR resources
+
+Profile Name | FHIR element name / Path | Use Case Data Element | Comments
+---|---|---|---
+CPPatient | Patient.id | Patient | A patient with an id must exist for FHIR resources to reference
+CPDiagnosticReport | CPDiagnosticReport.category | | http://terminology.hl7.org/CodeSystem/v2-0074#SP Surgical Pathology
+CPDiagnosticReport | CPDiagnosticReport.code | | LOINC#11529-5 Surgical pathology study
+CPDiagnosticReport | CPDiagnosticReport.effectiveDateTime | | 
+CPDiagnosticReport | CPDiagnosticReport.issued | | 
+CPDiagnosticReport | CPDiagnosticReport.specimen.reference | | link to specimen id
+CPDiagnosticReport | CPDiagnosticReport.specimen.display | | short description of specimen in narrative pathology report
+CPDiagnosticReport | CPDiagnosticReport.result.reference | | link to CPPolypObservation.id
+CPDiagnosticReport | CPDiagnosticReport.result.display | | short description of specimen in narrative pathology report
+CPSpecimen | | |
+CPPolypObservation | | |
+CPPolypDetailObservation | | |
