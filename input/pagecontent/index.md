@@ -35,7 +35,7 @@ We will use "CP" to stand in for Colonoscopy Polyp:
 * CPPolypObservation
 * CPPolypDetailObservation
 
-The guidelines for follow-up are summarized as follows:
+The USMSTFCC guidelines for follow-up are summarized as follows:
 
 colonoscopy finding | surveillance interval (years)
 ---|:---:
@@ -49,3 +49,6 @@ Adenoma with high-grade dysplasia | 3
 | >10 adenomas on single examination | 1 |
 Piecemeal resection of adenoma ≥20 mm | 1/2
 
+Here is the high level information model: 
+
+![](HighLevelInformationModel.png)
