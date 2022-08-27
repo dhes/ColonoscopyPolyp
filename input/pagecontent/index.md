@@ -95,3 +95,16 @@ CPPolypDetailObservationPiecemealExcision | CPPolypDetailObservationPiecemealExc
 CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm | CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm.category | | http://terminology.hl7.org/CodeSystem/observation-category#laboratory Laboratory
 CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm | CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm.code | | SNOMEDCT#110396000 No evidence of malignant neoplasm (finding)
 CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm | CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm.valueBoolean | | true/false
+
+## Semantic Mappings
+
+CodeSystems: 
+
+Name | url | Notes
+---|---|---
+LOINC |  http://loinc.org | 
+SNOMEDCT | http://snomed.info/sct |
+ICD-10-CM | http://hl7.org/fhir/sid/icd-10-cm |
+OBSCAT| http://terminology.hl7.org/CodeSystem/observation-category | procedure 'Procedure',  laboratory 'Laboratory'
+v2-0074 | http://terminology.hl7.org/CodeSystem/v2-0074 | SP 'Surgical Pathology'
+v2-0487 | http://terminology.hl7.org/CodeSystem/v2-0487 | POL 'Polyps'
