@@ -32,8 +32,12 @@ We will use "CP" to stand in for Colonoscopy Polyp:
 
 * CPDiagnosticReport
 * CPSpecimen
-* CPPolypObservation
+* CPResultObservation
 * CPPolypDetailObservation
+* CPPolypDetailObservationHistopathology
+* CPPolypDetailObservationSevereDysplasia
+* CPPolypDetailObservationPiecemealExcision
+* CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm
 
 The USMSTFCC guidelines for follow-up are summarized as follows:
 
@@ -65,9 +69,29 @@ CPDiagnosticReport | CPDiagnosticReport.code | | LOINC#11529-5 Surgical patholog
 CPDiagnosticReport | CPDiagnosticReport.effectiveDateTime | | 
 CPDiagnosticReport | CPDiagnosticReport.issued | | 
 CPDiagnosticReport | CPDiagnosticReport.specimen.reference | | link to specimen id
-CPDiagnosticReport | CPDiagnosticReport.specimen.display | | short description of specimen in narrative pathology report
-CPDiagnosticReport | CPDiagnosticReport.result.reference | | link to CPPolypObservation.id
-CPDiagnosticReport | CPDiagnosticReport.result.display | | short description of specimen in narrative pathology report
-CPSpecimen | | |
-CPPolypObservation | | |
-CPPolypDetailObservation | | |
+CPDiagnosticReport | CPDiagnosticReport.specimen.display | | short description of specimen from narrative pathology report
+CPDiagnosticReport | CPDiagnosticReport.result.reference | | link to CPResultObservation.id
+CPDiagnosticReport | CPDiagnosticReport.result.display | | short description of specimen from narrative pathology report
+CPSpecimen | CPSpecimen.collection.bodySite | | SNOMED code for location in large intestine e.g. SNOMEDCT#32713005 Cecum structure (body structure)
+CPSpecimen | CPSpecimen.collection.method | |  SNOMEDCT#129304002 Excision - action
+CPSpecimen | CPSpecimen.collection.quantity | | specimen size in mm
+CPSpecimen | CPSpecimen.collection.collectionDateTime | | 
+CPSpecimen | CPSpecimen.type | | http://terminology.hl7.org/CodeSystem/v2-0487#POL Polyps
+CPSpecimen | CPSpecimen.note | | short description of specimen from narrative pathology report
+CPResultObservation | CPResultObservation.code | | SNOMEDCT#404684003 Polyp from large intestine obtained by polypectomy (specimen)
+CPResultObservation | CPResultObservation.specimen.reference | | link to id of corresponding Specimen resource
+CPResultObservation | CPResultObservation.specimen.display | | short description of specimen from narrative pathology report
+CPResultObservation | CPResultObservation.hasMember.reference | | reference to id of CPPolypDetailObservation. Four members: histopathology (codeable concept), severe dysplasia?  (boolean), resected piecemeal?  (boolean), no evidence of malignancy? (boolean)
+CPResultObservation | CPResultObservation.hasMember.display | | short description of detail CPPolypDetailObservation
+CPPolypDetailObservationHistopathology | CPPolypDetailObservation.category | | http://terminology.hl7.org/CodeSystem/observation-category#laboratory Laboratory
+CPPolypDetailObservationHistopathology | CPPolypDetailObservation.code | | LOINC#34574-4 Pathology report final diagnosis
+CPPolypDetailObservationHistopathology | CPPolypDetailObservation.valueCodeableConcept | | One of three values:  SNOMEDCT#444408007 Tubular adenoma (disorder), SNOMEDCT#89452002 Hyperplastic polyp of intestine (disorder), SNOMEDCT#68534000 Intestinal mucous membrane structure (body structure)
+CPPolypDetailObservationSevereDysplasia | CPPolypDetailObservationSevereDysplasia.category | | http://terminology.hl7.org/CodeSystem/observation-category#laboratory Laboratory
+CPPolypDetailObservationSevereDysplasia | CPPolypDetailObservationSevereDysplasia.code | | SNOMEDCT#55237006 Severe dysplasia (morphologic abnormality)
+CPPolypDetailObservationSevereDysplasia | CPPolypDetailObservationSevereDysplasia.valueBoolean | | true/false
+CPPolypDetailObservationPiecemealExcision | CPPolypDetailObservationPiecemealExcision.category | | http://terminology.hl7.org/CodeSystem/observation-category#procedure Procedure
+CPPolypDetailObservationPiecemealExcision | CPPolypDetailObservationPiecemealExcision.code | | SNOMEDCT#787139004 Piecemeal excision
+CPPolypDetailObservationPiecemealExcision | CPPolypDetailObservationPiecemealExcision.valueBoolean | | true/false
+CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm | CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm.category | | http://terminology.hl7.org/CodeSystem/observation-category#laboratory Laboratory
+CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm | CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm.code | | SNOMEDCT#110396000 No evidence of malignant neoplasm (finding)
+CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm | CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm.valueBoolean | | true/false
