@@ -3,9 +3,9 @@
 // SUSHI will look for definitions in any file using the .fsh ending.
 // CP = ColonscopyPolyp
 Profile: CPPatient
-Parent: Patient
-Description: "An example profile of the Patient resource."
-* name 1..* MS
+Parent: $USCorePatient
+Description: "A patient resource must be present."
+// * name 1..* MS
 
 Instance: PatientExample
 InstanceOf: CPPatient
