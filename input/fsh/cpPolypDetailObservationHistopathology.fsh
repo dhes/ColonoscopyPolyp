@@ -10,7 +10,8 @@ Description: "The histopathology of a polyp"
 * value[x] 1..1
 * value[x] only CodeableConcept
 // * valueCodeableConcept 1..1
-* value[x] from cp-histopathology-vs
+// * value[x] from cp-histopathology-vs
+* valueCodeableConcept from cp-histopathology-vs (required)
 * subject 1..1 
 * subject only Reference(cp-patient)
 // there should be one for every CPSpecimen/CPResult
