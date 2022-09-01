@@ -2,7 +2,7 @@ Profile: CPPolypDetailObservationHistopathology
 Parent: Observation
 Description: "The histopathology of a polyp"
 
-* status = $OBSSTATUS#final
+* status from cp-final-or-amended
 * category 1..1
 * category = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
 * code 1..1
