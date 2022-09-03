@@ -2,10 +2,10 @@ Profile: CPPolypDetailObservationHistopathology
 Parent: Observation
 Description: "The histopathology of a polyp"
 
-* status from cp-final-or-amended
+* status from cp-final-or-amended  // wrong status test written; status is already 1..1 in Observation
 * category 1..1
 * category = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
-* code 1..1
+// * code 1..1 // redundant, code is 1..1 in Observation. 
 * code = $LOINC#34574-4 //Pathology report final diagnosis
 * value[x] 1..1
 * value[x] only CodeableConcept
