@@ -1,0 +1,118 @@
+{
+  "resourceType" : "Bundle",
+  "type" : "collection",
+  "entry" : [{
+    "resource" : {
+      "resourceType" : "OperationOutcome",
+      "text" : {
+        "status" : "extensions",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>All OK</p><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td></tr><tr><td>INFORMATION</td><td/><td>Informational Note</td><td>All OK</td><td/></tr></table></div>"
+      },
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
+        "valueString" : "/Users/danheslinga/ColonoscopyPolyp/input/tests/cpPolypDetailObservationHistopathology/passValueTubularAdenoma.json"
+      }],
+      "issue" : [{
+        "severity" : "information",
+        "code" : "informational",
+        "details" : {
+          "text" : "All OK"
+        }
+      }]
+    }
+  },
+  {
+    "resource" : {
+      "resourceType" : "OperationOutcome",
+      "text" : {
+        "status" : "extensions",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>All OK</p><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td></tr><tr><td>INFORMATION</td><td/><td>Informational Note</td><td>All OK</td><td/></tr></table></div>"
+      },
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
+        "valueString" : "/Users/danheslinga/ColonoscopyPolyp/input/tests/cpPolypDetailObservationHistopathology/passValueColonCarcinoma.json"
+      }],
+      "issue" : [{
+        "severity" : "information",
+        "code" : "informational",
+        "details" : {
+          "text" : "All OK"
+        }
+      }]
+    }
+  },
+  {
+    "resource" : {
+      "resourceType" : "OperationOutcome",
+      "text" : {
+        "status" : "extensions",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td><td><b>Source</b></td></tr><tr><td>ERROR</td><td/><td>Invalid Code</td><td>None of the codings provided are in the value set 'Colonoscopy Polyp Histopathology Value Set' (http://colonoscopyPolyp.com/ValueSet/cp-histopathology-vs), and a coding from this value set is required) (codes = http://snomed.info/sct#721597007)</td><td/><td>No display for Extension</td></tr></table></div>"
+      },
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
+        "valueString" : "/Users/danheslinga/ColonoscopyPolyp/input/tests/cpPolypDetailObservationHistopathology/failValueNotInValueset.json"
+      }],
+      "issue" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+          "valueInteger" : 36
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 18
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueCode" : "TerminologyEngine"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "Terminology_TX_NoValid_1_CC"
+        }],
+        "severity" : "error",
+        "code" : "code-invalid",
+        "details" : {
+          "text" : "None of the codings provided are in the value set 'Colonoscopy Polyp Histopathology Value Set' (http://colonoscopyPolyp.com/ValueSet/cp-histopathology-vs), and a coding from this value set is required) (codes = http://snomed.info/sct#721597007)"
+        },
+        "expression" : ["Observation.value.ofType(CodeableConcept)"]
+      }]
+    }
+  },
+  {
+    "resource" : {
+      "resourceType" : "OperationOutcome",
+      "text" : {
+        "status" : "extensions",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td><td><b>Source</b></td></tr><tr><td>ERROR</td><td/><td>Invalid Code</td><td>The value provided ('preliminary') is not in the value set 'CPFinalorAmended' (http://colonoscopyPolyp.com/ValueSet/cp-final-or-amended), and a code is required from this value set) (error message = Not in value set http://colonoscopyPolyp.com/ValueSet/cp-final-or-amended ([]))</td><td/><td>No display for Extension</td></tr></table></div>"
+      },
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
+        "valueString" : "/Users/danheslinga/ColonoscopyPolyp/input/tests/cpPolypDetailObservationHistopathology/failStatusPreliminary.json"
+      }],
+      "issue" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-line",
+          "valueInteger" : 12
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-col",
+          "valueInteger" : 29
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-issue-source",
+          "valueCode" : "TerminologyEngine"
+        },
+        {
+          "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-message-id",
+          "valueCode" : "Terminology_TX_NoValid_16"
+        }],
+        "severity" : "error",
+        "code" : "code-invalid",
+        "details" : {
+          "text" : "The value provided ('preliminary') is not in the value set 'CPFinalorAmended' (http://colonoscopyPolyp.com/ValueSet/cp-final-or-amended), and a code is required from this value set) (error message = Not in value set http://colonoscopyPolyp.com/ValueSet/cp-final-or-amended ([]))"
+        },
+        "expression" : ["Observation.status"]
+      }]
+    }
+  }]
+}
