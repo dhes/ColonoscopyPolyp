@@ -3,6 +3,7 @@
   "type": "collection",
   "entry": [
     {
+      "fullUrl": "http://example.org/fhir/Patient/7751824c-4f31-4fea-acdf-8b078f8e2bed",
       "resource": {
         "resourceType": "Patient",
         "id": "7751824c-4f31-4fea-acdf-8b078f8e2bed",
@@ -60,6 +61,7 @@
       }
     },
     {
+      "fullUrl": "http://example.org/fhir/Observation/f018a8d3-2c33-4ffc-b7cd-6ce4fc8624b7",
       "resource": {
         "resourceType": "Observation",
         "id": "f018a8d3-2c33-4ffc-b7cd-6ce4fc8624b7",
