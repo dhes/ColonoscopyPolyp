@@ -9,9 +9,6 @@ Description: "The histopathology of a polyp"
 * code = $LOINC#34574-4 //Pathology report final diagnosis // test done WrongCode
 * value[x] 1..1 // 0 test done
 * value[x] only CodeableConcept // valueQuantity test produces more than one error
-// * valueCodeableConcept 1..1
-// * value[x] from cp-histopathology-vs
 * valueCodeableConcept from cp-histopathology-vs (required)
 * subject 1..1 // test done
-* subject only Reference(Patient) //
-// there should be one for every CPSpecimen/CPResult
+* subject only Reference(Patient) 
