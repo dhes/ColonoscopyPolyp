@@ -16,12 +16,12 @@ Description: "A collection of data for a colonscopy patient."
 * timestamp MS
 * entry MS
 * entry ^slicing.discriminator.type = #profile
-* entry ^slicing.discriminator.path = "resource" 
+* entry ^slicing.discriminator.path = "resource"
 * entry ^slicing.description = "Slicing based on the profile"
 * entry ^slicing.rules = #open
 * entry.resource 1.. MS
-* entry contains patient 1..1 MS
-* entry[patient] ^short = "Colonoscopy Patient"
-* entry[patient] ^definition = "The Colonoscopy Patient whose data is included in the bundle."
-* entry[patient].resource contains Patient 1..1
+* entry contains Patient 1..1 MS
+* entry[Patient] ^short = "Colonoscopy Patient"
+* entry[Patient] ^definition = "The Colonoscopy Patient whose data is included in the bundle."
+* entry[Patient].resource only cp-patient
 // * entry[DiagnosticReport]
