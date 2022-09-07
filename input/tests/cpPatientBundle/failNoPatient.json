@@ -1,6 +1,11 @@
 {
   "resourceType": "Bundle",
   "type": "collection",
+  "meta": {
+    "profile": [
+      "http://colonoscopyPolyp.com/StructureDefinition/cp-patient-bundle"
+    ]
+  },
   "entry": [
     {
       "fullUrl": "http://example.org/fhir/Observation/f018a8d3-2c33-4ffc-b7cd-6ce4fc8624b7",
@@ -8,10 +13,10 @@
         "resourceType": "Observation",
         "id": "f018a8d3-2c33-4ffc-b7cd-6ce4fc8624b7",
         "meta": {
-            "profile": [
-              "http://colonoscopyPolyp.com/StructureDefinition/CPPolypDetailObservationHistopathology"
-            ]
-          },
+          "profile": [
+            "http://colonoscopyPolyp.com/StructureDefinition/CPPolypDetailObservationHistopathology"
+          ]
+        },
         "subject": {
           "reference": "Patient/7751824c-4f31-4fea-acdf-8b078f8e2bed"
         },
@@ -41,10 +46,10 @@
         "valueCodeableConcept": {
           "coding": [
             {
-                "system": "http://snomed.info/sct",
-                "code": "444408007",
-                "display": "Tubular adenoma (disorder)"
-          }
+              "system": "http://snomed.info/sct",
+              "code": "444408007",
+              "display": "Tubular adenoma (disorder)"
+            }
           ],
           "text": "Tubular adenoma (disorder)"
         }

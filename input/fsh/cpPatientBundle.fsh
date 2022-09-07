@@ -20,8 +20,8 @@ Description: "A collection of data for a colonscopy patient."
 * entry ^slicing.description = "Slicing based on the profile"
 * entry ^slicing.rules = #open
 * entry.resource 1.. MS
-* entry contains Patient 1..1 MS
-* entry[Patient] ^short = "Colonoscopy Patient"
-* entry[Patient] ^definition = "The Colonoscopy Patient whose data is included in the bundle."
-* entry[Patient].resource only cp-patient
+* entry contains patient 1..1 MS
+* entry[patient] ^short = "Colonoscopy Patient"
+* entry[patient] ^definition = "The Colonoscopy Patient whose data is included in the bundle."
+* entry[patient].resource only $USCorePatient
 // * entry[DiagnosticReport]
