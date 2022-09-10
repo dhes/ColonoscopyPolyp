@@ -1,5 +1,5 @@
 // this is a based on  for MCODEPatientBundle
-Profile: CPPatientBundle
+Profile: CPBundle
 Parent: Bundle
 Id: cp-patient-bundle
 Title: "ColonoscopyPolyp Patient Bundle Profile"

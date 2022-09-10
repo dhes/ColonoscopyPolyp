@@ -1,4 +1,4 @@
-// this is a model for CPPatientBundle
+// this is a model for CPBundle
 Profile: MCODEPatientBundle
 Parent: Bundle
 Id: mcode-patient-bundle
