@@ -1,18 +1,21 @@
 // CP = ColonscopyPolyp
+// template mcodeCancerPatient
 Profile: CPPatient
 Parent: $USCorePatient
 Id: cp-patient
-Description: "Patient who underwent Colonoscopy."
+Title: "Colonoscopy Patient Profile"
+Description: "A patient who has undergone colonoscopy."
+* ^extension.url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+* ^extension.valueInteger = 5 // draft maturity
+* ^version = "0.0.1"
+* ^publisher = "Not published"
+* ^contact.name = "Dan Heslinga"
+// * ^contact.telecom[0].system = #url
+// * ^contact.telecom[=].value = "http://www.hl7.org/Special/committees/cic"
+* ^contact.telecom[+].system = #email
+* ^contact.telecom[=].value = "dan@heslinga.us"
+* ^jurisdiction = urn:iso:std:iso:3166#US "United States of America"
+* . MS
+* deceased[x] MS
 // * name 1..* MS
 
-Instance: PatientExample
-InstanceOf: CPPatient
-Description: "An example of a patient who underwent Colonoscopy."
-* name
-  * given[0] = "James"
-  * family = "Pond"
-* identifier 
-  * system = "urn:oid:1.2.36.146.595.217.0.1"
-  * value = "12345"
-* gender 
-  * value = "male"
