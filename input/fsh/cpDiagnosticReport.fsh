@@ -5,8 +5,8 @@ Parent: DiagnosticReport
 Id: cp-diagnosticreport
 Title: "Colonoscopy Patient DiagnosticReport Profil"
 Description: "A diagnostic report summarizing all polyps collected at the time of colonoscopy."
-* ^extension.url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
-* ^extension.valueInteger = 5 // draft maturity
+// * ^extension.url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+// * ^extension.valueInteger = 5 // draft maturity
 * ^version = "0.0.1"
 * ^publisher = "Not published"
 * ^contact.name = "Dan Heslinga"
@@ -16,8 +16,10 @@ Description: "A diagnostic report summarizing all polyps collected at the time o
 * ^contact.telecom[=].value = "dan@heslinga.us"
 * ^jurisdiction = urn:iso:std:iso:3166#US "United States of America"
 * status from cp-final-or-amended
+// change category and code so that system and code are required but not display
 * category 1..1
-* category = $v2-0074#SP "Surgical Pathology"
+* category = $DiagnosticServiceSectionId#SP "Surgical Pathology" // a.k.a. HL-7 v2-0074
+// * category = $v2-0074#SP "Surgical Pathology"
 * code 1..1
 * code = $SNOMEDCT#122645001 "Polyp from large intestine obtained by polypectomy (specimen)"
 * effective[x] 1..1
@@ -27,3 +29,9 @@ Description: "A diagnostic report summarizing all polyps collected at the time o
 * result 1..
 * subject 1..1
 * subject only Reference(cp-patient) 
+* obeys specimen-count-equals-result-count
+
+Invariant: specimen-count-equals-result-count
+Severity: #error
+Description: "There must be the same number of results as number of specimens"
+Expression: "specimen.count() = result.count()"

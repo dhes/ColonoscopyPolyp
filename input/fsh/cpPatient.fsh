@@ -5,8 +5,8 @@ Parent: $USCorePatient
 Id: cp-patient
 Title: "Colonoscopy Patient Profile"
 Description: "A patient who has undergone colonoscopy."
-* ^extension.url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
-* ^extension.valueInteger = 5 // draft maturity
+// * ^extension.url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+// * ^extension.valueInteger = 5 // draft maturity
 * ^version = "0.0.1"
 * ^publisher = "Not published"
 * ^contact.name = "Dan Heslinga"
