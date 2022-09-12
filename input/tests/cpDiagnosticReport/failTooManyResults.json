@@ -3,9 +3,9 @@
     "id": "26298d3d-da8f-486c-8733-e5e83ddc92dd",
     "meta": {
         "profile": [
-          "http://colonoscopyPolyp.com/StructureDefinition/cp-diagnosticreport"
+            "http://colonoscopyPolyp.com/StructureDefinition/cp-diagnostic-report"
         ]
-      },    
+    },
     "subject": {
         "reference": "Patient/7751824c-4f31-4fea-acdf-8b078f8e2bed"
     },
@@ -140,10 +140,6 @@
         {
             "reference": "Observation/c862018a-f1c0-4bb1-933c-f157fb390120",
             "display": "COLD BIOPSY X 5: SIGMOID COLON 6"
-        },
-        {
-            "reference": "Observation/802be1a2-1e4f-4635-8929-602e19747925",
-            "display": "E. COLD BIOPSY: RECTAL POLYP 1"
         },
         {
             "reference": "Observation/88733ff4-5a6c-4af1-ae49-eec3794b01c3",

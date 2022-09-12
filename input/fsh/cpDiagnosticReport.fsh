@@ -2,7 +2,7 @@
 // template mcodeCancerPatient
 Profile: CPDiagnosticReport
 Parent: DiagnosticReport
-Id: cp-diagnosticreport
+Id: cp-diagnostic-report
 Title: "Colonoscopy Patient DiagnosticReport Profil"
 Description: "A diagnostic report summarizing all polyps collected at the time of colonoscopy."
 // * ^extension.url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"

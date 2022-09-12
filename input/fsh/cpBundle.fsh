@@ -1,7 +1,7 @@
 // this is a based on  for MCODEPatientBundle
 Profile: CPBundle
 Parent: Bundle
-Id: cp-patient-bundle
+Id: cp-bundle
 Title: "ColonoscopyPolyp Patient Bundle Profile"
 Description: "A collection of data for a colonscopy patient."
 * ^version = "0.0.1"
