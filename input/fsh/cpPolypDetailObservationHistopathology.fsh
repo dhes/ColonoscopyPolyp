@@ -20,4 +20,4 @@ Description: "The histopathology of a polyp"
 * value[x] only CodeableConcept // valueQuantity test produces more than one error
 * valueCodeableConcept from cp-histopathology-vs (required)
 * subject 1..1 // test done
-* subject only Reference(Patient) 
+* subject only Reference(cp-patient) 
