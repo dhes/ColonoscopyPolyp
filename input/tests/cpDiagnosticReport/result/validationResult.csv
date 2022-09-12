@@ -1,0 +1,2 @@
+failEffectiveIsPeriod.json, 36, 45, Error, "This property must be an simple value, not an object (effectiveDateTime at DiagnosticReport.effective[x])"
+failEffectiveIsPeriod.json, 1, 2, Error, "DiagnosticReport.effective[x]: minimum required = 1, but only found 0 (from http://colonoscopyPolyp.com/StructureDefinition/cp-diagnostic-report)"
