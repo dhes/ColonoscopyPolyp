@@ -17,7 +17,7 @@ Description: "A diagnostic report summarizing all polyps collected at the time o
 * ^jurisdiction = urn:iso:std:iso:3166#US "United States of America"
 * status from cp-final-or-amended
 * category 1..1
-* category = $DiagnosticServiceSectionId#SP // "Surgical Pathology"; $DiagnosticServiceSectionI a.k.a. HL-7 v2-0074
+* category = $DiagnosticServiceSectionId#SP // "Surgical Pathology"; $DiagnosticServiceSectionId a.k.a. HL-7 v2-0074
 // * category = $v2-0074#SP "Surgical Pathology"
 * code 1..1
 * code = $SNOMEDCT#122645001 // "Polyp from large intestine obtained by polypectomy (specimen)"
