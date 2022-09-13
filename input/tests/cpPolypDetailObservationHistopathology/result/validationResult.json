@@ -10,7 +10,7 @@
       },
       "extension" : [{
         "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
-        "valueString" : "/Users/danheslinga/ColonoscopyPolyp/input/tests/cpPolypDetailObservationHistopathology/passValueTubularAdenoma.json"
+        "valueString" : "/Users/danheslinga/ColonoscopyPolyp/input/tests/cpPathologyObs/passValueTubularAdenoma.json"
       }],
       "issue" : [{
         "severity" : "information",
@@ -30,7 +30,7 @@
       },
       "extension" : [{
         "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
-        "valueString" : "/Users/danheslinga/ColonoscopyPolyp/input/tests/cpPolypDetailObservationHistopathology/passValueColonCarcinoma.json"
+        "valueString" : "/Users/danheslinga/ColonoscopyPolyp/input/tests/cpPathologyObs/passValueColonCarcinoma.json"
       }],
       "issue" : [{
         "severity" : "information",
@@ -50,7 +50,7 @@
       },
       "extension" : [{
         "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
-        "valueString" : "/Users/danheslinga/ColonoscopyPolyp/input/tests/cpPolypDetailObservationHistopathology/failValueNotInValueset.json"
+        "valueString" : "/Users/danheslinga/ColonoscopyPolyp/input/tests/cpPathologyObs/failValueNotInValueset.json"
       }],
       "issue" : [{
         "extension" : [{
@@ -87,7 +87,7 @@
       },
       "extension" : [{
         "url" : "http://hl7.org/fhir/StructureDefinition/operationoutcome-file",
-        "valueString" : "/Users/danheslinga/ColonoscopyPolyp/input/tests/cpPolypDetailObservationHistopathology/failStatusPreliminary.json"
+        "valueString" : "/Users/danheslinga/ColonoscopyPolyp/input/tests/cpPathologyObs/failStatusPreliminary.json"
       }],
       "issue" : [{
         "extension" : [{

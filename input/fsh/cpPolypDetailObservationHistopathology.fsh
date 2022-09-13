@@ -1,4 +1,4 @@
-Profile: CPPolypDetailObservationHistopathology
+Profile: cpPathologyObs
 Parent: Observation
 Description: "The histopathology of a polyp"
 // * ^extension.url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
