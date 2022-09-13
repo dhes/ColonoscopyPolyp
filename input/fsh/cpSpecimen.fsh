@@ -1,5 +1,4 @@
 // CP = ColonscopyPolyp
-// template mcodeCancerPatient
 Profile: CPSpecimen
 Parent: Specimen
 Id: cp-specimen
