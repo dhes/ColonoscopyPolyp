@@ -3,13 +3,13 @@
     "id": "f018a8d3-2c33-4ffc-b7cd-6ce4fc8624b7",
     "meta": {
         "profile": [
-          "http://colonoscopyPolyp.com/StructureDefinition/cpPathologyObs"
+          "http://colonoscopyPolyp.com/StructureDefinition/cp-pathology-observation"
         ]
       },
     "subject": {
       "reference": "Patient/01031de2-b733-4a3f-a648-2c2656b5fb7e"
     },
-    "status": "final",
+    "status": "preliminary",
     "category": [
       {
         "coding": [

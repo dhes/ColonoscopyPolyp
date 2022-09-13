@@ -24,4 +24,7 @@ There isn't much point in writing tests against cpPatient because it's just us-c
 for cpDiagnosticReport to csv file: 
 java -Xmx4g -jar validator_cli.jar /Users/danheslinga/ColonoscopyPolyp/input/tests/cpDiagnosticReport -ig /Users/danheslinga/ColonoscopyPolyp/output/package.tgz -output-style csv -output /Users/danheslinga/ColonoscopyPolyp/input/tests/cpDiagnosticReport/result/validationResult.csv
 
+for cpDysplasiaObs to csv file:
+java -Xmx4g -jar validator_cli.jar /Users/danheslinga/ColonoscopyPolyp/input/tests/cpDysplasiaObs -ig /Users/danheslinga/ColonoscopyPolyp/output/package.tgz -output-style csv -output /Users/danheslinga/ColonoscopyPolyp/input/tests/cpDysplasiaObs/result/validationResult.csv
+
 At the information level the FHIR validator complains that cpDiagnosticReport.code does not come from LOINC. Unfortunately LOINC has no code that matches the specificity of "Polyp from large intestine obtained by polypectomy (specimen)". In this case this IG ignores the preference for LOINC of the US core DiagnosticReport. 

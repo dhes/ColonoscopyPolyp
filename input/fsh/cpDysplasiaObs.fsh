@@ -1,8 +1,8 @@
-Profile: CPPathologyObs
+Profile: CPDysplasiaObs
 Parent: Observation
-Id: cp-pathology-observation
-Title: "Colonoscopy polpy histopathology observation"
-Description: "The histopathology of a polyp obtain via colonoscopy"
+Id: cp-dysplasia-observation
+Title: "Colonscopy polyp severe dysplasia"
+Description: "Is this polyp severely dysplastic?"
 * ^version = "0.0.1"
 * ^publisher = "Not published"
 * ^contact.name = "Dan Heslinga"
@@ -13,9 +13,9 @@ Description: "The histopathology of a polyp obtain via colonoscopy"
 * category 1..1
 * category = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
 // * code 1..1 // redundant, code is 1..1 in Observation. 
-* code = $LOINC#34574-4 // "Pathology report final diagnosis"
-* value[x] 1..1 
-* value[x] only CodeableConcept
-* valueCodeableConcept from cp-histopathology-vs (required)
+* code = $SNOMEDCT#55237006 // "Severe dysplasia (morphologic abnormality)"
+* value[x] 1..1
+* value[x] only boolean
+// * valueCodeableConcept from cp-histopathology-vs (required)
 * subject 1..1
 * subject only Reference(cp-patient) 

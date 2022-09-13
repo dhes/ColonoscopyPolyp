@@ -1,0 +1,3 @@
+file, line, col, level, message
+/Users/danheslinga/ColonoscopyPolyp/input/tests/cpDysplasiaObs/pass.json, 7, 10, Information, "Canonical URL 'http://colonoscopyPolyp.com/StructureDefinition/cpDysplasiaObs' does not resolve"
+/Users/danheslinga/ColonoscopyPolyp/input/tests/cpDysplasiaObs/pass.json, 1, 2, Warning, "Profile reference 'http://colonoscopyPolyp.com/StructureDefinition/cpDysplasiaObs' has not been checked because it is unknown, and fetching it resulted in the error java.net.UnknownHostException: colonoscopypolyp.com"

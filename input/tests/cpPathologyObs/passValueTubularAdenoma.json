@@ -3,7 +3,7 @@
     "id": "f018a8d3-2c33-4ffc-b7cd-6ce4fc8624b7",
     "meta": {
         "profile": [
-          "http://colonoscopyPolyp.com/StructureDefinition/cpPathologyObs"
+          "http://colonoscopyPolyp.com/StructureDefinition/cp-pathology-observation"
         ]
       },
     "subject": {
@@ -35,11 +35,11 @@
     "valueCodeableConcept": {
       "coding": [
         {
-          "system": "http://snomed.info/sct",
-          "code": "269533000",
-          "display": "Carcinoma of colon"
-        }
+            "system": "http://snomed.info/sct",
+            "code": "444408007",
+            "display": "Tubular adenoma (disorder)"
+      }
       ],
-      "text": "Carcinoma of colon"
+      "text": "Tubular adenoma (disorder)"
     }
   }

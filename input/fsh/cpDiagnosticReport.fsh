@@ -3,7 +3,7 @@
 Profile: CPDiagnosticReport
 Parent: DiagnosticReport
 Id: cp-diagnostic-report
-Title: "Colonoscopy Patient DiagnosticReport Profil"
+Title: "Colonoscopy Patient DiagnosticReport Profile"
 Description: "A diagnostic report summarizing all polyps collected at the time of colonoscopy."
 // * ^extension.url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
 // * ^extension.valueInteger = 5 // draft maturity

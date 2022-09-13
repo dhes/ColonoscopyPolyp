@@ -3,7 +3,7 @@
     "id": "f018a8d3-2c33-4ffc-b7cd-6ce4fc8624b7",
     "meta": {
         "profile": [
-          "http://colonoscopyPolyp.com/StructureDefinition/cpPathologyObs"
+          "http://colonoscopyPolyp.com/StructureDefinition/cp-pathology-observation"
         ]
       },
     "subject": {
@@ -26,20 +26,20 @@
       "coding": [
         {
           "system": "http://loinc.org",
-          "code": "58410-2",
-          "display": "CBC panel - Blood by Automated count"
+          "code": "34574-4",
+          "display": "Pathology report final diagnosis"
         }
       ],
-      "text": "CBC panel - Blood by Automated count"
+      "text": "Pathology report final diagnosis"
     },
     "valueCodeableConcept": {
       "coding": [
         {
-            "system": "http://snomed.info/sct",
-            "code": "444408007",
-            "display": "Tubular adenoma (disorder)"
-      }
+          "system": "http://snomed.info/sct",
+          "code": "269533000",
+          "display": "Carcinoma of colon"
+        }
       ],
-      "text": "Tubular adenoma (disorder)"
+      "text": "Carcinoma of colon"
     }
   }
