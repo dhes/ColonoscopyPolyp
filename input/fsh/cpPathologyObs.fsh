@@ -1,4 +1,4 @@
-Profile: cpPathologyObs
+Profile: CPPathologyObs
 Parent: Observation
 Description: "The histopathology of a polyp"
 * ^version = "0.0.1"
