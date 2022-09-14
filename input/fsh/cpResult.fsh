@@ -12,6 +12,9 @@ Description: "Results of tests on a polyp including histopathology and other det
 * subject 1..1
 * subject only Reference(cp-patient) 
 * status from cp-final-or-amended
+* effective[x] 1..1
+* effective[x] only dateTime
+* issued 1..1 MS
 * code = $SNOMEDCT#122645001 // Polyp from large intestine obtained by polypectomy (specimen)
 * specimen only Reference(cp-specimen) 
 * hasMember 4..4 MS
