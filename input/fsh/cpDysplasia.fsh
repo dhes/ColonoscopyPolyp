@@ -1,4 +1,4 @@
-Profile: CPDysplasiaObs
+Profile: CPDysplasia
 Parent: Observation
 Id: cp-dysplasia-observation
 Title: "Colonscopy Polyp Severe Dysplasia Observation"

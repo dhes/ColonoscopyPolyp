@@ -14,14 +14,30 @@ Description: "Results of tests on a polyp including histopathology and other det
 * status from cp-final-or-amended
 * code = $SNOMEDCT#122645001 // Polyp from large intestine obtained by polypectomy (specimen)
 * specimen only Reference(cp-specimen) 
-* hasMember 4..4
-* hasMember only Reference(cp-pathology-observation or cp-piecemeal-procedure or cp-dysplasia-observation or cp-no-malignant-neoplasm-observation)
-** entry ^slicing.discriminator.type = #pattern
-** entry ^slicing.discriminator.path = "resource"
-** entry ^slicing.description = "Slicing based on the profile"
-** entry ^slicing.rules = #open
-** entry contains patient 1..1 MS
-** entry[patient] ^short = "Colonoscopy Patient"
-** entry[patient] ^definition = "The Colonoscopy Patient whose data is included in the bundle."
-** entry[patient].resource only $USCorePatient
+* hasMember 4..4 MS
+  * ^slicing.discriminator.type = #pattern
+  * ^slicing.discriminator.path = "$this.resolve().code"
+  * ^slicing.description = "Slicing based on referenced resource code attribute."
+  * ^slicing.rules = #closed
+* hasMember contains
+    pathology 1..1 MS and
+    piecemeal 1..1 MS and
+    severeDysplasia 1..1 MS and
+    noMalignancy 1..1 MS
+* hasMember[pathology] only Reference(CPPathology)
+  * ^short = "Polyp Histopathology"
+  * ^definition = "Histopathologic diagnosis"
+  * ^comment = "When using this element, the Observation must validate against the specified profile."
+* hasMember[piecemeal] only Reference(CPPiecemeal)
+  * ^short = "Was this polyp excised piecemeal?"
+  * ^definition = "Was this polyp excised piecemeal?"
+  * ^comment = "When using this element, the Observation must validate against the specified profile."
+* hasMember[severeDysplasia] only Reference(CPDysplasia)
+  * ^short = "Is this polyp severely dysplastic?"
+  * ^definition = "Is this polyp severely dysplastic?"
+  * ^comment = "When using this element, the Observation must validate against the specified profile."
+* hasMember[noMalignancy] only Reference(CPNoMalignantNeoplasm)
+  * ^short = "Was there no evidence of malignancy in this polyp?"
+  * ^definition = "Was there no evidence of malignancy in this polyp?"
+  * ^comment = "When using this element, the Observation must validate against the specified profile."
 

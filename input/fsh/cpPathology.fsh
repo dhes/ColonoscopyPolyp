@@ -1,9 +1,8 @@
-Profile: CPNoMalignantNeoplasmObs
+Profile: CPPathology
 Parent: Observation
-Id: cp-no-malignant-neoplasm-observation
-Title: "Colonscopy No Malignant Neoplasm Observation"
-Description: "Is evidence absent of malignant neoplasm in this polyp?"
-// Watch out! "true" means there is no evidence of malignanct neoplasm.
+Id: cp-pathology-observation
+Title: "Colonoscopy Polpy Histopathology Observation"
+Description: "The histopathology of a polyp obtain via colonoscopy"
 * ^version = "0.0.1"
 * ^publisher = "Not published"
 * ^contact.name = "Dan Heslinga"
@@ -14,9 +13,9 @@ Description: "Is evidence absent of malignant neoplasm in this polyp?"
 * category 1..1
 * category = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
 // * code 1..1 // redundant, code is 1..1 in Observation. 
-* code = $SNOMEDCT#110396000 // "No evidence of malignant neoplasm (finding)"
-* value[x] 1..1
-* value[x] only boolean
-// * valueCodeableConcept from cp-histopathology-vs (required)
+* code = $LOINC#34574-4 // "Pathology report final diagnosis"
+* value[x] 1..1 
+* value[x] only CodeableConcept
+* valueCodeableConcept from cp-histopathology-vs (required)
 * subject 1..1
 * subject only Reference(cp-patient) 

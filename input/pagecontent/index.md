@@ -34,7 +34,7 @@ We will use "CP" to stand in for Colonoscopy Polyp:
 * CPSpecimen
 * CPResultObservation
 * CPPolypDetailObservation
-* cpPathologyObs
+* CPPathology
 * CPPolypDetailObservationSevereDysplasia
 * CPPolypDetailObservationPiecemealExcision
 * CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm
@@ -83,9 +83,9 @@ CPResultObservation | CPResultObservation.specimen.reference | | link to id of c
 CPResultObservation | CPResultObservation.specimen.display | | short description of specimen from narrative pathology report
 CPResultObservation | CPResultObservation.hasMember.reference | | reference to id of CPPolypDetailObservation. Four members: histopathology (codeable concept), severe dysplasia?  (boolean), resected piecemeal?  (boolean), no evidence of malignancy? (boolean)
 CPResultObservation | CPResultObservation.hasMember.display | | short description of detail CPPolypDetailObservation
-cpPathologyObs | CPPolypDetailObservation.category | | http://terminology.hl7.org/CodeSystem/observation-category#laboratory Laboratory
-cpPathologyObs | CPPolypDetailObservation.code | | LOINC#34574-4 Pathology report final diagnosis
-cpPathologyObs | CPPolypDetailObservation.valueCodeableConcept | | One of three values:  SNOMEDCT#444408007 Tubular adenoma (disorder), SNOMEDCT#89452002 Hyperplastic polyp of intestine (disorder), SNOMEDCT#68534000 Intestinal mucous membrane structure (body structure)
+CPPathology | CPPolypDetailObservation.category | | http://terminology.hl7.org/CodeSystem/observation-category#laboratory Laboratory
+CPPathology | CPPolypDetailObservation.code | | LOINC#34574-4 Pathology report final diagnosis
+CPPathology | CPPolypDetailObservation.valueCodeableConcept | | One of three values:  SNOMEDCT#444408007 Tubular adenoma (disorder), SNOMEDCT#89452002 Hyperplastic polyp of intestine (disorder), SNOMEDCT#68534000 Intestinal mucous membrane structure (body structure)
 CPPolypDetailObservationSevereDysplasia | CPPolypDetailObservationSevereDysplasia.category | | http://terminology.hl7.org/CodeSystem/observation-category#laboratory Laboratory
 CPPolypDetailObservationSevereDysplasia | CPPolypDetailObservationSevereDysplasia.code | | SNOMEDCT#55237006 Severe dysplasia (morphologic abnormality)
 CPPolypDetailObservationSevereDysplasia | CPPolypDetailObservationSevereDysplasia.valueBoolean | | true/false

@@ -1,10 +1,10 @@
 Command line validator examples:
 
-for cpPathologyObs output to json file: 
-java -Xmx4g -jar validator_cli.jar /Users/danheslinga/ColonoscopyPolyp/input/tests/cpPathologyObs -ig /Users/danheslinga/ColonoscopyPolyp/output/package.tgz -output /Users/danheslinga/ColonoscopyPolyp/input/tests/cpPathologyObs/result/validationResult.json
+for CPPathology output to json file: 
+java -Xmx4g -jar validator_cli.jar /Users/danheslinga/ColonoscopyPolyp/input/tests/CPPathology -ig /Users/danheslinga/ColonoscopyPolyp/output/package.tgz -output /Users/danheslinga/ColonoscopyPolyp/input/tests/CPPathology/result/validationResult.json
 
-for cpPathologyObs output to csv file: 
-java -Xmx4g -jar validator_cli.jar /Users/danheslinga/ColonoscopyPolyp/input/tests/cpPathologyObs -ig /Users/danheslinga/ColonoscopyPolyp/output/package.tgz -output-style csv -output /Users/danheslinga/ColonoscopyPolyp/input/tests/cpPathologyObs/result/validationResult.csv -level errors
+for CPPathology output to csv file: 
+java -Xmx4g -jar validator_cli.jar /Users/danheslinga/ColonoscopyPolyp/input/tests/CPPathology -ig /Users/danheslinga/ColonoscopyPolyp/output/package.tgz -output-style csv -output /Users/danheslinga/ColonoscopyPolyp/input/tests/CPPathology/result/validationResult.csv -level errors
 
 for cpBundle to console in csv-style: 
 java -Xmx4g -jar validator_cli.jar /Users/danheslinga/ColonoscopyPolyp/input/tests/cpBundle -ig /Users/danheslinga/ColonoscopyPolyp/output/package.tgz -output-style csv
@@ -13,7 +13,7 @@ for cpBundle output to csv file :
 java -Xmx4g -jar validator_cli.jar /Users/danheslinga/ColonoscopyPolyp/input/tests/cpBundle -ig /Users/danheslinga/ColonoscopyPolyp/output/package.tgz -output-style csv -output /Users/danheslinga/ColonoscopyPolyp/input/tests/cpBundle/result/validationResult.csv
 
 To limit output to errors, add -level errors e.g.:
-java -Xmx4g -jar validator_cli.jar /Users/danheslinga/ColonoscopyPolyp/input/tests/cpPathologyObs -ig /Users/danheslinga/ColonoscopyPolyp/output/package.tgz -output-style csv -output /Users/danheslinga/ColonoscopyPolyp/input/tests/cpPathologyObs/result/validationResult.csv -level errors
+java -Xmx4g -jar validator_cli.jar /Users/danheslinga/ColonoscopyPolyp/input/tests/CPPathology -ig /Users/danheslinga/ColonoscopyPolyp/output/package.tgz -output-style csv -output /Users/danheslinga/ColonoscopyPolyp/input/tests/CPPathology/result/validationResult.csv -level errors
 (actually it seems to have no effect)
 
 for cpPatient output to csv file:
@@ -24,14 +24,14 @@ There isn't much point in writing tests against cpPatient because it's just us-c
 for cpDiagnosticReport to csv file: 
 java -Xmx4g -jar validator_cli.jar /Users/danheslinga/ColonoscopyPolyp/input/tests/cpDiagnosticReport -ig /Users/danheslinga/ColonoscopyPolyp/output/package.tgz -output-style csv -output /Users/danheslinga/ColonoscopyPolyp/input/tests/cpDiagnosticReport/result/validationResult.csv
 
-for cpDysplasiaObs to csv file:
-java -Xmx4g -jar validator_cli.jar /Users/danheslinga/ColonoscopyPolyp/input/tests/cpDysplasiaObs -ig /Users/danheslinga/ColonoscopyPolyp/output/package.tgz -output-style csv -output /Users/danheslinga/ColonoscopyPolyp/input/tests/cpDysplasiaObs/result/validationResult.csv
+for CPDysplasia to csv file:
+java -Xmx4g -jar validator_cli.jar /Users/danheslinga/ColonoscopyPolyp/input/tests/CPDysplasia -ig /Users/danheslinga/ColonoscopyPolyp/output/package.tgz -output-style csv -output /Users/danheslinga/ColonoscopyPolyp/input/tests/CPDysplasia/result/validationResult.csv
 
 for cpPiecemealObs to csv file:
-java -Xmx4g -jar validator_cli.jar /Users/danheslinga/ColonoscopyPolyp/input/tests/cpPiecemealProcedure -ig /Users/danheslinga/ColonoscopyPolyp/output/package.tgz -output-style csv -output /Users/danheslinga/ColonoscopyPolyp/input/tests/cpPiecemealProcedure/result/validationResult.csv
+java -Xmx4g -jar validator_cli.jar /Users/danheslinga/ColonoscopyPolyp/input/tests/CPPiecemeal -ig /Users/danheslinga/ColonoscopyPolyp/output/package.tgz -output-style csv -output /Users/danheslinga/ColonoscopyPolyp/input/tests/CPPiecemeal/result/validationResult.csv
 
-for cpNoMalignantNeoplasmObs to csv file:
-java -Xmx4g -jar validator_cli.jar /Users/danheslinga/ColonoscopyPolyp/input/tests/cpNoMalignantNeoplasmObs -ig /Users/danheslinga/ColonoscopyPolyp/output/package.tgz -output-style csv -output /Users/danheslinga/ColonoscopyPolyp/input/tests/cpNoMalignantNeoplasmObs/result/validationResult.csv
+for cpNoMalignantNeoplasm to csv file:
+java -Xmx4g -jar validator_cli.jar /Users/danheslinga/ColonoscopyPolyp/input/tests/cpNoMalignantNeoplasm -ig /Users/danheslinga/ColonoscopyPolyp/output/package.tgz -output-style csv -output /Users/danheslinga/ColonoscopyPolyp/input/tests/cpNoMalignantNeoplasm/result/validationResult.csv
 
 for cpSpecimen to csv file:
 java -Xmx4g -jar validator_cli.jar /Users/danheslinga/ColonoscopyPolyp/input/tests/cpSpecimen -ig /Users/danheslinga/ColonoscopyPolyp/output/package.tgz -output-style csv -output /Users/danheslinga/ColonoscopyPolyp/input/tests/cpSpecimen/result/validationResult.csv
