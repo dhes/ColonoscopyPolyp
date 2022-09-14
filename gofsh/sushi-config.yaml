@@ -7,4 +7,5 @@ name: UsMcode
 status: active
 version: 2.1.0
 dependencies:
-  hl7.fhir.us.core: 5.0.1
+  hl7.fhir.us.core: 4.1.0
+  hl7.fhir.us.mcode: 2.0.0

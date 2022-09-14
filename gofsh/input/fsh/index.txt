@@ -1,2 +1,11 @@
-Name           Type     File
-CancerPatient  Profile  profiles/CancerPatient.fsh
+Name            Type      File
+CancerPatient   Profile   profiles/CancerPatient.fsh
+TNMStageGroup   Profile   profiles/TNMStageGroup.fsh
+blood-pressure  Instance  instances/blood-pressure.fsh
+example         Instance  instances/example.fsh
+rim             Mapping   mappings/rim.fsh
+sct-attr        Mapping   mappings/sct-attr.fsh
+sct-concept     Mapping   mappings/sct-concept.fsh
+v2              Mapping   mappings/v2.fsh
+w5              Mapping   mappings/w5.fsh
+workflow        Mapping   mappings/workflow.fsh

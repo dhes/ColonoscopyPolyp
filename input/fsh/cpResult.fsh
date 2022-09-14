@@ -16,8 +16,12 @@ Description: "Results of tests on a polyp including histopathology and other det
 * specimen only Reference(cp-specimen) 
 * hasMember 4..4
 * hasMember only Reference(cp-pathology-observation or cp-piecemeal-procedure or cp-dysplasia-observation or cp-no-malignant-neoplasm-observation)
-// gonna need some slicing here....
-// * hasMember[1] only Reference(cp-piecemeal-procedure)
-// * hasMember[2] only Reference(cp-dysplasia-observation)
-// * hasMember[3] only Reference(cp-no-malignant-neoplasm-observation)
-            
+** entry ^slicing.discriminator.type = #pattern
+** entry ^slicing.discriminator.path = "resource"
+** entry ^slicing.description = "Slicing based on the profile"
+** entry ^slicing.rules = #open
+** entry contains patient 1..1 MS
+** entry[patient] ^short = "Colonoscopy Patient"
+** entry[patient] ^definition = "The Colonoscopy Patient whose data is included in the bundle."
+** entry[patient].resource only $USCorePatient
+
