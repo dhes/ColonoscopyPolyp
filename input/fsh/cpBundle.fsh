@@ -22,5 +22,5 @@ Description: "A collection of data for a colonscopy patient."
 * entry[patient]
   * ^short = "Colonoscopy Patient"
   * ^definition = "The Colonoscopy Patient whose data is included in the bundle."
-  * resource only $USCorePatient
+  * resource only CPPatient
 // * entry[DiagnosticReport]
