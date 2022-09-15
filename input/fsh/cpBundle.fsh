@@ -22,5 +22,10 @@ Description: "A collection of data for a colonscopy patient."
 * entry[patient]
   * ^short = "Colonoscopy Patient"
   * ^definition = "The Colonoscopy Patient whose data is included in the bundle."
-  * resource only CPPatient
-// * entry[DiagnosticReport]
+  * resource only CPPatient 
+// DiagnosticReport exactly one CPDiagnosticReport referring to...
+// Specimen: at least one CPSpecimen and...
+// Observation: at least one CPResult in turn referring to ....
+// Observation: one each cpDysplasia, cpNoMalignantNeoplasm, cpPiecemeal, cpPathology
+// Count of CPSpecimens should equal count of CPResults
+// the id of each specimen in cpResult should match a cpSpecimen
