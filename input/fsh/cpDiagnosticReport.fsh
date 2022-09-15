@@ -30,3 +30,8 @@ Invariant: specimen-count-equals-result-count
 Severity: #error
 Description: "There must be the same number of results as number of specimens"
 Expression: "specimen.count() = result.count()"
+
+Invariant: result-refers-to-cpSpecimen
+Severity: #error
+Description: "Each result must refer to a CPSpecimen"
+Expression: "result.reference.resolve().resourceType = CPSpecimen"
