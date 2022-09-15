@@ -1,6 +1,6 @@
 Profile: CPPathology
 Parent: Observation
-Id: cp-pathology-observation
+Id: cp-pathology
 Title: "Colonoscopy Polpy Histopathology Observation"
 Description: "The histopathology of a polyp obtain via colonoscopy"
 * ^version = "0.0.1"

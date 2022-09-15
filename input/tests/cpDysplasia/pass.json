@@ -3,7 +3,7 @@
     "id": "abcb49db-960b-4de6-aa0a-2e072c438dd4",
     "meta": {
         "profile": [
-            "http://colonoscopyPolyp.com/StructureDefinition/cp-dysplasia-observation"
+            "http://colonoscopyPolyp.com/StructureDefinition/cp-dysplasia"
         ]
     },
     "subject": {

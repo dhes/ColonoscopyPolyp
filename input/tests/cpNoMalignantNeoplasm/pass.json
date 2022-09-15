@@ -3,7 +3,7 @@
     "id": "71f00532-66d9-4634-aa0e-bff0aafaf9a1",
     "meta": {
         "profile": [
-            "http://colonoscopyPolyp.com/StructureDefinition/cp-no-malignant-neoplasm-observation"
+            "http://colonoscopyPolyp.com/StructureDefinition/cp-no-malignant-neoplasm"
         ]
     },
     "subject": {

@@ -72,7 +72,7 @@
         "id": "f018a8d3-2c33-4ffc-b7cd-6ce4fc8624b7",
         "meta": {
           "profile": [
-            "http://colonoscopyPolyp.com/StructureDefinition/cp-pathology-observation"
+            "http://colonoscopyPolyp.com/StructureDefinition/cp-pathology"
           ]
         },
         "subject": {

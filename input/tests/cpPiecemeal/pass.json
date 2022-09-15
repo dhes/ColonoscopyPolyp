@@ -3,7 +3,7 @@
     "id": "a3831e2a-ec9b-4aa5-ae5e-e83e866d41a4",
     "meta": {
         "profile": [
-            "http://colonoscopyPolyp.com/StructureDefinition/cp-piecemeal-procedure"
+            "http://colonoscopyPolyp.com/StructureDefinition/cp-piecemeal"
         ]
     },
     "subject": {
