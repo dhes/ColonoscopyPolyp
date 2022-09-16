@@ -3,7 +3,7 @@ InstanceOf: CPSpecimen
 Usage: #example
 Title: "Example CPSpecimen"
 Description: "Example CPSpecimen"
-* subject.reference = Reference(Patient/example-cpPatient)
+* subject.reference = "Patient/example-cpPatient"
 * status = #available
 * collection
   * bodySite = $SNOMEDCT#485005
