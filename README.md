@@ -41,3 +41,4 @@ java -Xmx4g -jar validator_cli.jar /Users/danheslinga/ColonoscopyPolyp/input/tes
 
 At the information level the FHIR validator complains that cpDiagnosticReport.code does not come from LOINC. Unfortunately LOINC has no code that matches the specificity of "Polyp from large intestine obtained by polypectomy (specimen)". In this case this IG ignores the preference for LOINC of the US core DiagnosticReport. 
 
+Maybe piecemeal excision belongs in Specimen.collection.method instead of a result.hasMember....
