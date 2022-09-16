@@ -127,7 +127,7 @@ menu:
 # look like:
 #
 # resources:
-#   Patient/my-example-patient:
+#   Patient/my-example-cpPatient:
 #     name: My Example Patient
 #     description: An example Patient
 #     exampleBoolean: true

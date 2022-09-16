@@ -1,6 +1,8 @@
-Instance: PatientExample
+Instance: example-cpPatient-2
 InstanceOf: CPPatient
-Description: "An example of a patient who underwent Colonoscopy."
+Usage: #example
+Title: "Example 2 CPPatient"
+Description: "Another example of a patient who underwent Colonoscopy."
 * name
   * given[0] = "James"
   * family = "Pond"
