@@ -5,7 +5,7 @@
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 id: fhir.colonoscopyPolyp
 canonical: http://colonoscopyPolyp.com
-name: ColonoscopyPolyp
+name: A colonoscopy report data model specification. To be processed by CQL to advise the timing of surveillance colonoscopy. The CQL ollows guidelines of the US Multi-Society Task Force on Colorectal Cancer. 
 title: Colonoscopy Polyp
 description: A method of recording polyps collected during colonoscopy in a structured and computable manner. 
 status: draft # draft | active | retired | unknown
@@ -127,7 +127,7 @@ menu:
 # look like:
 #
 # resources:
-#   Patient/my-example-cpPatient:
+#   Patient/my-example-patient:
 #     name: My Example Patient
 #     description: An example Patient
 #     exampleBoolean: true
