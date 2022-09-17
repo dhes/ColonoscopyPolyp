@@ -1,4 +1,4 @@
-Instance: example-cpResult
+Instance: example-cpResult2
 InstanceOf: CPResult
 Usage: #example
 Title: "Example CPResult"

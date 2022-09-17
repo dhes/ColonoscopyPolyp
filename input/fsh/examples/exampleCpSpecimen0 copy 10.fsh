@@ -1,4 +1,4 @@
-Instance: example-cpSpecimen
+Instance: example-cpSpecimen0
 InstanceOf: CPSpecimen
 Usage: #example
 Title: "Example CPSpecimen"
