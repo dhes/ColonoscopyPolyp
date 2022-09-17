@@ -16,7 +16,7 @@ Description: "Results of tests on a polyp including histopathology and other det
 // * effective[x] 1..1
 // * effective[x] only dateTime
 // * issued 1..1 MS
-* code = $SNOMEDCT#122645001 // Polyp from large intestine obtained by polypectomy (specimen)
+* code = $SNOMEDCT#122645001 "Polyp from large intestine obtained by polypectomy (specimen)"
 * specimen only Reference(cp-specimen) 
 * hasMember 4..4 MS
   * ^slicing.discriminator.type = #pattern

@@ -13,7 +13,7 @@ Description: "A polyp specimen obtained during a colonoscopy procedure."
 * status = #available
 * collection
   * bodySite from cp-body-site
-  * method = $SNOMEDCT#129304002 // Excision - action
+  * method = $SNOMEDCT#129304002 "Excision - action (qualifier value)"
   * quantity = $UCUM#mm // millimeters
   * collected[x] 1..1 // period or datetime should be OK
 * subject 1..1
