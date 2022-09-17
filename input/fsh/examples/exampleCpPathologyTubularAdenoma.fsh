@@ -1,4 +1,4 @@
-Instance: example-cpPathology0
+Instance: example-cpPathology-tubular-adenoma
 InstanceOf: CPPathology
 Usage: #example
 Title: "Example CPPathology"

@@ -1,4 +1,4 @@
-Instance: example-cpPiecemeal1
+Instance: example-cpPiecemeal-false
 InstanceOf: CPPiecemeal
 Usage: #example
 Title: "Example CPPiecemeal"

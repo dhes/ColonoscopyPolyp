@@ -1,4 +1,4 @@
-Instance: example-cpNoMalignantNeoplasm5
+Instance: example-cpNoMalignantNeoplasm-true
 InstanceOf: CPNoMalignantNeoplasm
 Usage: #example
 Title: "Example CPNoMalignantNeoplasm"
