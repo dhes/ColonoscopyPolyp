@@ -5,4 +5,4 @@ Title: "Example CPPathology"
 Description: "Example CPPathology"
 * subject.reference = "Patient/example-cpPatient"
 * status = #final
-* valueCodeableConcept = $SNOMEDCT#444408007
+* valueCodeableConcept = $SNOMEDCT#89452002 "Hyperplastic polyp of intestine (disorder)"
