@@ -34,8 +34,9 @@ Description: "Example of a CPBundle that has a full set of resources."
 * entry[+].resource = example-cpResult12
 * entry[+].resource = example-cpResult13
 * entry[+].resource = example-cpSpecimen13
-* entry[+].resource = example-cpPathology0
-* entry[+].resource = example-cpPiecemeal0
-* entry[+].resource = example-cpDysplasia0
-* entry[+].resource = example-cpNoMalignantNeoplasm0
+* entry[+].resource = example-cpPathology-tubular-adenoma
+* entry[+].resource = example-cpPathology-hyperplastic-polyp
+* entry[+].resource = example-cpPiecemeal-false
+* entry[+].resource = example-cpDysplasia-false
+* entry[+].resource = example-cpNoMalignantNeoplasm-true
 
