@@ -2,7 +2,7 @@ Instance: example-cpDysplasia-false
 InstanceOf: CPDysplasia
 Usage: #example
 Title: "Example CPDysplasia"
-Description: "Example CPDysplasia"
+Description: "Is this polyp severely dysplastic?"
 * subject.reference = "Patient/example-cpPatient"
 * status = #final
 * valueBoolean = false

@@ -1,8 +1,8 @@
 Instance: example-cpDiagnosticReport
 InstanceOf: CPDiagnosticReport
 Usage: #example
-Title: "Example Diagnostic Report"
-Description: "Example Diagnostic Report"
+Title: "Example CPDiagnosticReport"
+Description: "Example diagnostic report containing a lists of specimens and results"
 * subject.reference = "Patient/example-cpPatient"
 * status = #final
 * effectiveDateTime = "2021-10-04T00:00:00.000Z"

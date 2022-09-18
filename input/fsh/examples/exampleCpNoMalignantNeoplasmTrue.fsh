@@ -2,7 +2,7 @@ Instance: example-cpNoMalignantNeoplasm-true
 InstanceOf: CPNoMalignantNeoplasm
 Usage: #example
 Title: "Example CPNoMalignantNeoplasm"
-Description: "Example CPNoMalignantNeoplasm"
+Description: "Does this polyp have NO signs of malignant neoplasm?"
 * subject.reference = "Patient/example-cpPatient"
 * status = #final
 * valueBoolean = true
