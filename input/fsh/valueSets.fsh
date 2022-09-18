@@ -14,9 +14,9 @@ Id: cp-final-or-amended
 
 ValueSet: CPBodySite
 Id: cp-body-site
-* $SNOMEDCT#32713005 // Cecum structure (body structure)
-* $SNOMEDCT#9040008  // Ascending colon structure (body structure)
-* $SNOMEDCT#485005   // Transverse colon structure (body structure)
-* $SNOMEDCT#32622004 // Descending colon structure (body structure)
-* $SNOMEDCT#60184004 // Sigmoid colon structure (body structure)
-* $SNOMEDCT#34402009 // Rectum structure (body structure)
+* $SNOMEDCT#32713005 "Cecum structure (body structure)"
+* $SNOMEDCT#9040008  "Ascending colon structure (body structure)"
+* $SNOMEDCT#485005   "Transverse colon structure (body structure)"
+* $SNOMEDCT#32622004 "Descending colon structure (body structure)"
+* $SNOMEDCT#60184004 "Sigmoid colon structure (body structure)"
+* $SNOMEDCT#34402009 "Rectum structure (body structure)"
