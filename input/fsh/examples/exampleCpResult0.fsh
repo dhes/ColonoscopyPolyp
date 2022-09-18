@@ -5,7 +5,7 @@ Title: "Example CPResult"
 Description: "Example CPResult"
 * subject.reference = "Patient/example-cpPatient"
 * status = #final
-* specimen.reference = "Specimen/example-specimen"
+* specimen.reference = "Specimen/example-specimen0"
 * specimen.display = "A. Ascending colon polyp cold snare"
 * hasMember[pathology].reference = "Observation/example-cpPathology-tubular-adenoma"
 * hasMember[pathology].display = "Tubular adenoma of colon"
