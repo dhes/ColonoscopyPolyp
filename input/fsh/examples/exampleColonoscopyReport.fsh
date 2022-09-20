@@ -1,4 +1,4 @@
-Instance: example-colonsocopyPolyp-report
+Instance: example-colonoscopyPolyp-report
 InstanceOf: ColonoscopyPolypReport
 Usage: #example
 Title: "Example ColonoscopyPolyp"
