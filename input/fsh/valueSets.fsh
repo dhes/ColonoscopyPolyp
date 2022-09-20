@@ -1,7 +1,7 @@
 ValueSet: CPHistopathology
 Id: cp-histopathology-vs
-Title: "Colonoscopy Polyp Histopathology Value Set"
-Description: "Possible values for polyp histopathology"
+Title: "Histopathology"
+Description: "Possible values for colon polyp histopathology"
 * $SNOMEDCT#444408007 "Tubular adenoma (disorder)"
 * $SNOMEDCT#89452002 "Hyperplastic polyp of intestine (disorder)"
 * $SNOMEDCT#68534000 "Intestinal mucous membrane structure (body structure)"
@@ -16,8 +16,8 @@ Description: "Is status final or amended?"
 
 ValueSet: CPBodySite
 Id: cp-body-site
-Title: "Location in the large intestine from which the specimen may have been excised."
-Description: "Cecum, ascending colon, transverse colon, descending colon, sigmoid colon, rectum"
+Title: "Body Site"
+Description: "Location in the large intestine from which the specimen may have been excised"
 * $SNOMEDCT#32713005 "Cecum structure (body structure)"
 * $SNOMEDCT#9040008  "Ascending colon structure (body structure)"
 * $SNOMEDCT#485005   "Transverse colon structure (body structure)"
@@ -27,6 +27,6 @@ Description: "Cecum, ascending colon, transverse colon, descending colon, sigmoi
 
 ValueSet: CPPolypLengthUnits
 Id: cp-polyp-length-units
-Title: "Allowed units for polyp size"
+Title: "Polyp Lenth Units"
 Description: "mm only"
 * $UCUM#mm
