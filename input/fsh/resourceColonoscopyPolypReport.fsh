@@ -1,5 +1,5 @@
 Resource: ColonoscopyPolypReport
-Id: colonscopy-polyp-report
+Id: colonoscopy-polyp-report
 Title: "Colonoscopy Polyp Report"
 Description: "All of the ColonoscopyPolyps excised during one procedure"
 * patient 1..1 SU CPPatient "The patient who contributed the polyps"

@@ -1,5 +1,5 @@
 Resource: ColonoscopyPolyp
-Id: colonscopy-polyp
+Id: colonoscopy-polyp
 Title: "Colonoscopy Polyp"
 Description: "The natural way most people would think about the data needed about a polyp to compute surveillance colonoscopy"
 * bodySite 1..1 SU CodeableConcept "What portion of the large intestine was the polyp excised from?"

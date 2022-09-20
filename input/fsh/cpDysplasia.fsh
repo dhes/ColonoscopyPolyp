@@ -1,7 +1,7 @@
 Profile: CPDysplasia
 Parent: Observation
 Id: cp-dysplasia
-Title: "Colonscopy Polyp Severe Dysplasia Observation"
+Title: "Colonoscopy Polyp Severe Dysplasia Observation"
 Description: "Is this polyp severely dysplastic?"
 * ^version = "0.0.1"
 * ^publisher = "Not published"

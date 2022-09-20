@@ -26,14 +26,14 @@ Description: "A data sufficient to compute the recommended surveillance interval
 // DiagnosticReport exactly one CPDiagnosticReport referring to...
 * entry contains cpDiagnosticReport 1..1 MS
 * entry[cpDiagnosticReport]
-  * ^short = "Colonscopy polyp Diagnostic Report"
+  * ^short = "Colonoscopy polyp Diagnostic Report"
   * ^definition = "The Colonoscopy Polyp Diagnostic Report including polyp size and surgical pathology information. Refers to cpSpecimen and cpResult."
   * resource only CPDiagnosticReport
 // Specimen: at least one CPSpecimen and...
 * entry contains cpSpecimen 1.. MS
 * entry[cpSpecimen]
   * ^short = "Colonoscopy Polyp Specimen"
-  * ^definition = "Colonscopy Polyp Specimen descripton including polyp size measured by the colonoscopist"
+  * ^definition = "Colonoscopy Polyp Specimen descripton including polyp size measured by the colonoscopist"
   * resource only CPSpecimen
 // Observation: at least one CPResult in turn referring to ....
 * entry contains cpResult 1.. MS
