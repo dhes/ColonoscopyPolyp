@@ -36,7 +36,7 @@ Description: "A bundle that contains all resources needed to compute the recomme
 * entry[+].resource = example-cpSpecimen13
 * entry[+].resource = example-cpPathology-tubular-adenoma
 * entry[+].resource = example-cpPathology-hyperplastic-polyp
-* entry[+].resource = example-cpPiecemeal-false
+// * entry[+].resource = example-cpPiecemeal-false
 * entry[+].resource = example-cpDysplasia-false
 * entry[+].resource = example-cpNoMalignantNeoplasm-true
 

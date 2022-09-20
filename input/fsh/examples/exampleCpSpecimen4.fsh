@@ -8,5 +8,6 @@ Description: "..."
 * collection
   * bodySite = $SNOMEDCT#485005 "Transverse colon structure (body structure)"
   * quantity = 8 'mm'
+  * method = $SNOMEDCT#65801008 "Excision (procedure)"
   * collectedDateTime = "2021-10-04T00:00:00.000Z"
 * note.text = "C. COLD SNARE: TRANSVERSE COLON POLYP 2"

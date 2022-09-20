@@ -48,10 +48,10 @@ Description: "Data sufficient to compute the recommended surveillance interval u
   * ^definition = "Colonoscopy Polyp histopathology constrained to list of polyp findings e.g. Tubular Adenoma"
   * resource only CPPathology
 * entry contains cpPiecemeal 1..1
-* entry[cpPiecemeal]
-  * ^short = "Colonoscopy Polyp Piecemeal"
-  * ^definition = "Was this Colonoscopy Polyp excise piecemeal?"
-  * resource only CPPiecemeal
+// * entry[cpPiecemeal]
+//   * ^short = "Colonoscopy Polyp Piecemeal"
+//   * ^definition = "Was this Colonoscopy Polyp excise piecemeal?"
+//   * resource only CPPiecemeal
 * entry contains cpDysplasia 1..1
 * entry[cpDysplasia]
   * ^short = "Colonoscopy Polyp Dysplasia"

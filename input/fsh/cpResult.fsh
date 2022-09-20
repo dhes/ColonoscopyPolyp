@@ -18,24 +18,24 @@ Description: "Results of tests on a polyp including histopathology and other det
 // * issued 1..1 MS
 * code = $SNOMEDCT#122645001 "Polyp from large intestine obtained by polypectomy (specimen)"
 * specimen only Reference(cp-specimen) 
-* hasMember 4..4 MS
+* hasMember 3..3 MS
   * ^slicing.discriminator.type = #pattern
   * ^slicing.discriminator.path = "$this.resolve().code"
   * ^slicing.description = "Slicing based on referenced resource code attribute."
   * ^slicing.rules = #closed
 * hasMember contains
     pathology 1..1 MS and
-    piecemeal 1..1 MS and
+    // piecemeal 1..1 MS and
     severeDysplasia 1..1 MS and
     noMalignancy 1..1 MS
 * hasMember[pathology] only Reference(CPPathology)
   * ^short = "Polyp Histopathology"
   * ^definition = "Histopathologic diagnosis"
   * ^comment = "When using this element, the Observation must validate against the specified profile."
-* hasMember[piecemeal] only Reference(CPPiecemeal)
-  * ^short = "Was this polyp excised piecemeal?"
-  * ^definition = "Was this polyp excised piecemeal?"
-  * ^comment = "When using this element, the Observation must validate against the specified profile."
+// * hasMember[piecemeal] only Reference(CPPiecemeal)
+//   * ^short = "Was this polyp excised piecemeal?"
+//   * ^definition = "Was this polyp excised piecemeal?"
+//   * ^comment = "When using this element, the Observation must validate against the specified profile."
 * hasMember[severeDysplasia] only Reference(CPDysplasia)
   * ^short = "Is this polyp severely dysplastic?"
   * ^definition = "Is this polyp severely dysplastic?"
