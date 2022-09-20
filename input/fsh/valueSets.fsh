@@ -9,11 +9,15 @@ Description: "Possible values for polyp histopathology"
 
 ValueSet: CPFinalorAmended
 Id: cp-final-or-amended
+Title: "Allowed Report Statuses"
+Description: "Is status final or amended?"
 * $ObsStatus#final
 * $ObsStatus#amended
 
 ValueSet: CPBodySite
 Id: cp-body-site
+Title: "Location in the large intestine from which the specimen may have been excised."
+Description: "Cecum, ascending colon, transverse colon, descending colon, sigmoid colon, rectum"
 * $SNOMEDCT#32713005 "Cecum structure (body structure)"
 * $SNOMEDCT#9040008  "Ascending colon structure (body structure)"
 * $SNOMEDCT#485005   "Transverse colon structure (body structure)"
@@ -23,4 +27,6 @@ Id: cp-body-site
 
 ValueSet: CPPolypLengthUnits
 Id: cp-polyp-length-units
+Title: "Allowed units for polyp size"
+Description: "mm only"
 * $UCUM#mm

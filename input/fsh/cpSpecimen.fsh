@@ -2,7 +2,7 @@
 Profile: CPSpecimen
 Parent: Specimen
 Id: cp-specimen
-Title: "Polyp Specimen Obtained During a Colonoscopy Procedure"
+Title: "Specimen (Specimen)"
 Description: "A polyp specimen obtained during a colonoscopy procedure."
 * ^version = "0.0.1"
 * ^publisher = "Not published"

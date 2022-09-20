@@ -3,7 +3,7 @@
 Profile: CPPatient
 Parent: $USCorePatient
 Id: cp-patient
-Title: "Colonoscopy Patient Profile"
+Title: "Patient (Patient)"
 Description: "A patient who has undergone colonoscopy."
 * ^version = "0.0.1"
 * ^publisher = "Not published"

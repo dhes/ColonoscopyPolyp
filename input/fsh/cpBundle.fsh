@@ -2,8 +2,8 @@
 Profile: CPBundle
 Parent: Bundle
 Id: cp-bundle
-Title: "ColonoscopyPolyp Bundle Profile"
-Description: "A data sufficient to compute the recommended surveillance interval using CQL"
+Title: "ColonoscopyPolyp Bundle"
+Description: "Data sufficient to compute the recommended surveillance interval using CQL"
 * ^version = "0.0.1"
 * ^publisher = "Dan Heslinga MD LLC"
 * ^contact.name = "Dan Heslinga"

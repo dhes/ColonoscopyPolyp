@@ -1,7 +1,7 @@
 Profile: CPResult
 Parent: Observation
 Id: cp-result
-Title: "Polyp Test Result"
+Title: "Result (Observation)"
 Description: "Results of tests on a polyp including histopathology and other details."
 * ^version = "0.0.1"
 * ^publisher = "Not published"

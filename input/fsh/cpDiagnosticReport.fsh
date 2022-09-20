@@ -3,7 +3,7 @@
 Profile: CPDiagnosticReport
 Parent: DiagnosticReport
 Id: cp-diagnostic-report
-Title: "Colonoscopy Patient DiagnosticReport Profile"
+Title: "DiagnosticReport"
 Description: "A diagnostic report summarizing all polyps collected at the time of colonoscopy."
 * ^version = "0.0.1"
 * ^publisher = "Not published"

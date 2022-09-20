@@ -1,7 +1,7 @@
 Profile: CPNoMalignantNeoplasm
 Parent: Observation
 Id: cp-no-malignant-neoplasm
-Title: "Colonoscopy No Malignant Neoplasm Observation"
+Title: "No Malignant Neoplasm (Observation)"
 Description: "Is evidence absent of malignant neoplasm in this polyp?"
 // Watch out! "true" means there is no evidence of malignanct neoplasm.
 * ^version = "0.0.1"

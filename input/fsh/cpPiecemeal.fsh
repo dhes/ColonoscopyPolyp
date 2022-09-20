@@ -1,7 +1,7 @@
 Profile: CPPiecemeal
 Parent: Observation
 Id: cp-piecemeal
-Title: "Colonoscopy Polyp Piecemeal Excision Procedure"
+Title: "Piecemeal (Observation)"
 Description: "Was this polyp excised piecemeal?"
 * ^version = "0.0.1"
 * ^publisher = "Not published"
