@@ -1,8 +1,8 @@
 Instance: example-cpResult1
 InstanceOf: CPResult
 Usage: #example
-Title: "Example CPResult"
-Description: "Example CPResult"
+Title: "Example CPResult 1"
+Description: "Second example CPResult"
 * subject.reference = "Patient/example-cpPatient"
 * status = #final
 * specimen.reference = "Specimen/example-specimen1"

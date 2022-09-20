@@ -2,7 +2,7 @@ Instance: example-cpBundle
 InstanceOf: CPBundle
 Usage: #example
 Title: "Example CPBundle"
-Description: "A bundle that contains all resourced needed to computer the recommended surveillance interval using CQL"
+Description: "A bundle that contains all resources needed to compute the recommended surveillance interval using CQL"
 * type = #collection
 * entry[0].resource = example-cpPatient
 * entry[+].resource = example-cpDiagnosticReport

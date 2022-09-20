@@ -1,7 +1,7 @@
 Instance: example-cpSpecimen13
 InstanceOf: CPSpecimen
 Usage: #example
-Title: "Example CPSpecimen"
+Title: "Example CPSpecimen 13"
 Description: "Example CPSpecimen"
 * subject.reference = "Patient/example-cpPatient"
 * status = #available

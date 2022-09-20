@@ -1,8 +1,8 @@
 Instance: example-cpResult0
 InstanceOf: CPResult
 Usage: #example
-Title: "Example CPResult"
-Description: "Example CPResult"
+Title: "Example CPResult 0"
+Description: "First example CPResult, an Observation resource that references member Observation resource details. "
 * subject.reference = "Patient/example-cpPatient"
 * status = #final
 * specimen.reference = "Specimen/example-specimen0"
