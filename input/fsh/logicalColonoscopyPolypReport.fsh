@@ -1,4 +1,4 @@
-Resource: ColonoscopyPolypReport
+Logical: ColonoscopyPolypReport
 Id: colonoscopy-polyp-report
 Title: "Colonoscopy Polyp Report"
 Description: "All of the ColonoscopyPolyps excised during one procedure"

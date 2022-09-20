@@ -1,4 +1,4 @@
-Resource: ColonoscopyPolyp
+Logical: ColonoscopyPolyp
 Id: colonoscopy-polyp
 Title: "Colonoscopy Polyp"
 Description: "The natural way most people would think about the data needed about a polyp to compute surveillance colonoscopy"
