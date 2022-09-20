@@ -1,4 +1,4 @@
-Instance: example-colonscopyPolpy
+Instance: example-colonscopyPolyp
 InstanceOf: ColonoscopyPolyp
 Usage: #example
 Title: "Example ColonoscopyPolyp"
