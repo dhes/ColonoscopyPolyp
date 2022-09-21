@@ -17,7 +17,7 @@ Description: "Is status final or amended?"
 ValueSet: CPBodySite
 Id: cp-body-site
 Title: "Body Site"
-Description: "Location in the large intestine from which the specimen may have been excised"
+Description: "Location in the large intestine from which the specimen was excised"
 * $SNOMEDCT#32713005 "Cecum structure (body structure)"
 * $SNOMEDCT#9040008  "Ascending colon structure (body structure)"
 * $SNOMEDCT#485005   "Transverse colon structure (body structure)"
