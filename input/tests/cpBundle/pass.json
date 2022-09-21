@@ -1530,7 +1530,7 @@
       }
     },
     {
-      "fullUrl": "http://example.com/fhir/Observatio/example-cpResult13",
+      "fullUrl": "http://example.com/fhir/Observation/example-cpResult13",
       "resource": {
         "resourceType": "Observation",
         "id": "example-cpResult13",
