@@ -5,9 +5,9 @@
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 id: fhir.colonoscopyPolyp
 canonical: http://colonoscopyPolyp.com
-name: A colonoscopy report data model specification. To be processed by CQL to inform the timing of surveillance colonoscopy, following guidelines of the US Multi-Society Task Force on Colorectal Cancer. 
-title: Colonoscopy Polyp
-description: A method of recording polyps collected during colonoscopy in a structured and computable manner. 
+name: A colonoscopy report data model specification. 
+title: Make Colonoscopy Computable
+description: A method of recording colonoscopy polyp details compatible with CQL. 
 status: draft # draft | active | retired | unknown
 version: 0.1.0
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
@@ -17,7 +17,7 @@ license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
 jurisdiction: urn:iso:std:iso:3166#US "United States of America" # https://www.hl7.org/fhir/valueset-jurisdiction.html
 publisher:
   name: Dan Heslinga
-  url: http://heslingamd.com/dan-heslinga
+#  url: http://heslingamd.com/dan-heslinga
   email: dan@heslinga.us
 
 # The dependencies property corresponds to IG.dependsOn. The key is the
