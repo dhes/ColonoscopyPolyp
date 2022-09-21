@@ -42,12 +42,12 @@ Description: "Data sufficient to compute the recommended surveillance interval u
   * ^definition = "Colonoscopy Polyp Result. Child of Observation. Has four members which are detail Observations"
   * resource only CPResult
 // Children of Observation: one each cpPathology, cpPiecemeal, cpDysplasia, cpNoMalignantNeoplasm
-* entry contains cpPathology 1..1
+* entry contains cpPathology 1..4 // this should equal the number of items in the CPHistopathology value set
 * entry[cpPathology]
   * ^short = "Colonoscopy polyp Histopathology"
   * ^definition = "Colonoscopy Polyp histopathology constrained to list of polyp findings e.g. Tubular Adenoma"
   * resource only CPPathology
-* entry contains cpPiecemeal 1..1
+// * entry contains cpPiecemeal 1..1
 // * entry[cpPiecemeal]
 //   * ^short = "Colonoscopy Polyp Piecemeal"
 //   * ^definition = "Was this Colonoscopy Polyp excise piecemeal?"
