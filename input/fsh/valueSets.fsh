@@ -9,11 +9,17 @@ Description: "Possible values for colon polyp histopathology"
 
 ValueSet: CPFinalorAmended
 Id: cp-final-or-amended
-Title: "Allowed Report Statuses"
+Title: "Allowed Observation Statuses"
 Description: "Is status final or amended?"
-// * $OBSSTATUS#final "Final"
-// * $OBSSTATUS#amended "Amended"
-* include codes from valueset $OBSSTATUS
+* $OBSSTATUS#final "Final"
+* $OBSSTATUS#amended "Amended"
+
+ValueSet: CPDiagnosticReportFinalOrAmended
+Id: cp-diagnostic-report-final-or-amended
+Title: "Diagnostic Report Final or Amended"
+Description: "Allowed diagnostic report status"
+* $DiagnosticReportStatus#amended "Amended"
+* $DiagnosticReportStatus#final "Final"
 
 ValueSet: CPBodySite
 Id: cp-body-site

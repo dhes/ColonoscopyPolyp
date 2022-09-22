@@ -10,11 +10,6 @@ Description: "Results of tests on a polyp including histopathology and other det
 * ^jurisdiction = urn:iso:std:iso:3166#US "United States of America"
 * subject 1..1
 * subject only Reference(cp-patient) 
-// the next four are already present in the DiagnosticReport that refers to this observation
-// * status from cp-final-or-amended
-// * effective[x] 1..1
-// * effective[x] only dateTime
-// * issued 1..1 MS
 * code = $SNOMEDCT#122645001 "Polyp from large intestine obtained by polypectomy (specimen)"
 * specimen only Reference(cp-specimen) 
 * hasMember 3..3 MS

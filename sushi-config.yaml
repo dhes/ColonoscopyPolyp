@@ -18,7 +18,7 @@ jurisdiction: urn:iso:std:iso:3166#US "United States of America" # https://www.h
 publisher:
   name: Dan Heslinga
 #  url: http://heslingamd.com/dan-heslinga
-  email: dan@heslinga.us
+  # email: dan@heslinga.us
 
 # The dependencies property corresponds to IG.dependsOn. The key is the
 # package id and the value is the version (or dev/current). For advanced

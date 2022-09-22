@@ -8,7 +8,7 @@ Description: "Is this polyp severely dysplastic?"
 * ^contact.name = "Dan Heslinga"
 * ^contact.telecom[0].system = #email
 * ^jurisdiction = urn:iso:std:iso:3166#US "United States of America"
-* status from cp-final-or-amended  // wrong status test written; status is already 1..1 in Observation
+* status from cp-final-or-amended
 * category 1..1
 // * category = http://terminology.hl7.org/CodeSystem/observation-category#laboratory "Laboratory"
 * category = $OBSCAT#laboratory "Laboratory"

@@ -4,5 +4,5 @@ Usage: #example
 Title: "Example CPDysplasia"
 Description: "Is this polyp severely dysplastic?"
 * subject.reference = "Patient/example-cpPatient"
-* status = #final
+* status = $OBSSTATUS#final
 * valueBoolean = false

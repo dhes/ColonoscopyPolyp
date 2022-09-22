@@ -4,5 +4,5 @@ Usage: #example
 Title: "Example CPPathology Tubular Adenoma"
 Description: "The tubular adenoma histopathology finding"
 * subject.reference = "Patient/example-cpPatient"
-* status = #final
+* status = $OBSSTATUS#final
 * valueCodeableConcept = $SNOMEDCT#444408007 "Tubular adenoma (disorder)"
