@@ -9,7 +9,6 @@ Description: "A diagnostic report summarizing all polyps collected at the time o
 * ^publisher = "Not published"
 * ^contact.name = "Dan Heslinga"
 * ^contact.telecom[0].system = #email
-* ^contact.telecom[=].value = "dan@heslinga.us"
 * ^jurisdiction = urn:iso:std:iso:3166#US "United States of America"
 * status from cp-final-or-amended
 * category 1..1

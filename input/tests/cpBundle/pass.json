@@ -267,7 +267,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult0\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-specimen0\">Specimen/example-specimen0: A. Ascending colon polyp cold snare</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult0\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-cpSpecimen0\">Specimen/example-cpSpecimen0: A. Ascending colon polyp cold snare</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
         },
         "status": "final",
         "code": {
@@ -283,7 +283,7 @@
           "reference": "Patient/example-cpPatient"
         },
         "specimen": {
-          "reference": "Specimen/example-specimen0",
+          "reference": "Specimen/example-cpSpecimen0",
           "display": "A. Ascending colon polyp cold snare"
         },
         "hasMember": [
@@ -365,7 +365,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult1\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-specimen1\">Specimen/example-specimen1: B. COLD SNARE: ASCENDING COLON POLYP 1</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult1\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-cpSpecimen1\">Specimen/example-cpSpecimen1: B. COLD SNARE: ASCENDING COLON POLYP 1</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
         },
         "status": "final",
         "code": {
@@ -381,7 +381,7 @@
           "reference": "Patient/example-cpPatient"
         },
         "specimen": {
-          "reference": "Specimen/example-specimen1",
+          "reference": "Specimen/example-cpSpecimen1",
           "display": "B. COLD SNARE: ASCENDING COLON POLYP 1"
         },
         "hasMember": [
@@ -463,7 +463,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult2\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-specimen2\">Specimen/example-specimen2: B. COLD SNARE: ASCENDING COLON POLYP 2</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult2\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-cpSpecimen2\">Specimen/example-cpSpecimen2: B. COLD SNARE: ASCENDING COLON POLYP 2</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
         },
         "status": "final",
         "code": {
@@ -479,7 +479,7 @@
           "reference": "Patient/example-cpPatient"
         },
         "specimen": {
-          "reference": "Specimen/example-specimen2",
+          "reference": "Specimen/example-cpSpecimen2",
           "display": "B. COLD SNARE: ASCENDING COLON POLYP 2"
         },
         "hasMember": [
@@ -561,7 +561,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult3\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-specimen3\">Specimen/example-specimen3: C. COLD SNARE: TRANSVERSE COLON POLYP 1</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult3\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-cpSpecimen3\">Specimen/example-cpSpecimen3: C. COLD SNARE: TRANSVERSE COLON POLYP 1</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
         },
         "status": "final",
         "code": {
@@ -577,7 +577,7 @@
           "reference": "Patient/example-cpPatient"
         },
         "specimen": {
-          "reference": "Specimen/example-specimen3",
+          "reference": "Specimen/example-cpSpecimen3",
           "display": "C. COLD SNARE: TRANSVERSE COLON POLYP 1"
         },
         "hasMember": [
@@ -659,7 +659,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult4\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-specimen4\">Specimen/example-specimen4: C. COLD SNARE: TRANSVERSE COLON POLYP 2</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult4\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-cpSpecimen4\">Specimen/example-cpSpecimen4: C. COLD SNARE: TRANSVERSE COLON POLYP 2</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
         },
         "status": "final",
         "code": {
@@ -675,7 +675,7 @@
           "reference": "Patient/example-cpPatient"
         },
         "specimen": {
-          "reference": "Specimen/example-specimen4",
+          "reference": "Specimen/example-cpSpecimen4",
           "display": "C. COLD SNARE: TRANSVERSE COLON POLYP 2"
         },
         "hasMember": [
@@ -757,7 +757,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult5\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-specimen5\">Specimen/example-specimen5: D. COLD SNARE X 1</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult5\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-cpSpecimen5\">Specimen/example-cpSpecimen5: D. COLD SNARE X 1</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
         },
         "status": "final",
         "code": {
@@ -773,7 +773,7 @@
           "reference": "Patient/example-cpPatient"
         },
         "specimen": {
-          "reference": "Specimen/example-specimen5",
+          "reference": "Specimen/example-cpSpecimen5",
           "display": "D. COLD SNARE X 1"
         },
         "hasMember": [
@@ -855,7 +855,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult6\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-specimen6\">Specimen/example-specimen6: COLD BIOPSY X 5: SIGMOID COLON 1</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult6\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-cpSpecimen6\">Specimen/example-cpSpecimen6: COLD BIOPSY X 5: SIGMOID COLON 1</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
         },
         "status": "final",
         "code": {
@@ -871,7 +871,7 @@
           "reference": "Patient/example-cpPatient"
         },
         "specimen": {
-          "reference": "Specimen/example-specimen6",
+          "reference": "Specimen/example-cpSpecimen6",
           "display": "COLD BIOPSY X 5: SIGMOID COLON 1"
         },
         "hasMember": [
@@ -953,7 +953,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult7\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-specimen7\">Specimen/example-specimen7: COLD BIOPSY X 5: SIGMOID COLON 2</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult7\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-cpSpecimen7\">Specimen/example-cpSpecimen7: COLD BIOPSY X 5: SIGMOID COLON 2</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
         },
         "status": "final",
         "code": {
@@ -969,7 +969,7 @@
           "reference": "Patient/example-cpPatient"
         },
         "specimen": {
-          "reference": "Specimen/example-specimen7",
+          "reference": "Specimen/example-cpSpecimen7",
           "display": "COLD BIOPSY X 5: SIGMOID COLON 2"
         },
         "hasMember": [
@@ -1051,7 +1051,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult8\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-specimen8\">Specimen/example-specimen8: COLD BIOPSY X 5: SIGMOID COLON 3</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult8\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-cpSpecimen8\">Specimen/example-cpSpecimen8: COLD BIOPSY X 5: SIGMOID COLON 3</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
         },
         "status": "final",
         "code": {
@@ -1067,7 +1067,7 @@
           "reference": "Patient/example-cpPatient"
         },
         "specimen": {
-          "reference": "Specimen/example-specimen8",
+          "reference": "Specimen/example-cpSpecimen8",
           "display": "COLD BIOPSY X 5: SIGMOID COLON 3"
         },
         "hasMember": [
@@ -1149,7 +1149,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult9\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-specimen9\">Specimen/example-specimen9: COLD BIOPSY X 5: SIGMOID COLON 4</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult9\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-cpSpecimen9\">Specimen/example-cpSpecimen9: COLD BIOPSY X 5: SIGMOID COLON 4</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
         },
         "status": "final",
         "code": {
@@ -1165,7 +1165,7 @@
           "reference": "Patient/example-cpPatient"
         },
         "specimen": {
-          "reference": "Specimen/example-specimen9",
+          "reference": "Specimen/example-cpSpecimen9",
           "display": "COLD BIOPSY X 5: SIGMOID COLON 4"
         },
         "hasMember": [
@@ -1247,7 +1247,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult10\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-specimen10\">Specimen/example-specimen10: COLD BIOPSY X 5: SIGMOID COLON 5</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult10\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-cpSpecimen10\">Specimen/example-cpSpecimen10: COLD BIOPSY X 5: SIGMOID COLON 5</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
         },
         "status": "final",
         "code": {
@@ -1263,7 +1263,7 @@
           "reference": "Patient/example-cpPatient"
         },
         "specimen": {
-          "reference": "Specimen/example-specimen10",
+          "reference": "Specimen/example-cpSpecimen10",
           "display": "COLD BIOPSY X 5: SIGMOID COLON 5"
         },
         "hasMember": [
@@ -1345,7 +1345,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult11\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-specimen11\">Specimen/example-specimen11: COLD BIOPSY X 5: SIGMOID COLON 6</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-hyperplastic-polyp\">See above (Observation/example-cpPathology-hyperplastic-polyp: Hyperplastic polyp of intestine (disorder))</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult11\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-cpSpecimen11\">Specimen/example-cpSpecimen11: COLD BIOPSY X 5: SIGMOID COLON 6</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-hyperplastic-polyp\">See above (Observation/example-cpPathology-hyperplastic-polyp: Hyperplastic polyp of intestine (disorder))</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
         },
         "status": "final",
         "code": {
@@ -1361,7 +1361,7 @@
           "reference": "Patient/example-cpPatient"
         },
         "specimen": {
-          "reference": "Specimen/example-specimen11",
+          "reference": "Specimen/example-cpSpecimen11",
           "display": "COLD BIOPSY X 5: SIGMOID COLON 6"
         },
         "hasMember": [
@@ -1443,7 +1443,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult12\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-specimen12\">Specimen/example-specimen12: E. COLD BIOPSY: RECTAL POLYP 1</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult12\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-cpSpecimen12\">Specimen/example-cpSpecimen12: E. COLD BIOPSY: RECTAL POLYP 1</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-tubular-adenoma\">See above (Observation/example-cpPathology-tubular-adenoma: Tubular adenoma of colon)</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
         },
         "status": "final",
         "code": {
@@ -1459,7 +1459,7 @@
           "reference": "Patient/example-cpPatient"
         },
         "specimen": {
-          "reference": "Specimen/example-specimen12",
+          "reference": "Specimen/example-cpSpecimen12",
           "display": "E. COLD BIOPSY: RECTAL POLYP 1"
         },
         "hasMember": [
@@ -1541,7 +1541,7 @@
         },
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult13\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-specimen13\">Specimen/example-specimen13: E. COLD BIOPSY: RECTAL POLYP 2</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-hyperplastic-polyp\">See above (Observation/example-cpPathology-hyperplastic-polyp: Hyperplastic polyp of intestine (disorder))</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpResult13\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-result.html\">Result (Observation)</a></p></div><p><b>status</b>: final</p><p><b>code</b>: Polyp from large intestine obtained by polypectomy (specimen) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#122645001)</span></p><p><b>subject</b>: <a href=\"#Patient_example-cpPatient\">See above (Patient/example-cpPatient)</a></p><p><b>specimen</b>: <a href=\"Specimen/example-cpSpecimen13\">Specimen/example-cpSpecimen13: E. COLD BIOPSY: RECTAL POLYP 2</a></p><p><b>hasMember</b>: </p><ul><li><a href=\"#Observation_example-cpPathology-hyperplastic-polyp\">See above (Observation/example-cpPathology-hyperplastic-polyp: Hyperplastic polyp of intestine (disorder))</a></li><li><a href=\"#Observation_example-cpDysplasia-false\">See above (Observation/example-cpDysplasia-false: Severe dysplasia false)</a></li><li><a href=\"#Observation_example-cpNoMalignantNeoplasm-true\">See above (Observation/example-cpNoMalignantNeoplasm-true: No evidence of malignant neoplasm true)</a></li></ul></div>"
         },
         "status": "final",
         "code": {
@@ -1557,7 +1557,7 @@
           "reference": "Patient/example-cpPatient"
         },
         "specimen": {
-          "reference": "Specimen/example-specimen13",
+          "reference": "Specimen/example-cpSpecimen13",
           "display": "E. COLD BIOPSY: RECTAL POLYP 2"
         },
         "hasMember": [

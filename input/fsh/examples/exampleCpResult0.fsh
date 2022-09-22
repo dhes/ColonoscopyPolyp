@@ -2,10 +2,10 @@ Instance: example-cpResult0
 InstanceOf: CPResult
 Usage: #example
 Title: "Example CPResult 0"
-Description: "First example CPResult, an Observation resource that references member Observation resource details. "
+Description: "First example CPResult, an Observation resource that references member Observation resource details."
 * subject.reference = "Patient/example-cpPatient"
 * status = #final
-* specimen.reference = "Specimen/example-specimen0"
+* specimen.reference = "Specimen/example-cpSpecimen0"
 * specimen.display = "A. Ascending colon polyp cold snare"
 * hasMember[pathology].reference = "Observation/example-cpPathology-tubular-adenoma"
 * hasMember[pathology].display = "Tubular adenoma of colon"

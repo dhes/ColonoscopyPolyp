@@ -7,7 +7,6 @@ Description: "Results of tests on a polyp including histopathology and other det
 * ^publisher = "Not published"
 * ^contact.name = "Dan Heslinga"
 * ^contact.telecom[0].system = #email
-* ^contact.telecom[=].value = "dan@heslinga.us"
 * ^jurisdiction = urn:iso:std:iso:3166#US "United States of America"
 * subject 1..1
 * subject only Reference(cp-patient) 

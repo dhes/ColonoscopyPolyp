@@ -11,8 +11,9 @@ ValueSet: CPFinalorAmended
 Id: cp-final-or-amended
 Title: "Allowed Report Statuses"
 Description: "Is status final or amended?"
-* $ObsStatus#final
-* $ObsStatus#amended
+// * $OBSSTATUS#final "Final"
+// * $OBSSTATUS#amended "Amended"
+* include codes from valueset $OBSSTATUS
 
 ValueSet: CPBodySite
 Id: cp-body-site
@@ -34,7 +35,7 @@ Description: "mm only"
 ValueSet: CPExcisionMethod
 Id: cp-polyp-excision-method
 Title: "Excision Method"
-Description: "Excised whole or piecemeal? Excision without qualifier is taken to be whole excision. "
+Description: "Excised whole or piecemeal? Excision without qualifier is taken to be whole excision."
 * $SNOMEDCT#65801008 "Excision (procedure)"
 * $SNOMEDCT#787139004 "Piecemeal Excision (procedure)"
 

@@ -8,7 +8,6 @@ Description: "Is evidence absent of malignant neoplasm in this polyp?"
 * ^publisher = "Not published"
 * ^contact.name = "Dan Heslinga"
 * ^contact.telecom[0].system = #email
-* ^contact.telecom[=].value = "dan@heslinga.us"
 * ^jurisdiction = urn:iso:std:iso:3166#US "United States of America"
 * status from cp-final-or-amended  // wrong status test written; status is already 1..1 in Observation
 * category 1..1

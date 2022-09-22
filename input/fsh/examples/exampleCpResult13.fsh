@@ -5,7 +5,7 @@ Title: "Example CPResult 13"
 Description: "..."
 * subject.reference = "Patient/example-cpPatient"
 * status = #final
-* specimen.reference = "Specimen/example-specimen13"
+* specimen.reference = "Specimen/example-cpSpecimen13"
 * specimen.display = "E. COLD BIOPSY: RECTAL POLYP 2"
 * hasMember[pathology].reference = "Observation/example-cpPathology-hyperplastic-polyp"
 * hasMember[pathology].display = "Hyperplastic polyp of intestine (disorder)"

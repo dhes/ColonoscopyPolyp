@@ -8,7 +8,6 @@ Description: "Data sufficient to compute the recommended surveillance interval u
 * ^publisher = "Dan Heslinga MD LLC"
 * ^contact.name = "Dan Heslinga"
 * ^contact.telecom[0].system = #email
-* ^contact.telecom[=].value = "dan@heslinga.us"
 * ^jurisdiction = urn:iso:std:iso:3166#US "United States of America"
 * type = #collection
 * timestamp MS
