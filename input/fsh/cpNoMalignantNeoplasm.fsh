@@ -16,6 +16,5 @@ Description: "Is evidence absent of malignant neoplasm in this polyp?"
 * code = $SNOMEDCT#110396000 "No evidence of malignant neoplasm (finding)"
 * value[x] 1..1
 * value[x] only boolean
-// * valueCodeableConcept from cp-histopathology-vs (required)
 * subject 1..1
 * subject only Reference(cp-patient) 
