@@ -4,8 +4,8 @@
 # │  see: https://fshschool.org/docs/sushi/configuration/.                                         │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 id: fhir.colonoscopyPolyp
-canonical: http://colonoscopyPolyp.com
-name: A colonoscopy report data model specification. 
+canonical: https://build.fhir.org/ig/dhes/ColonoscopyPolyp/branches/master/
+name: ColonoscopyPolypReport
 title: Make Colonoscopy Computable
 description: A method of recording colonoscopy polyp details compatible with CQL. 
 status: draft # draft | active | retired | unknown
