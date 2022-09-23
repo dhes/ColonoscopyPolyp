@@ -7,7 +7,7 @@ id: fhir.colonoscopyPolyp
 canonical: https://build.fhir.org/ig/dhes/ColonoscopyPolyp
 name: ColonoscopyPolypReport
 title: Make Colonoscopy Computable
-description: A method of recording colonoscopy polyp details compatible with CQL. 
+description: A method of recording colonoscopy polyp reports compatible with CQL. 
 status: draft # draft | active | retired | unknown
 version: 0.1.0
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
@@ -65,8 +65,11 @@ dependencies:
 # parameters:
 #   excludettl: true
 #   validation: [allow-any-extensions, no-broken-links]
+# I wrote the next line to try to force the output to be ImplementationGuide-fhir.colonoscopyPolyp instead of ImplementationGuide/fhir.colonoscopyPolyp -- to no effect DH
+# parameters:
+#   special-url: https://build.fhir.org/ig/dhes/ColonoscopyPolyp/ImplementationGuide-fhir.colonoscopyPolyp.json
 #
-# ╭────────────────────────────────────────────menu.xml────────────────────────────────────────────╮
+# ╭──────────────────────────────────────────── .xml────────────────────────────────────────────╮
 # │ The menu property will be used to generate the input/menu.xml file. The menu is represented    │
 # │ as a simple structure where the YAML key is the menu item name and the value is the URL.       │
 # │ The IG publisher currently only supports one level deep on sub-menus. To provide a             │
@@ -77,6 +80,7 @@ dependencies:
 menu:
   Home: index.html
   Artifacts: artifacts.html
+  Implementation Guide: ImplementationGuide-fhir.colonoscopyPolyp.json
 
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
 # │  Uncomment the properties below to configure additional properties on the ImplementationGuide  │
