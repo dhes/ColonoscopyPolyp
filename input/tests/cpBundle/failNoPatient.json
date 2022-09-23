@@ -3,7 +3,7 @@
   "type": "collection",
   "meta": {
     "profile": [
-      "http://colonoscopyPolyp.com/StructureDefinition/cp-bundle"
+      "https://build.fhir.org/ig/dhes/ColonoscopyPolyp/StructureDefinition/cp-bundle"
     ]
   },
   "entry": [
@@ -14,7 +14,7 @@
         "id": "f018a8d3-2c33-4ffc-b7cd-6ce4fc8624b7",
         "meta": {
           "profile": [
-            "http://colonoscopyPolyp.com/StructureDefinition/cp-pathology"
+            "https://build.fhir.org/ig/dhes/ColonoscopyPolyp/StructureDefinition/cp-pathology"
           ]
         },
         "subject": {
