@@ -1,6 +1,6 @@
 # ColonoscopyPolyp
 
-Colonscopy is one of the most commonly preformed diagnostic procedures in the United States. Colonoscopy is performed by inserting a flexible fiberoptic scope into a patient's large intestine. Scope of this nature are flexible and permit the endoscopist to see what is at the other end, even thought the scope itself is turned and twisted. This permits the endoscopist to examine the entire large intestine. This form of endscopy can be used to screen for colon canceer. Colonsocopy can also be used for diagnostic purposes, but it only the screening that we are interested in at present. 
+Colonscopy is one of the most commonly performed diagnostic procedures in the United States. Colonoscopy is performed by inserting a flexible fiberoptic scope into a patient's large intestine. Scope of this nature are flexible and permit the endoscopist to see what is at the other end, even thought the scope itself is turned and twisted. This permits the endoscopist to examine the entire large intestine. This form of endscopy can be used to screen for colon canceer. Colonsocopy can also be used for diagnostic purposes, but it only the screening that we are interested in at present. 
 
 Screening colonoscopy is only performed in adults and it typpically started at age 45-50 years. It is not the only form of colon cancer screening, but it is the only one we will discuss. 
 
@@ -20,13 +20,18 @@ Like any other computer application, CQL requires data that is highly structured
 
 This is a problem in the realm of colonoscopy reporting. The tradition in medical records has been largely one of narrative reporting. By narrative reporting we mean sentences and paragraphs like the ones you are reading now. A structured report includes a hightly specified structure which computers can easily process. Some kinds of laboratory reporting have been highly structured for decades, especially commen lab tests such as a blood glucose. Here is an example of a fictional patient's blood glucose result in a stuctured language: 
 
-> MSH|^~\&|GHH LAB|ELAB-3|GHH OE|BLDG4|200202150930||ORU^R01|CNTRL-3456|P|2.4
+<br>
+<blockquote>
+MSH|^~\&|GHH LAB|ELAB-3|GHH OE|BLDG4|200202150930||ORU^R01|CNTRL-3456|P|2.4
 PID|||555-44-4444||EVERYWOMAN^EVE^E^^^^L|JONES|19620320|F|||153 FERNWOOD DR.^^STATESVILLE^OH^35292||(206)3345232|(206)752-121||||AC555444444||67-A4335^OH^20030520
 OBR|1|845439^GHH OE|1045813^GHH LAB|15545^GLUCOSE|||200202150730|||||||||
 555-55-5555^PRIMARY^PATRICIA P^^^^MD^^|||||||||F||||||444-44-4444^HIPPOCRATES^HOWARD H^^^^MD
 OBX|1|SN|1554-5^GLUCOSE^POST 12H CFST:MCNC:PT:SER/PLAS:QN||^182|mg/dl|70_105|H|||F
- 
-You can probably find the word glucose and perhaps a name and address and a few other things, but overall the structure doesn't make sense to a common reader. 
+</blockquote>
+<br>
+
+
+You can probably find the word glucose and perhaps a name and address and a few other things, but overall the structure doesn't make sense to a human reader. 
 
 Colonoscopy reports so far not taken on such a stucture in most institutions. Such a structure is proposed here. 
 
@@ -58,6 +63,13 @@ The use case for this work is as follows:
 At least one GI Endoscopist, Pathologist and Primary Care Doctor will participate. 
 Endoscopies for this designated Endoscopist will be performed and recorded as usual. Biopsy specimens will be submitted and reported as usual. Once Endoscopy and Pathology reports are available a specially trained person will enter granular data gathered from procedure and pathology report into purpose-built data entry forms. This data will be used to generate FHIR resourcses, and these resources will be processed with CQL to generate a recommended surveillance interval. The CQL result will compared against the recommendation of the Endoscopist, who is asked to provide her recommended surveillance interval based on her understanding of USMSTFCC guidelines. 
 --->
+
+
+
+![Procedure Report Data Elements](ProcedureReportDataElements.png){: width=800 style="float:none; margin:0px 0px 0px 0px"}
+
+![](PathologyReportDataElements.png)
+
 
 The with training the data entry form should be fairly intuitive to fill out. The data model itself is fairly simple, but the FHIR model becomes rather complicated. The FHIR profiles are patterned after the [FHIR DiagnosticReport example showing a laboratory report with multiple specimens and panels](https://hl7.org/fhir/diagnosticreport-example-ghp.json.html). The following core resources are used: 
 
@@ -97,11 +109,17 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 750px;
+}
 </style>
 
 Colonoscopy Finding | Next Colonoscopy (years)
 ---|:---:
-normal(no polyps)| 10
+normal (no polyps)| 10
 1 to 2 tubular adenomas <10 mm | 7 - 10
 3 to 4 tubular adenomas <10 mm | 3-5
 5 to 10 tubular adenomas <10 mm | 3
