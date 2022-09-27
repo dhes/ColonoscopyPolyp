@@ -231,7 +231,7 @@ The Patient and Procedure resources require little modification, we will skip ov
 
 - Patient -> Reference(Patient/Patient.id)
 - Procedure Date -> Procedure.dateTime
-- Pathology Report -> DiagnosticReport.dateTime
+- Pathology Report Date -> DiagnosticReport.dateTime
 
 That covers the top level elements. For each Polyp N the connection is: 
 
@@ -243,7 +243,7 @@ That covers the top level elements. For each Polyp N the connection is:
   - severe dysplasia -> Result(Observation).hasMember[Dysplasia](Observation).valueBoolean
   - no evidence of malignancy -> Result(Observation).hasMember[NoMalignantNeoplasm](Observation).valueBoolean
 
-There's some nesting here which needs explanation. The FHIR standard allows you to create custom Resources--called Profiles--from base resources. In this implementation we are creating four Profiles base on the Observation base resource. Each of these profiles is preceded by a CP which indicated Colonoscopy Polyp:
+There's some nesting here which needs explanation. The FHIR standard allows you to create custom Resources--called Profiles--from base resources. In this implementation we are creating four Profiles based on the Observation resource. Each of these profiles is preceded by a "cp" which indicates Colonoscopy Polyp:
 
 - cpResult
 - cpSpecimen
@@ -273,7 +273,137 @@ Patient
 
 The model patterned after the [FHIR DiagnosticReport example showing a laboratory report with multiple specimens and panels](https://hl7.org/fhir/diagnosticreport-example-ghp.json.html). It uses the base DiagnosticReport specimen element to describe the source location of the polyp along with its size and method of removal. The method is constrained to the coded values 'excision' and 'piecemeal excision'. cpResult involves nested Observation resources. cpResult is itself an Observation resource with three hasMember elements which are in turn based on the Observation resource. These are all tied together by FHIR References which essentially act as primary keys, connecting the appropriate Observation and Specimen details together under the umbrella of the DiagnosticReport. 
 
-With training the data entry form should be fairly intuitive to fill out. The data model itself is fairly simple, but the FHIR model becomes rather complicated. The following core resources are used: 
+
+Now for examples. Again we will skip over Patient and Procedure, which are proforma. Fhir resources are typically represented with JSON, XML or Turtle. With examples we will use [FHIR Shorthand](https://hl7.org/fhir/uv/shorthand/) for readability. 
+
+Example DiagnosticReport: 
+
+<pre><code>
+1  * subject.reference = "Patient/example-cpPatient"
+2  * status = #final
+3  * effectiveDateTime = "2021-10-04T00:00:00.000Z"
+4  * issued = "2021-10-05T00:00:00.000Z"
+5  * specimen[0]
+6    * reference = "Specimen/example-cpSpecimen0"
+7    * display = "COLD BIOPSY: RECTAL POLYPS X 2 #1"
+8  * result[0]
+9    * reference = "Observation/example-cpResult0"
+10   * display = "COLD BIOPSY: RECTAL POLYPS X 2 #1"
+11 * specimen[1]
+12   * reference = "Specimen/example-cpSpecimen1"
+13   * display = "COLD BIOPSY: RECTAL POLYPS X 2 #2"
+14 * result[1]
+15   * reference = "Observation/example-cpResult1"
+16   * display = "COLD BIOPSY: RECTAL POLYPS X 2 #2"</pre></code>
+  
+Line-by-Line Walkthrough
+
+<pre><code>1  The subject of the report is a patient with id=example-cpPatient
+2  This report is final. 
+3  The procedure date
+4  The pathology report date
+5  The first cpSpecimen
+6  The Reference cpSpecimen's id is example-cpSpecimen0.
+7  The narrative description of this polyp from the pathology report
+8  The first CPResult
+9  The Reference cpResult's id is example-cpResult0.
+10 The narrative description of this polyp from the pathology report
+11 The second cpSpecimen
+12 The Reference cpSpecimen's id is example-cpSpecimen1.
+13 The narrative description of this polyp from the pathology report
+14 The second CPResult
+15 The Reference cpResult's id is example-cpResult1.
+16 The narrative description of this polyp from the pathology report</pre></code>
+
+Here is the first example CPSpecimen from the above DiagnosticReport; 
+
+<pre><code>
+1  * subject.reference = "Patient/example-cpPatient"
+2  * status = #available
+3  * collection
+4    * bodySite = $SNOMEDCT#32713005 "Cecum structure (body structure)"
+5    * quantity = 3 'mm'
+6    * method = $SNOMEDCT#65801008 "Excision (procedure)"
+7    * collectedDateTime = "2021-10-04T00:00:00.000Z"
+8  * note.text = "A. COLD BIOPSY: CECAL POLYP"
+</pre></code>
+
+...with walkthrough: 
+
+<pre><code>
+1  Patient reference with id
+2  The report is available
+3  Details of specimen collection
+4  This polyp was collected from the cecum
+5  The size of this polyp was 3 mm
+6  This polyp was removed whole (not piecemeal)
+7  The collection time of this polyp
+8  The narrative description of this polyp from the pathology report
+</pre></code>
+
+Here is the corresponding CPReport0 from the above DiagnosticReport:
+
+<pre><code>1  * subject.reference = "Patient/example-cpPatient"
+2  * status = #final
+3  * specimen
+4    * reference = "Specimen/example-cpSpecimen0"
+5    * display = "A. Ascending colon polyp cold snare"
+6  * hasMember[pathology]
+7    * reference = "Observation/example-cpPathology-tubular-adenoma"
+8    * display = "Tubular adenoma of colon"
+9  * hasMember[severeDysplasia]
+10   * reference = "Observation/example-cpDysplasia-false"
+11   * display = "Severe dysplasia false"
+12 * hasMember[noMalignancy]
+13   * reference = "Observation/example-cpNoMalignantNeoplasm-true"
+14   * display = "No evidence of malignant neoplasm true"</pre></code>
+
+...with Walkthrough:
+
+<pre><code>
+1  The subject of this report
+2  This report is final.
+3  The Specimen that this result corresponds to 
+4  The Reference to the corresponding Specimen which has id example-cpSpecimen0
+5  The narrative description of this polyp from the pathology report
+6  The pathology member
+7  Reference to the Obsevervation that contains the histopathology of the specimen
+8  The narrative description of this polyp from the pathology report
+9  The dysplasia member
+10 The reference to the Observation that contains the dysplasia value
+11 The narrative description of this polyp from the pathology report
+12 the noMalignancy member
+13 Reference to the Observation that contains the noMalignancy value
+14 The narrative description of this polyp from the pathology report
+</pre></code>
+
+And finally at the most granular level, the cpPathology, cpDysplasia and cpNoMalignancy Observations: 
+
+CPPathology: 
+
+<pre><code>
+* subject.reference = "Patient/example-cpPatient"
+* status = $OBSSTATUS#final
+* valueCodeableConcept = $SNOMEDCT#444408007 "Tubular adenoma (disorder)"
+</pre></code>
+
+CPDysplasia: 
+
+<pre><code>
+* subject.reference = "Patient/example-cpPatient"
+* status = $OBSSTATUS#final
+* valueBoolean = false
+</pre></code>
+
+CPNoMalignantNeoplasm:
+
+<pre><code>
+* subject.reference = "Patient/example-cpPatient"
+* status = $OBSSTATUS#final
+* valueBoolean = true
+</pre></code>
+
+<!--- With training the data entry form should be fairly intuitive to fill out. The data model itself is fairly simple, but the FHIR model becomes rather complicated. The following core resources are used: 
 
 
 These new resource are created with profiles. The required information is just that that is needed to apply the USMSTFCC guidelines. The term ColonoscopyPolyp is used to describe the context of the required information. The required information is obtained entirely from the colonoscopy procedure report and the pathology reports describing the polyps obtained during the colonoscopy. We are not concerned with polyps from any other type or procedure; we are not concerned with any other kind of specimen collected during the colonoscopy, nor for that matter with any other finding of the colonoscopy. Thus the name ColonoscopyPolyp. 
@@ -288,6 +418,8 @@ We will use "CP" to stand in for Colonoscopy Polyp:
 * CPPolypDetailObservationSevereDysplasia
 * CPPolypDetailObservationPiecemealExcision
 * CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm
+
+-->
 
 The USMSTFCC guidelines for follow-up are summarized as follows:
 
