@@ -128,7 +128,7 @@ There are two more elements of concern from the pathology report which are consp
 
 This figure summarizes what we have discussed so far: 
 
-![](HighLevelInformationModel2.svg)
+![](HighLevelInformationModel2.svg){: style="float:right; width:100%; height:auto"}
 
 #### A Unified Report
 
