@@ -5,6 +5,7 @@ I might incorporate some of the others as I continue to edit this page.
 The nth-child classes format a specific row in a single table
 -->
 ## Making Colonoscopy Computable
+<!--- this is the styling used by the authors of the HL7 FSH guide at https://hl7.org/fhir/uv/shorthand/ -->
 <style>
     .shadeRow1 tr:nth-child(1) { background: #fff5e6; }
     .shadeRow6 tr:nth-child(6) { background: #fff5e6; }
@@ -118,10 +119,12 @@ There are two more elements of concern from the pathology report which are consp
   - histopathology: tubular adenoma
   - severe dysplasia: false
   - no evidence of malignancy: true
+  - note: E. COLD BIOPSY: RECTAL POLYPS X 2 #1
 - Polyp 2
   - histopathology: hyperplastic polyp
   - severe dysplasia: false
   - no evidence of malignancy: true
+  - note: E. COLD BIOPSY: RECTAL POLYPS X 2 #2
 
 This figure summarizes what we have discussed so far: 
 
@@ -140,6 +143,7 @@ Merging the procedure and pathology reports together, we have:
   - histopathology: tubular adenoma
   - severe dysplasia: false
   - no evidence of malignancy: true
+  - E. COLD BIOPSY: RECTAL POLYPS X 2 #1
 - Polyp 2
   - location: rectum
   - size: 3-4 mm
@@ -147,6 +151,7 @@ Merging the procedure and pathology reports together, we have:
   - histopathology: hyperplastic polyp
   - severe dysplasia: false
   - no evidence of malignancy: true
+  - E. COLD BIOPSY: RECTAL POLYPS X 2 #1
 
 This example report contains two polyps. Every colonoscopy polyp report will have at least one specimen, but can contain many more. Generalizing this model accordingly: 
 
@@ -160,6 +165,7 @@ This example report contains two polyps. Every colonoscopy polyp report will hav
     - histopathology: {string}
     - severe dysplasia: {boolean}
     - no evidence of malignancy: {boolean}
+    - note: {string}
   - Polyp 2
     - location: {string}
     - size: {number}
@@ -167,6 +173,7 @@ This example report contains two polyps. Every colonoscopy polyp report will hav
     - histopathology: {string}
     - severe dysplasia: {boolean}
     - no evidence of malignancy: {boolean}
+    - note: {string}
   - ...
   - Polyp N
     - location: {string}
@@ -175,11 +182,12 @@ This example report contains two polyps. Every colonoscopy polyp report will hav
     - histopathology: {string}
     - severe dysplasia: {boolean}
     - no evidence of malignancy: {boolean}
+    - note: {string}
 
 Here we have substituted specifics with data types and wrapped the whole thing with patient information and report dates. Now we have a rough _logical model_ that represents our polyp report. 
 
 <!--- 
-Primary care doctors are looking for a way to interpret colonoscopy result programatically using published guidelines of the [US Multi-Society Task Force on Colorectal Cancer (USMSTFCC)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7687298/pdf/nihms-1645693.pdf). The purpose of this implementation guide is to produced structured FHIR resources such that they can be accessed by a Clinical Quality Language query. The spicific aim is to calculate the appropriate period of time until the next colonoscopy (surveillance interval). Primary care doctors wish to be better informed about this interval in order to better carry out shared decision making. 
+Primary care doctors are looking for a way to interpret colonoscopy result programmatically using published guidelines of the [US Multi-Society Task Force on Colorectal Cancer (USMSTFCC)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7687298/pdf/nihms-1645693.pdf). The purpose of this implementation guide is to produced structured FHIR resources such that they can be accessed by a Clinical Quality Language query. The specific aim is to calculate the appropriate period of time until the next colonoscopy (surveillance interval). Primary care doctors wish to be better informed about this interval in order to better carry out shared decision making. 
 
 Primary care doctors need a way to ensure that the relevant data are collected in a standard, interoperable format from participating endoscopy providers and pathologists.
 
@@ -196,7 +204,7 @@ Participating study sites:
 The use case for this work is as follows:
 
 At least one GI Endoscopist, Pathologist and Primary Care Doctor will participate. 
-Endoscopies for this designated Endoscopist will be performed and recorded as usual. Biopsy specimens will be submitted and reported as usual. Once Endoscopy and Pathology reports are available a specially trained person will enter granular data gathered from procedure and pathology report into purpose-built data entry forms. This data will be used to generate FHIR resourcses, and these resources will be processed with CQL to generate a recommended surveillance interval. The CQL result will compared against the recommendation of the Endoscopist, who is asked to provide her recommended surveillance interval based on her understanding of USMSTFCC guidelines. 
+Endoscopies for this designated Endoscopist will be performed and recorded as usual. Biopsy specimens will be submitted and reported as usual. Once Endoscopy and Pathology reports are available a specially trained person will enter granular data gathered from procedure and pathology report into purpose-built data entry forms. This data will be used to generate FHIR resources, and these resources will be processed with CQL to generate a recommended surveillance interval. The CQL result will compared against the recommendation of the Endoscopist, who is asked to provide her recommended surveillance interval based on her understanding of USMSTFCC guidelines. 
 
 ![Procedure Report Data Elements](ProcedureReportDataElements.png){: width=800 style="float:none; margin:0px 0px 0px 0px"}
 
@@ -206,11 +214,11 @@ Endoscopies for this designated Endoscopist will be performed and recorded as us
 
 ## Translating to the FHIR data model
 
-From this point we get technical. It's time to map this logical model to FHIR. From here will need to know something about FHIR to fully understand the details. I suggest your start [here](https://www.hl7.org/fhir/), 
+From this point we get technical. It's time to map this logical model to FHIR. From here you will need to know something about FHIR to fully understand the details. I suggest your start [here](https://www.hl7.org/fhir/). 
 
-The building blocks of FHIR are resources. [_FHIR resources_](https://www.hl7.org/fhir/resource.html) are basic information models that can be used to represent health data. The task at hand is to link or _map_ our basic logical model to FHIR resources. FHIR resources are built with [_FHIR data types_](https://www.hl7.org/fhir/datatypes.html). FHIR resources and data types are determined by HL7, a health standards organization. HL7 standards are voted upon a broad community of healthcare IT professionals. 
+The building blocks of FHIR are resources. [_FHIR resources_](https://www.hl7.org/fhir/resource.html) are basic information models that represent health data. The task at hand is to link or _map_ our basic logical model to FHIR resources. FHIR resources are built with [_FHIR data types_](https://www.hl7.org/fhir/datatypes.html). FHIR resources and data types are determined by HL7, a health standards organization. HL7 standards are voted upon a broad community of healthcare IT professionals. 
 
-We will use these resources: 
+We will use these FHIR resources: 
 
 * Patient
 * Procedure
@@ -218,7 +226,7 @@ We will use these resources:
 * Specimen
 * Observation
 
-... and these data types: 
+... and these FHIR data types: 
 
 - Reference
 - id
@@ -242,6 +250,7 @@ That covers the top level elements. For each Polyp N the connection is:
   - histopathology -> Result(Observation).hasMember[Pathology](Observation).valueCodeableConcept
   - severe dysplasia -> Result(Observation).hasMember[Dysplasia](Observation).valueBoolean
   - no evidence of malignancy -> Result(Observation).hasMember[NoMalignantNeoplasm](Observation).valueBoolean
+  - note -> Result(Observation).display and Specimen.display
 
 There's some nesting here which needs explanation. The FHIR standard allows you to create custom Resources--called Profiles--from base resources. In this implementation we are creating four Profiles based on the Observation resource. Each of these profiles is preceded by a "cp" which indicates Colonoscopy Polyp:
 
@@ -251,7 +260,7 @@ There's some nesting here which needs explanation. The FHIR standard allows you 
 - cpDysplasia
 - cpNoMalignantNeoplasm
 
-Each of these Profiles are constrained by their Categories and CodeableConcepts You can example the details in the Artifacts Summary provided with this implementation guide. 
+Each of these Profiles are constrained by their Categories and CodeableConcepts. You can example the details in the Artifacts Summary provided with this implementation guide. 
 
 The overall structure of the report is: 
 
@@ -285,18 +294,18 @@ Example DiagnosticReport:
 4  * issued = "2021-10-05T00:00:00.000Z"
 5  * specimen[0]
 6    * reference = "Specimen/example-cpSpecimen0"
-7    * display = "COLD BIOPSY: RECTAL POLYPS X 2 #1"
+7    * display = "E. COLD BIOPSY: RECTAL POLYPS X 2 #1"
 8  * result[0]
 9    * reference = "Observation/example-cpResult0"
-10   * display = "COLD BIOPSY: RECTAL POLYPS X 2 #1"
+10   * display = "E. COLD BIOPSY: RECTAL POLYPS X 2 #1"
 11 * specimen[1]
 12   * reference = "Specimen/example-cpSpecimen1"
-13   * display = "COLD BIOPSY: RECTAL POLYPS X 2 #2"
+13   * display = "E. COLD BIOPSY: RECTAL POLYPS X 2 #2"
 14 * result[1]
 15   * reference = "Observation/example-cpResult1"
-16   * display = "COLD BIOPSY: RECTAL POLYPS X 2 #2"</pre></code>
+16   * display = "E. COLD BIOPSY: RECTAL POLYPS X 2 #2"</code></pre>
   
-Line-by-Line Walkthrough
+Line-by-line walkthrough:
 
 <pre><code>1  The subject of the report is a patient with id=example-cpPatient
 2  This report is final. 
@@ -313,7 +322,7 @@ Line-by-Line Walkthrough
 13 The narrative description of this polyp from the pathology report
 14 The second CPResult
 15 The Reference cpResult's id is example-cpResult1.
-16 The narrative description of this polyp from the pathology report</pre></code>
+16 The narrative description of this polyp from the pathology report</code></pre>
 
 Here is the first example CPSpecimen from the above DiagnosticReport; 
 
@@ -321,12 +330,12 @@ Here is the first example CPSpecimen from the above DiagnosticReport;
 1  * subject.reference = "Patient/example-cpPatient"
 2  * status = #available
 3  * collection
-4    * bodySite = $SNOMEDCT#32713005 "Cecum structure (body structure)"
-5    * quantity = 3 'mm'
+4    * bodySite = $SNOMEDCT#34402009 "Rectum structure (body structure)""
+5    * quantity = 4 'mm'
 6    * method = $SNOMEDCT#65801008 "Excision (procedure)"
 7    * collectedDateTime = "2021-10-04T00:00:00.000Z"
-8  * note.text = "A. COLD BIOPSY: CECAL POLYP"
-</pre></code>
+8  * note.text = "E. COLD BIOPSY: RECTAL POLYPS X 2 #1"
+</code></pre>
 
 ...with walkthrough: 
 
@@ -334,12 +343,12 @@ Here is the first example CPSpecimen from the above DiagnosticReport;
 1  Patient reference with id
 2  The report is available
 3  Details of specimen collection
-4  This polyp was collected from the cecum
-5  The size of this polyp was 3 mm
+4  This polyp was collected from the rectum
+5  The size of this polyp was 4 mm
 6  This polyp was removed whole (not piecemeal)
 7  The collection time of this polyp
 8  The narrative description of this polyp from the pathology report
-</pre></code>
+</code></pre>
 
 Here is the corresponding CPReport0 from the above DiagnosticReport:
 
@@ -347,7 +356,7 @@ Here is the corresponding CPReport0 from the above DiagnosticReport:
 2  * status = #final
 3  * specimen
 4    * reference = "Specimen/example-cpSpecimen0"
-5    * display = "A. Ascending colon polyp cold snare"
+5    * display = "E. COLD BIOPSY: RECTAL POLYPS X 2 #1"
 6  * hasMember[pathology]
 7    * reference = "Observation/example-cpPathology-tubular-adenoma"
 8    * display = "Tubular adenoma of colon"
@@ -356,9 +365,9 @@ Here is the corresponding CPReport0 from the above DiagnosticReport:
 11   * display = "Severe dysplasia false"
 12 * hasMember[noMalignancy]
 13   * reference = "Observation/example-cpNoMalignantNeoplasm-true"
-14   * display = "No evidence of malignant neoplasm true"</pre></code>
+14   * display = "No evidence of malignant neoplasm true"</code></pre>
 
-...with Walkthrough:
+...with walkthrough:
 
 <pre><code>
 1  The subject of this report
@@ -375,7 +384,7 @@ Here is the corresponding CPReport0 from the above DiagnosticReport:
 12 the noMalignancy member
 13 Reference to the Observation that contains the noMalignancy value
 14 The narrative description of this polyp from the pathology report
-</pre></code>
+</code></pre>
 
 And finally at the most granular level, the cpPathology, cpDysplasia and cpNoMalignancy Observations: 
 
@@ -384,24 +393,71 @@ CPPathology:
 <pre><code>
 * subject.reference = "Patient/example-cpPatient"
 * status = $OBSSTATUS#final
+* category = http://terminology.hl7.org/CodeSystem/observation-category#laboratory "Laboratory"
+* code = $LOINC#34574-4 "Pathology report final diagnosis"
 * valueCodeableConcept = $SNOMEDCT#444408007 "Tubular adenoma (disorder)"
-</pre></code>
+</code></pre>
 
 CPDysplasia: 
 
 <pre><code>
 * subject.reference = "Patient/example-cpPatient"
 * status = $OBSSTATUS#final
+* category = $OBSCAT#laboratory "Laboratory"
+* code = $SNOMEDCT#55237006 "Severe dysplasia (morphologic abnormality)"
 * valueBoolean = false
-</pre></code>
+</code></pre>
 
 CPNoMalignantNeoplasm:
 
 <pre><code>
 * subject.reference = "Patient/example-cpPatient"
 * status = $OBSSTATUS#final
+* category = http://terminology.hl7.org/CodeSystem/observation-category#laboratory "Laboratory"
+* code = $SNOMEDCT#110396000 "No evidence of malignant neoplasm (finding)"
 * valueBoolean = true
-</pre></code>
+</code></pre>
+
+So far we've showed shorthand versions of these resources. In case you're curious, here is the full FHIR-json of the CPDysplasia resource: 
+
+<pre><code>{
+  "resourceType": "Observation",
+  "id": "example-cpDysplasia-false",
+  "meta": {
+    "profile": [
+      "https://build.fhir.org/ig/dhes/ColonoscopyPolyp/StructureDefinition/cp-dysplasia"
+    ]
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b><a name=\"example-cpDysplasia-false\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpDysplasia-false\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-dysplasia.html\">Dysplasia (Observation)</a></p></div><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/4.0.0/CodeSystem-observation-category.html\">Observation Category Codes</a>#laboratory)</span></p><p><b>code</b>: Severe dysplasia (morphologic abnormality) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#55237006)</span></p><p><b>subject</b>: <a href=\"Patient-example-cpPatient.html\">Patient/example-cpPatient</a> \" BERFEL\"</p><p><b>value</b>: false</p></div>"
+  },
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "55237006",
+        "display": "Severe dysplasia (morphologic abnormality)"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/example-cpPatient"
+  },
+  "valueBoolean": false
+}</code></pre>
 
 <!--- With training the data entry form should be fairly intuitive to fill out. The data model itself is fairly simple, but the FHIR model becomes rather complicated. The following core resources are used: 
 

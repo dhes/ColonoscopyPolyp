@@ -8,6 +8,9 @@
 		"HYPERPLASTIC",
 		"LOINC",
 		"OBSCAT",
-		"tubulovillous"
+		"SNOMEDCT",
+		"tubulovillous",
+		"USMSTFCC",
+		"walkthrough"
 	]
 }
