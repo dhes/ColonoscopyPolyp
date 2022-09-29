@@ -4,7 +4,7 @@ As of 2022-09-26 only using .caption.
 I might incorporate some of the others as I continue to edit this page.
 The nth-child classes format a specific row in a single table
 -->
-## Making Colonoscopy Computable
+### Making Colonoscopy Computable
 <!--- this is the styling used by the authors of the HL7 FSH guide at https://hl7.org/fhir/uv/shorthand/ -->
 <style>
     .shadeRow1 tr:nth-child(1) { background: #fff5e6; }
@@ -29,21 +29,19 @@ The nth-child classes format a specific row in a single table
     p {line-height: 1.5}
 </style>
 
-### Introduction
+Colonoscopy is one of the most commonly performed diagnostic procedures in the United States. Colonoscopy is performed by inserting a flexible fiberoptic scope into a patient's large intestine. Scopes of this nature are flexible and permit the endoscopist to see what is at the other end, even though the scope itself is turned and twisted. This permits the endoscopist to examine the entire large intestine. This form of endoscopy can be used to screen for colon cancer. Although colonoscopy is also commonly used for diagnostic purposes, it is only the screening aspect that we are interested in here. 
 
-Colonoscopy is one of the most commonly performed diagnostic procedures in the United States. Colonoscopy is performed by inserting a flexible fiberoptic scope into a patient's large intestine. Scopes of this nature are flexible and permit the endoscopist to see what is at the other end, even though the scope itself is turned and twisted. This permits the endoscopist to examine the entire large intestine. This form of endoscopy can be used to screen for colon cancer. Although colonoscopy is also commonly used for diagnostic purposes, it is only the screening aspect that we are interested in at here. 
+Screening colonoscopy is only performed in adults. It is typically begun at age 45-50 years. It is not the only form of colon cancer screening, but it is the only one we will discuss. 
 
-Screening colonoscopy is only performed in adults. It is typically begun at age 45-50 years. It is not the only form of colon cancer screening, but it is the only one we will discuss here. 
+When doctors perform screening colonoscopy they are mostly interested in finding pre-cancers. A pre-cancer is growth that is not malignant but could turn into cancer over time. These colon pre-cancers typically occur in _polyps_. Colon polyps are small clumps of cells that form on the lining of the colon. 
 
-When doctors perform screening colonoscopy they are mostly interested in finding pre-cancers. A pre-cancer is growth that is not malignant but could turn into cancer over time. These colon pre-cancers are referred to as polyps. 
+When the doctor sees a polyp during screening colonoscopy she generally takes it out by performing a biopsy. After the polyp is removed it is sent to the a medical laboratory to determine what kind of polyp it is. There are different types of polyps that have specific names and significance that we will discuss later. 
 
-When the doctor sees a polyp during screening colonoscopy she generally takes it out by performing a biopsy. After the polyp is removed it is sent to the a medical laboratory to determine what kind of polyp it is and in particular to make sure that it is not cancerous. There are different types of polyps that have specific names and significance that we will discuss later. 
-
-After colonoscopy the doctor as a matter of course discusses the results with the patient. This discussion includes a general review of how the procedure went, any complications, any findings of concern etc. Of course what the patient really wants to know is whether they have cancer. In case they do have cancer, They proceed to cancer treatment and there is not longer a role for screening colonoscopy.  If they do not have cancer, the doctor must advise when the next screening colonoscopy should be performed. The timing of the next colonoscopy is our subject of interest. 
+After colonoscopy the doctor as a matter of course discusses the results with the patient. This discussion includes a general review of how the procedure went, any complications, any findings of concern etc. Of course what the patient really wants to know is whether they have cancer. In case they do have cancer, they proceed to cancer treatment and there is no longer a role for screening colonoscopy.  If they do not have cancer, the doctor must advise when the next screening colonoscopy should be performed. The timing of the next colonoscopy is our subject of interest. 
 
 Screening colonoscopy is not a one-time procedure. Once colon cancer screening is started, it generally continues until an advanced age. The formal term for timing of follow-up is _surveillance interval_. This surveillance interval is determined according to widely-used practice guidelines which happen to lend themselves nicely to computer algorithms. 
 
-There are many different kinds of computer application that could be used to determine the _surveillance interval_, all of them have one thing in common: They require structure data. 
+There are many different kinds of computer application that could determine the surveillance interval, all of them have one thing in common: They require structured data. 
 <!---
 While the details are not import in this context, there exists programming language call Clinical Quality Language (CQL) that works well with algorithms such as this one. 
 --->
@@ -51,7 +49,7 @@ While the details are not import in this context, there exists programming langu
 ### Structured Decisions Require Structured Data
 #### The Procedure Report
 
-Like any other computer application, computers require data that is highly structured. This is a problem in the realm of colonoscopy reporting. The tradition in medical records has been largely one of narrative reporting. By narrative reporting we mean sentences and paragraphs like the ones you are reading now. A computable report has a requires predefined structure which computers can recognize and process. Some kinds of laboratory reporting have been structured for decades, especially common lab tests such as a blood glucose. Here is an example of a _structured_ report of a fictional patient's blood glucose in a format called an HL7 message. 
+Like any other computer application, a computer algorithm that guides a medical decision requires data that is highly structured. This is a problem in the realm of colonoscopy reporting. The tradition in medical records has been largely one of narrative reporting. By narrative reporting we mean sentences and paragraphs like the ones you are reading now. A computable report requires a predefined structure which computers can recognize and process. Some types of medical laboratory reporting have been structured for decades, especially common blood tests such as a blood glucose. Here is an example of such a report: 
 
 <br>
 <blockquote>
@@ -64,29 +62,29 @@ OBX|1|SN|1554-5^GLUCOSE^POST 12H CFST:MCNC:PT:SER/PLAS:QN||^182|mg/dl|70_105|H||
 <br>
 
 
-You can probably find the word glucose and perhaps a name and address and a few other things in this message, but overall if doesn't make much sense to an untrained human. This is not considered a _human-readable_ format. 
+This report follows a standard format called HL7. Looking through it you can probably find the word glucose and perhaps a name and address and a few other things in this message, but overall if doesn't make much sense to an untrained human. This is not considered a _human-readable_ format. But computers love it. 
 
-In contrast, here is a section of a fictional _narrative_ style colonoscopy report:
+Medical procedure reports in general -- and colonoscopy reports in particular -- follow a  _narrative_ style. Here is a small segment of a fictional colonoscopy report: 
 
 > Two sessile polyps were found in the rectum. The polyps were 3 to 4 mm in size. These polyps were
 removed with a cold biopsy forceps. Resection and retrieval were complete. Estimated blood loss was minimal.
 
-Nothing difficult to understand here (other than the technical terms). Simple sentences. But the computer can't make it out!
+Nothing difficult to understand here (other than the technical terms). There are no cryptic word, vertical lines or caret symbols. Just word and sentences. A human who understands medical vocabulary can easy extract meaning. But you can't feed it into a computer algorithm. 
 
 Now a brief discussion of these technical terms. Polyps come in different shapes, one of which is _sessile_, which just means flat. The first sentence in this report indicates that both polyps were flat; he next sentence reports this size; the next describes how the polyps were removed; the next asserts that the polyps were completely _resected_ (cut out) and _retrieved_ (removed from the colon). All of the details in this section are important procedural details, but only three properties of the polyps are important for follow-up colonoscopy: What part of the intestine are they from? How big are they? Were they removed in a single piece or many pieces? 
 
-We restate the report like so; 
+We restate the report like so:
 
 - Polyp 1
   - location: rectum
   - size: 3-4 mm
-  - piecemeal resection (not reported)
+  - piecemeal resection (implied)
 - Polyp 2
   - location: rectum
   - size: 3-4 mm
-  - piecemeal resection (not reported)  
+  - piecemeal resection (implied)  
   
-A word of explanation here about _piecemeal resection_. Piecemeal resection means that the polyp was cut into pieces before it was removed from the intestine. As you can see, there is no comment in the  narrative regarding piecemeal resection. Often it is assumed that resection was whole unless described as piecemeal. So a truer representation would be: 
+A word of explanation here about _piecemeal resection_. This means that the polyp was cut into pieces before it was removed from the intestine. As you can see, there is no comment in the  narrative regarding piecemeal resection. Generally it is assumed that resection was whole unless described as piecemeal. So a truer representation would be: 
 
 - Polyp 1
   - location: rectum
@@ -97,23 +95,22 @@ A word of explanation here about _piecemeal resection_. Piecemeal resection mean
   - size: 3-4 mm
   - piecemeal resection: false  
 
-This begins to illustrate the difference between _structured_ and _narrative_ reports. Narratives read like a book or a newspaper article, as previously mentioned. Structured reports in contrast may read more like an outline (if they are _human-readable_ at all). The lists that I have presented in Figures x and y illustrate what a simple _human-readable_ model might look like. 
+This begins to illustrate the difference between structured and narrative reports. Narratives read like a book or a newspaper article, as previously mentioned. Structured reports in contrast read more like an outline. 
 
-So much for the procedure report for now. More is needed to determine the follow-up interval. The information needed for the _surveillance interval_ algorithm comes not from one report but two: a colonoscopy _procedure report_ (which you have seen), and a _pathology report_. Elements from each of these reports are inputs to the _surveillance interval_ algorithm. 
+So much for the procedure report for now. More information is needed to determine the surveillance interval: the _pathology report_.
 
 #### The Pathology Report
 
-Now we move on to the pathology report. Here is am excerpt from a fictional pathology report: 
+Here is an excerpt from a fictional pathology report: 
 
 > E. COLD BIOPSY: RECTAL POLYPS X 2:
  TUBULAR ADENOMA (X1) AND HYPERPLASTIC POLYP (X1).
 
-These report tend to be terse and more technical. In a more conversational style it might read: "Regarding the two polyps removed from the rectum as per the procedure report, which we have enumerated as E. COLD BIOPSY: RECTAL POLYPS x 2: one is a TUBULAR ADENOMA and the other is a HYPERPLASTIC POLYP."
-So the pathology report ties itself into the procedure report by repeating back the location of the polyps before removal, the method of removal and the number of polyps. In that fashion anyone reading the report can tell which polyps the pathologist is talking about.  
+This segment of a pathology report corresponds to the procedure report already discussed. The pathologist who created the report has labelled groups of polyps in outline fashion. This group "E. " contains the two polyps from the rectum of size 3-4 mm that were resected whole.  Pathology reports tend to be terse and more technical. In a more conversational style it might read: "Regarding the two polyps removed from the rectum as per the procedure report, which we have enumerated as E. COLD BIOPSY: RECTAL POLYPS x 2: one is a TUBULAR ADENOMA and the other is a HYPERPLASTIC POLYP."The pathology report ties itself into the procedure report by repeating back the location of the polyps before removal, the method of removal and the number of polyps. In that fashion anyone comparing the two reports can tell which polyps the pathologist is talking about.  
 
-If we are determining the follow-up interval, the only information of import are _TUBULAR ADENOMA_ and _HYPERPLASTIC POLYP_. One of the polyps is a tubular adenoma and the other is a hyperplastic polyp. A tubular adenoma is a benign growth which can transform into cancer. A hyperplastic polyp is also a benign growth but is less likely to transform. These two phrase are mostly likely unfamiliar to people not employed in healthcare, but a detailed description is not needed for our purposes. If you are curious about these terms you may take a look at [this](https://www.webmd.com/colorectal-cancer/colorectal-tubular-adenoma) and [this](https://www.webmd.com/cancer/ss/slideshow-polyps). 
+If we are determining the surveillance interval, the only expressed information of concern is _histopathology_ of the polyps. _Histology_ means "The anatomical study of the microscopic structure of animal and plant tissues" per [TheFreeDictionary](https://medical-dictionary.thefreedictionary.com/histology).  _Histopathology_ means "The study of the microscopic anatomical changes in diseased tissue". [Wordnik](https://www.wordnik.com/words/histopathology.) _TUBULAR ADENOMA_ and _HYPERPLASTIC POLYP_ are two kinds of histopathology commonly found in colon polyps. A tubular adenoma is a benign growth which can transform into cancer. A hyperplastic polyp is also a benign growth but is less likely to lead to cancer. To learn more about these terms read [here](https://www.webmd.com/colorectal-cancer/colorectal-tubular-adenoma) and [this](https://www.webmd.com/cancer/ss/slideshow-polyps). 
 
-There are two more elements of concern from the pathology report which are conspicuous by their absence: _severe dysplasia_ and _no evidence of malignancy_. _Dysplasia_ means _disordered growth and maturation of cells_. Tissue that has dysplasia is not cancerous but is more likely to turn into cancer. _No evidence of malignancy_ just means that no cancer was found. The convention in pathology is often to report these features only when they are present. In this report nothing is said, which means there is no _severe dysplasia_ and _no evidence of malignancy_. Another way of presenting this would be: 
+There are two more elements of concern from the pathology report which are conspicuous by their absence: _severe dysplasia_ and _no evidence of malignancy_. _Dysplasia_ means "Abnormal development or growth of tissues, organs, or cells." (Source: [Wordnik](https://www.wordnik.com/words/dysplasia)). Tissue that has dysplasia is not cancerous but is more likely to develop into cancer. _No evidence of malignancy_ just means that no cancer was found in the polyps. The convention in pathology is generally to report these features only when they are present. In this report nothing is mentioned about dysplasia or malignancy, which means there is no severe dysplasia and no evidence of malignancy. Another way of presenting this would be: 
 
 - Polyp 1
   - histopathology: tubular adenoma
@@ -126,13 +123,16 @@ There are two more elements of concern from the pathology report which are consp
   - no evidence of malignancy: true
   - note: E. COLD BIOPSY: RECTAL POLYPS X 2 #2
 
-This figure summarizes what we have discussed so far: 
+Figure 1 illustrates what we have discussed so far:
+
+<span class="caption">Figure 1. Colonoscopy Polyp Information Model</span>
 
 ![](HighLevelInformationModel2.svg){: style="float:right; width:100%; height:auto"}
 
-#### A Unified Report
+### Putting It Together
+#### A Logical Data Model
 
-Now that we have a general idea of the type of information that we need to make our _surveillance colonoscopy_ decision, we will bring what we have together to prepare for the next step -- translating it into FHIR. 
+Now that we have a general idea of the types of information that we need to make our surveillance colonoscopy decision, we will collect it all in preparation for the next step -- translating it into _FHIR_. FHIR® (Fast Healthcare Interoperability Resources) is an industry-standard medical information modeling system. More on this later. 
 
 Merging the procedure and pathology reports together, we have:
 
@@ -153,7 +153,7 @@ Merging the procedure and pathology reports together, we have:
   - no evidence of malignancy: true
   - E. COLD BIOPSY: RECTAL POLYPS X 2 #1
 
-This example report contains two polyps. Every colonoscopy polyp report will have at least one specimen, but can contain many more. Generalizing this model accordingly: 
+This example describes two polyps. Every colonoscopy polyp report will have at least one polyp specimen, but can contain many more. Generalizing this model accordingly: 
 
 - Patient: {string}
 - Procedure Date: {date}
@@ -212,11 +212,11 @@ Endoscopies for this designated Endoscopist will be performed and recorded as us
 
 --->
 
-## Translating to the FHIR data model
+#### Translating the Logical Model to FHIR
 
-From this point we get technical. It's time to map this logical model to FHIR. From here you will need to know something about FHIR to fully understand the details. I suggest your start [here](https://www.hl7.org/fhir/). 
+From this point we get technical. It's time to map this logical model to FHIR. From here you will need to know a little about FHIR. 
 
-The building blocks of FHIR are resources. [_FHIR resources_](https://www.hl7.org/fhir/resource.html) are basic information models that represent health data. The task at hand is to link or _map_ our basic logical model to FHIR resources. FHIR resources are built with [_FHIR data types_](https://www.hl7.org/fhir/datatypes.html). FHIR resources and data types are determined by HL7, a health standards organization. HL7 standards are voted upon a broad community of healthcare IT professionals. 
+There is a general introduction to FHIR [here](https://www.hl7.org/fhir/). The building blocks of FHIR are [_FHIR resources_](https://www.hl7.org/fhir/resource.html). Our task is to link or _map_ our basic logical model to FHIR resources. FHIR resources are built with [_FHIR data types_](https://www.hl7.org/fhir/datatypes.html). FHIR resources and data types are defined by HL7, a health standards organization. [HL7](http://www.hl7.org/about/index.cfm?ref=footer) (Health Level Seven International) "is a not-for-profit, ANSI-accredited standards developing organization dedicated to providing a comprehensive framework and related standards for the exchange, integration, sharing, and retrieval of electronic health information that supports clinical practice and the management, delivery and evaluation of health services". HL7 maintains the FHIR standard. 
 
 We will use these FHIR resources: 
 
@@ -235,11 +235,18 @@ We will use these FHIR resources:
 - boolean
 - SimpleQuantity
 
-The Patient and Procedure resources require little modification, we will skip over those details for now. We will incorporate the patient into the report by reference ... that is to say buy using a FHIR Reference. A FHIR reference has the structure {Resource/id} so we will use {Patient/patient.id}. For purposes of this report the only additional information needed from the procedure is the date. For the overall report we select the DiagnosticReport, and the pathology report date becomes the DiagnosticReport.dateTime. So far we have: 
+Since the Patient and Procedure resources require little modification, we will spend little time on these resources. Patient will be incorporated into our report by reference ... that is to say by using a FHIR Reference data type. FHIR references have the structure {Resource/id} so we will use {Patient/patient.id}. The Procedure resource is not expressly contained in our data model because the only information we need from the colonoscopy procedure is the date.
 
-- Patient -> Reference(Patient/Patient.id)
-- Procedure Date -> Procedure.dateTime
-- Pathology Report Date -> DiagnosticReport.dateTime
+So the first FHIR resource we bring into play is the DiagnosticReport. The DiagnosticReport resource will serve as the center of our data structure. The procedure date will become  DiagnosticReport.effective and the pathology report date will become the DiagnosticReport.issued. So far we have: 
+
+<span class="caption">Table 1. Logical Model to DiagnosticReport Resource</span>
+
+| Logical Model |  FHIR Resource | FHIR Data Type |
+| --------------| -------------- |----------------|
+| Patient | DiagnosticReport.subject | Reference(Patient/Patient.id) |
+| Procedure Date | DiagnosticReport.effective | dateTime |
+| Pathology Report Date | DiagnosticReport.issued | dateTime |
+{: class="grid"}
 
 That covers the top level elements. For each Polyp N the connection is: 
 
@@ -376,7 +383,7 @@ Here is the corresponding CPReport0 from the above DiagnosticReport:
 4  The Reference to the corresponding Specimen which has id example-cpSpecimen0
 5  The narrative description of this polyp from the pathology report
 6  The pathology member
-7  Reference to the Obsevervation that contains the histopathology of the specimen
+7  Reference to the Observation that contains the histopathology of the specimen
 8  The narrative description of this polyp from the pathology report
 9  The dysplasia member
 10 The reference to the Observation that contains the dysplasia value
@@ -418,19 +425,18 @@ CPNoMalignantNeoplasm:
 * valueBoolean = true
 </code></pre>
 
+#### Welcome to the Real World
+
 So far we've showed shorthand versions of these resources. In case you're curious, here is the full FHIR-json of the CPDysplasia resource: 
 
-<pre><code>{
+```
+{
   "resourceType": "Observation",
   "id": "example-cpDysplasia-false",
   "meta": {
     "profile": [
       "https://build.fhir.org/ig/dhes/ColonoscopyPolyp/StructureDefinition/cp-dysplasia"
     ]
-  },
-  "text": {
-    "status": "generated",
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Observation</b><a name=\"example-cpDysplasia-false\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Observation \"example-cpDysplasia-false\" </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-cp-dysplasia.html\">Dysplasia (Observation)</a></p></div><p><b>status</b>: final</p><p><b>category</b>: Laboratory <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/4.0.0/CodeSystem-observation-category.html\">Observation Category Codes</a>#laboratory)</span></p><p><b>code</b>: Severe dysplasia (morphologic abnormality) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#55237006)</span></p><p><b>subject</b>: <a href=\"Patient-example-cpPatient.html\">Patient/example-cpPatient</a> \" BERFEL\"</p><p><b>value</b>: false</p></div>"
   },
   "status": "final",
   "category": [
@@ -457,7 +463,29 @@ So far we've showed shorthand versions of these resources. In case you're curiou
     "reference": "Patient/example-cpPatient"
   },
   "valueBoolean": false
-}</code></pre>
+}
+```
+
+If you are new to JSON, here is a [good place to begin learning](https://www.w3schools.com/js/js_json_syntax.asp). In short, JSON is a lightweight data-interchange format. It is written in plain text and used to send information between computers. It is based on name/value pairs separated by colons. As you glance through the above JSON you will notice names from the previous section like status, category, code, subject and others. You will also notice that JSON is more verbose than the shorthand that was used in the previous sections. What took a single line in shorthand:
+
+```
+* code = $SNOMEDCT#55237006 "Severe dysplasia (morphologic abnormality)"
+```
+... takes nine lines in JSON: 
+
+```
+  "code": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "55237006",
+        "display": "Severe dysplasia (morphologic abnormality)"
+      }
+    ]
+  },
+```
+
+If you are going to be authoring FHIR resources you will have to become familiar with JSON, unless you prefer one of the alternatives. If you visit any FHIR resource page and click on the Examples tab, you will be directed to a page that [lists examples in JSON](https://www.hl7.org/fhir/patient-examples.html) as well as two other format: XML and Turtle. You may happen to be experienced with one of those formats. If that is that case how you work is your choice. Whatever format you choose, it is much easier to work with shorthand and let the computer translate it for you. 
 
 <!--- With training the data entry form should be fairly intuitive to fill out. The data model itself is fairly simple, but the FHIR model becomes rather complicated. The following core resources are used: 
 
@@ -475,31 +503,15 @@ We will use "CP" to stand in for Colonoscopy Polyp:
 * CPPolypDetailObservationPiecemealExcision
 * CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm
 
--->
-
 The USMSTFCC guidelines for follow-up are summarized as follows:
-
-<span class="caption">Table 1. Practice Guideline for Follow-up Colonoscopy</span>
-
-| Colonoscopy Finding                             | Next Colonoscopy (years) |
-| ----------------------------------------------- | :----------------------: |
-| normal (no polyps)                              |            10            |
-| 1 to 2 tubular adenomas <10 mm                  |          7 - 10          |
-| 3 to 4 tubular adenomas <10 mm                  |           3-5            |
-| 5 to 10 tubular adenomas <10 mm                 |            3             |
-| adenoma ≥10 mm                                  |            3             |
-| adenoma with tubulovillous or villous histology |            3             |
-| adenoma with high-grade dysplasia               |            3             |
-| more than 10 adenomas on single examination     |            1             |
-| piecemeal resection of adenoma ≥20 mm           |           1/2            |
-{: class="grid"}
 
 
 FHIR version 4.01 is used for FHIR resources. FHIR U.S. Core 4.0.0 profiles will be used where possible, considering that we are using a U.S. practice guideline. 
-
-### Mapping to FHIR resources
+--->
 
 <!---
+
+#### Mapping to FHIR resources
 
 | Profile Name                                          | FHIR element name / Path                                           | Use Case Data Element | Comments                                                                                                                                                                                                   |
 | ----------------------------------------------------- | ------------------------------------------------------------------ | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -537,9 +549,47 @@ FHIR version 4.01 is used for FHIR resources. FHIR U.S. Core 4.0.0 profiles will
 | CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm | CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm.valueBoolean |                       | true/false                                                                                                                                                                                                 |
 -->
 
+### We have to decide. 
+
+We have to tell a patient who just had colonoscopy when the _next_ one should be. 
+
+The procedure is done, the patient has gone home and it is a new day. The doctor notices a new pathology report in her in-box. It's from the colonoscopy the day before. Look back at the previous day's procedure report while she reads the pathology reports, she decides what the _surveillance interval_ should be. Because she's done this day-in and day-out for years she can do that in her head. But you and I need to look it up. 
+
+Here are the guidelines as published by the [US Multi-Society Task Force on Colorectal Cancer (USMSTFCC)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7687298/pdf/nihms-1645693.pdf), summarized here: 
+
+<span class="caption">Table 2. Practice Guideline for Follow-up Colonoscopy</span>
+
+| Colonoscopy Finding                             | Next Colonoscopy (years) |
+| ----------------------------------------------- | :----------------------: |
+| normal (no polyps)                              |            10            |
+| 1 to 2 tubular adenomas <10 mm                  |          7 - 10          |
+| 3 to 4 tubular adenomas <10 mm                  |           3-5            |
+| 5 to 10 tubular adenomas <10 mm                 |            3             |
+| adenoma ≥10 mm                                  |            3             |
+| adenoma with tubulovillous or villous histology |            3             |
+| adenoma with high-grade dysplasia               |            3             |
+| more than 10 adenomas on single examination     |            1             |
+| piecemeal resection of adenoma ≥20 mm           |           1/2            |
+{: class="grid"}
+
+You are already familiar with most of the terms in the table as explained above. We have not yet talked about 'villous' or 'tubulovillous' or the term 'histology'. 'Histology' means "The anatomical study of the microscopic structure of animal and plant tissues" per [TheFreeDictionary](https://medical-dictionary.thefreedictionary.com/histology). 
+
+Tubular Adenoma and Hyperplastic Polyp are histology terms that you've seen. Adenoma is a general term that includes Tubular Adenoma, Villous Adenoma and Tubulovillous Adenoma. Adenomas that have tubulovillous or villous histology are more likely to transform into cancer and therefore require closer follow-up. They are [less common](https://emedicine.medscape.com/article/170283-overview) than Tubular Adenoma and Hyperplastic Polyps. If a polyp has villous or tubulovillous feature it will be called Villous Adenoma or Tubulovillous Adenoma in the pathology report and would be represented like so in the data model: 
+
+valueCodeableConcept = $SNOMEDCT#309084001 "Villous adenoma of colon (disorder)"
+valueCodeableConcept = $SNOMEDCT#312823001 "Villous adenoma of rectum (disorder)"
+valueCodeableConcept = $SNOMEDCT#448428002 "Tubulovillous adenoma of rectum (disorder)"
+
+In our example case the patient has two polyps that are both Tubular Adenomas from the rectum. Both are less that 10mm. You will recall that none of the polyps was resected piecemeal, none had high-grade dysplasia, and none showed any signs of malignancy. (Malignancy is not mentioned expressly in this table because because this protocol would not longer apply). 
+
+When is the next colonoscopy?
+
 ### Semantic Mappings
 
-<span class="caption">Table 2. Code Systems</span>
+To do: explanation. 
+To do: explain coding systems
+
+<span class="caption">Table 3. Code Systems</span>
 
 | Name      | url                                                        | Notes                                           |
 | --------- | ---------------------------------------------------------- | ----------------------------------------------- |
