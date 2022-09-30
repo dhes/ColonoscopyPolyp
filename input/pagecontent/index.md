@@ -220,24 +220,116 @@ There is a general introduction to FHIR [here](https://www.hl7.org/fhir/). The b
 
 We will use these FHIR resources: 
 
-* Patient
-* Procedure
-* DiagnosticReport
-* Specimen
-* Observation
+* [DiagnosticReport](https://www.hl7.org/fhir/diagnosticreport.html)
+* [Specimen](https://www.hl7.org/fhir/specimen.html)
+* [Observation](https://www.hl7.org/fhir/observation.html)
 
-... and these FHIR data types: 
+... and these FHIR [data types](https://www.hl7.org/fhir/datatypes.html): 
 
-- Reference
 - id
-- CodeableConcept
 - dateTime
+- Period
 - boolean
+- CodeableConcept
+- Reference]
 - SimpleQuantity
 
-Since the Patient and Procedure resources require little modification, we will spend little time on these resources. Patient will be incorporated into our report by reference ... that is to say by using a FHIR Reference data type. FHIR references have the structure {Resource/id} so we will use {Patient/patient.id}. The Procedure resource is not expressly contained in our data model because the only information we need from the colonoscopy procedure is the date.
+This implementation guide defines a set of FHIR profiles needed to construct the data model. Each of these is based on a Parent which is a native FHIR resource. Each of these profiles is prefixed with cp to indicate that it is a Colonoscopy Polyp profile. Here is the list: 
 
-So the first FHIR resource we bring into play is the DiagnosticReport. The DiagnosticReport resource will serve as the center of our data structure. The procedure date will become  DiagnosticReport.effective and the pathology report date will become the DiagnosticReport.issued. So far we have: 
+- cpDiagnosticReport
+- cpSpecimen
+- cpResult 
+- cpPathology
+- cpDysplasia
+- cpNoMalignantNeoplasm
+
+We will start with the cpSpecimen profile. 
+
+#### The cpSpecimen Profile
+
+<span class="caption">Table n. cpSpecimen Profile</span>
+
+| Name | Parent |
+| --- | --- 
+| cpSpecimen | Specimen | 
+
+cpSpecimen constrains the Specimen resource as follows: 
+
+```
+1 * status = #available
+2 * collection
+3   * bodySite from cp-body-site // body sites in the large intestine
+4   * method from cp-polyp-excision-method // whole or piecemeal?
+5   * quantity from cp-polyp-length-units // millimeters
+6   * collected[x] 1..1 // exactly one value
+7 * type = $Hl7VSSpecimenType#POL "Polyps"
+8 * subject 1..1 // exactly one subject
+9 * subject only Reference(cp-patient) // subject can only be a cpPatient
+```
+Here's a walkthrough:
+
+```
+1 The specimen status must equal "available".
+2 The collection element
+3 The specimen collection bodySite must be selected from the _value set_ cp-polyp-excision-method (more on value sets in a minute). 
+4 The collection method must be selected from the value set cp-polyp-excision-method. 
+5 The collection quantity must be from the value set cp-polyp-length-units.
+6 The collected[x] value must be present. 
+7 The specimen is a polyp
+8 The specimen subject must be present. 
+9 The specimen subject must refer to a patient which conforms to the cpPatient profile. 
+```
+Lets take one step back and look at value sets. FHIR _implement guides_ (IGs) define _value sets_ which are used to constrain profiles. Value sets are lists of _codes_. When a value set constraint is applied, the value of the FHIR element must be selected from the codes in the value set. Let us step back a second time and discuss _codes_. 
+
+Codes are a core component of medical information and an essential feature of FHIR. Code systems for medical billing and diagnosis are ubiquitous in health systems worldwide. Health workers in the US are very familiar with CPT and ICD codes. More general code system exist that address health and science concepts to a granular level such as LOINC and SNOMEDCT. There is a UCUM code system that defines units of measure. There are also terminology code systems defined specifically for use in FHIR. Here is a list of the code systems used in this IG along with links to introductory materials: 
+
+<span class="caption">Table n. Code Systems</span>
+
+| Name                                                                       | url                                                        | Example                                         |
+|----------------------------------------------------------------------------|------------------------------------------------------------|-------------------------------------------------|
+| [LOINC](https://loinc.org/kb/users-guide/introduction/)                    | https://loinc.org/                                         | LOINC#8480-6 "Systolic blood pressure"          |
+| [SNOMEDCT](https://www.nlm.nih.gov/healthit/snomedct/snomed_overview.html) | http://snomed.info/sct                                     | SNOMEDCT#34402009 "Rectum structure (body structure)" |
+| [ICD-10-CM](https://www.cdc.gov/nchs/icd/icd-10-cm.htm)                    | http://hl7.org/fhir/sid/icd-10-cm                          | ICD10CM#E11 "Type 2 diabetes mellitus"                                                |
+| [UCUM](https://ucum.nlm.nih.gov/)                                          | https://ucum.org/                                          | UCUM#mm 'millimeter'                            | 
+| OBSCAT                                                                     | http://terminology.hl7.org/CodeSystem/observation-category | #procedure 'Procedure',  #laboratory 'Laboratory' |
+| v2-0074                                                                    | http://terminology.hl7.org/CodeSystem/v2-0074              | #SP 'Surgical Pathology'                         |
+| Hl7VSSpecimenType                                                                   | http://terminology.hl7.org/CodeSystem/v2-0487              | #POL 'Polyps'                                    |
+{: class="grid"}
+
+The the name of the coding system is often left off when it's part of FHIR terminology, which is why you see "#procedure" instead of "OBSCAT#procedure" in this table. Otherwise the format is CODESYSTEM#CODE "description". 
+
+Now that we've discussed code systems and value sets and the conventional shorthand notation, we can list the value sets mentioned in connection with cpSpecimen. 
+
+```
+cp-body-site
+* SNOMEDCT#32713005 "Cecum structure (body structure)"
+* SNOMEDCT#9040008  "Ascending colon structure (body structure)"
+* SNOMEDCT#485005   "Transverse colon structure (body structure)"
+* SNOMEDCT#32622004 "Descending colon structure (body structure)"
+* SNOMEDCT#60184004 "Sigmoid colon structure (body structure)"
+* SNOMEDCT#34402009 "Rectum structure (body structure)"
+```
+
+```
+cp-polyp-excision-method
+* SNOMEDCT#65801008 "Excision (procedure)"
+* SNOMEDCT#787139004 "Piecemeal Excision (procedure)"
+```
+
+```
+cp-polyp-length-units
+* UCUM#mm 'millimeter'
+```
+
+<aside>The date information of the cpSpecimen is expressed here as collected[x]. The [x] indicates that more than one FHIR datatype may be used. In the case of specimen effective values, that data type can be either a dateTime or a _Period_ i.e. effectiveDateTime or effectivePeriod. The [Period](https://www.hl7.org/fhir/datatypes.html#Period) data type contains two dateTimes, called _start_ and _end_. Technically a colonoscopy procedure has a beginning and end, so a Period datatype is appropriate. On the other hand most procedures begin and end on the same day, and many don't have beginning and ending times recorded, so a simple dateTime would also be acceptable. So either dateTime or Period should be fine in this context. </aside>
+
+This is how the core FHIR Specimen resource is adapted for the narrow use case of a cpSpecimen. In brief, a cpSpecimen is a Specimen that is collected from the large intestine of a human subject, where the size of the specimen measured in mm. 
+
+#### The cpDiagnosticReport Profile
+
+We started with cpSpecimen because the name of the base resource is a good representation of the profile. The base resource is Specimen and this is, well, a specimen. Now we will shift to cpDiagnosticReport and put cpSpecimen in the context of the nested FHIR data model. 
+
+So the first FHIR resource we bring into play is the DiagnosticReport. The DiagnosticReport resource will serve as the center of our data structure. The patient reference becomes DiagnosticReport.subject, the procedure date will become DiagnosticReport.effective and the pathology report date will become the DiagnosticReport.issued. So far we have: 
 
 <span class="caption">Table 1. Logical Model to DiagnosticReport Resource</span>
 
@@ -273,25 +365,62 @@ The overall structure of the report is:
 
 <pre><code>
 Patient
-├── Procedure
-|   └── cpDiagnosticReport
-|       ├── cpSpecimen[n]
-|       |     └── collection
-|       |         └── bodySite
-|       |         ├── quantity
-|       |         └── method
-|       └── cpResult[n]
-|             └── hasMember
-|                 └── cpPathology
-|                 ├── cpDysplasia
-|                 └── cpNoMalignantNeoplasm
+├── cpDiagnosticReport
+|    ├── cpSpecimen[n]
+|    |    └── collection
+|    |         └── bodySite
+|    |         ├── quantity
+|    |         └── method
+|    └── cpResult[n]
+|         └── hasMember
+|              └── cpPathology
+|              ├── cpDysplasia
+|              └── cpNoMalignantNeoplasm
 </code></pre>
 
-The model patterned after the [FHIR DiagnosticReport example showing a laboratory report with multiple specimens and panels](https://hl7.org/fhir/diagnosticreport-example-ghp.json.html). It uses the base DiagnosticReport specimen element to describe the source location of the polyp along with its size and method of removal. The method is constrained to the coded values 'excision' and 'piecemeal excision'. cpResult involves nested Observation resources. cpResult is itself an Observation resource with three hasMember elements which are in turn based on the Observation resource. These are all tied together by FHIR References which essentially act as primary keys, connecting the appropriate Observation and Specimen details together under the umbrella of the DiagnosticReport. 
+See how cpSpecimen is now showing as cpSpecimen[n] indicating there may be more than one specimen. Note also that cpSpecimen is an element in the cpDiagnosticReport profile. 
+
+The model patterned after the [FHIR DiagnosticReport example showing a laboratory report with multiple specimens and panels](https://hl7.org/fhir/diagnosticreport-example-ghp.json.html). It uses the base DiagnosticReport resource to pull the report together. 
+
+Here are the constraints: 
+
+```
+ 1 * status from cp-diagnostic-report-final-or-amended
+ 2 * category 1..1
+ 3 * category = $DiagnosticServiceSectionId#SP "Surgical Pathology" // $DiagnosticServiceSectionId a.k.a. HL-7 v2-0074
+ 4 * code = $SNOMEDCT#122645001 "Polyp from large intestine obtained by polypectomy (specimen)"
+ 5 * effective[x] 1..1
+ 6 * effective[x] only dateTime
+ 7 * issued 1..1
+ 8 * specimen 1..
+ 9 * result 1..
+10 * subject 1..1
+11 * subject only Reference(cp-patient) 
+12 * obeys specimen-count-equals-result-count
+13 * obeys result-refers-to-cpSpecimen
+```
+...and walkthrough:
+
+```
+ 1 Status must be from the value set cp-diagnostic-report-final-or-amended
+ 2 There must be exactly one category. 
+ 3 The code of the diagnostic report must be 
+ 4 
+ 5 
+ 6 
+ 7 
+ 8 
+ 9
+10 
+11 
+12 
+13 
+```
 
 
-Now for examples. Again we will skip over Patient and Procedure, which are proforma. Fhir resources are typically represented with JSON, XML or Turtle. With examples we will use [FHIR Shorthand](https://hl7.org/fhir/uv/shorthand/) for readability. 
+<!---specimen element to describe the source location of the polyp along with its size and method of removal. cpResult involves nested Observation resources. cpResult is itself an Observation resource with three hasMember elements which are in turn based on the Observation resource. These are all tied together by FHIR References which essentially act as primary keys, connecting the appropriate Observation and Specimen details together under the umbrella of the DiagnosticReport. -->
 
+<!---Now for examples. Again we will skip over Patient and Procedure, which are proforma. Fhir resources are typically represented with JSON, XML or Turtle. With examples we will use [FHIR Shorthand](https://hl7.org/fhir/uv/shorthand/) for readability. -->
 Example DiagnosticReport: 
 
 <pre><code>
@@ -553,7 +682,7 @@ FHIR version 4.01 is used for FHIR resources. FHIR U.S. Core 4.0.0 profiles will
 
 We have to tell a patient who just had colonoscopy when the _next_ one should be. 
 
-The procedure is done, the patient has gone home and it is a new day. The doctor notices a new pathology report in her in-box. It's from the colonoscopy the day before. Look back at the previous day's procedure report while she reads the pathology reports, she decides what the _surveillance interval_ should be. Because she's done this day-in and day-out for years she can do that in her head. But you and I need to look it up. 
+The procedure is done, the patient has gone home and it is a new day. The doctor notices a new pathology report in her in-box. It's from the colonoscopy the day before. Look back at the previous day's procedure report while she reads the pathology reports, she decides what the _surveillance interval_ should be. Because she's done this day-in and day-out for years she can do that in her head. But we need to look it up. 
 
 Here are the guidelines as published by the [US Multi-Society Task Force on Colorectal Cancer (USMSTFCC)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7687298/pdf/nihms-1645693.pdf), summarized here: 
 
@@ -589,14 +718,3 @@ When is the next colonoscopy?
 To do: explanation. 
 To do: explain coding systems
 
-<span class="caption">Table 3. Code Systems</span>
-
-| Name      | url                                                        | Notes                                           |
-| --------- | ---------------------------------------------------------- | ----------------------------------------------- |
-| LOINC     | http://loinc.org                                           |                                                 |
-| SNOMEDCT  | http://snomed.info/sct                                     |                                                 |
-| ICD-10-CM | http://hl7.org/fhir/sid/icd-10-cm                          |                                                 |
-| OBSCAT    | http://terminology.hl7.org/CodeSystem/observation-category | procedure 'Procedure',  laboratory 'Laboratory' |
-| v2-0074   | http://terminology.hl7.org/CodeSystem/v2-0074              | SP 'Surgical Pathology'                         |
-| v2-0487   | http://terminology.hl7.org/CodeSystem/v2-0487              | POL 'Polyps'                                    |
-{: class="grid"}

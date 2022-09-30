@@ -10,7 +10,7 @@ Alias:   $OBSSTATUS = http://hl7.org/fhir/observation-status
 // Alias:   $OBSSTATUS = http://hl7.org/fhir/ValueSet/observation-status
 Alias:   $DiagnosticServiceSectionId = http://terminology.hl7.org/CodeSystem/v2-0074 // e.g. SP 'Surgical Pathology'
 // Alias:   $v2-0074 = http://terminology.hl7.org/CodeSystem/v2-0074 // SP 'Surgical Pathology'
-Alias:   $v2-0487 = http://terminology.hl7.org/CodeSystem/v2-0487 // POL 'Polyps
+Alias:   $Hl7VSSpecimenType = http://terminology.hl7.org/CodeSystem/v2-0487 // POL 'Polyps 
 // Alias:   $AdminGender = http://hl7.org/fhir/ValueSet/administrative-gender
 Alias: $UCUM = http://unitsofmeasure.org
 // US Core

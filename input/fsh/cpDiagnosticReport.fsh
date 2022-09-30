@@ -14,8 +14,9 @@ Description: "A diagnostic report summarizing all polyps collected at the time o
 * category 1..1
 * category = $DiagnosticServiceSectionId#SP "Surgical Pathology" // $DiagnosticServiceSectionId a.k.a. HL-7 v2-0074
 // * category = $v2-0074#SP "Surgical Pathology"
-* code 1..1
-* code = $SNOMEDCT#122645001 "Polyp from large intestine obtained by polypectomy (specimen)"
+// * code 1..1 //redundant
+* code = $SNOMEDCT#122645001 "Polyp from large intestine obtained by polypectomy (specimen)" // use this for specimen
+// * code = $SNOMEDCT#28939002 "Endoscopic polypectomy of large intestine (procedure)" // another candidate
 * effective[x] 1..1
 * effective[x] only dateTime
 * issued 1..1
@@ -24,6 +25,7 @@ Description: "A diagnostic report summarizing all polyps collected at the time o
 * subject 1..1
 * subject only Reference(cp-patient) 
 * obeys specimen-count-equals-result-count
+* obeys result-refers-to-cpSpecimen
 
 Invariant: specimen-count-equals-result-count
 Severity: #error

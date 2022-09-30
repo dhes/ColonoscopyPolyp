@@ -3,7 +3,7 @@ Profile: CPSpecimen
 Parent: Specimen
 Id: cp-specimen
 Title: "Specimen (Specimen)"
-Description: "A polyp specimen obtained during a colonoscopy procedure."
+Description: "A polyp specimen collected from the large intestine."
 * ^version = "0.0.1"
 * ^publisher = "Not published"
 * ^contact.name = "Dan Heslinga"
@@ -16,5 +16,6 @@ Description: "A polyp specimen obtained during a colonoscopy procedure."
   * method from cp-polyp-excision-method
   * quantity from cp-polyp-length-units // millimeters
   * collected[x] 1..1 // period or datetime should be OK
+* type = $Hl7VSSpecimenType#POL "Polyps"
 * subject 1..1
 * subject only Reference(cp-patient) 
