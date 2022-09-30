@@ -47,5 +47,5 @@ Description: "Excised whole or piecemeal? Excision without qualifier is taken to
 
 // other codes to be aware of:
 // $SNOMEDCT#235340004 "Excision of polyp of large intestine (procedure)"
-// $SNOMED#28939002 "Endoscopic polypectomy of large intestine (procedure)"
+$SNOMED#28939002 "Endoscopic polypectomy of large intestine (procedure)"
 // $SNOMEDCT#129304002 "Excision - action (qualifier value)"
