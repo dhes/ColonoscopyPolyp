@@ -402,22 +402,108 @@ Here are the constraints:
 ...and walkthrough:
 
 ```
- 1 Status must be from the value set cp-diagnostic-report-final-or-amended
+ 1 Status must be from the value set cp-diagnostic-report-final-or-amended. 
  2 There must be exactly one category. 
- 3 The code of the diagnostic report must be 
- 4 
- 5 
- 6 
- 7 
- 8 
- 9
-10 
-11 
-12 
-13 
+ 3 The category of the diagnostic report must be #SP for Surgical Pathology.
+ 4 The code must be SNOMEDCT#122645001. 
+ 5 There must be an effective[x] value. 
+ 6 The effective value must be a dateTime
+ 7 There must be a issued value. 
+ 8 There must be at least one specimen.
+ 9 There must be at least one result. 
+10 There must be a subject. 
+11 The subject can only be a Reference to a cpPatient
+12 There must be the same number of specimens and results. 
+13 Each result must refer to a specific specimen. 
 ```
 
+IN brief, the cpDiagnosticReport is a surgical pathology report about polyps from the large intestine obtained by polypectomy on a human subject, which contains specimen and result elements that are paired to each other. 
 
+#### An Observation inside an Observation
+
+So far we have covered cpSpecimen and cpDiagnosticReport. With cpResult it gets more interesting. A DiagnosticStudy has results, and results are Observation resources. Observations have 'hasMember' elements which can be Observations. So in effect the cpResult profile is an Observation that refers to other Observations which are named cpPathology, cpDysplasia and cpNoMalignantNeoplasm. This is perfectly acceptable in FHIR. As is the case with cpSpecimen, there my be more than one cpResult. As mentioned in the previous section the number n is the same for cpSpecimen and cpResult. As we shall see, cpResult as a reference to its corresponding cpSpecimen. 
+
+Here are the cpResult constraints:
+
+```
+ 1 * subject 1..1
+ 2 * subject only Reference(cp-patient) 
+ 3 * code = $SNOMEDCT#122645001 "Polyp from large intestine obtained by polypectomy (specimen)"
+ 4 * specimen only Reference(cp-specimen) 
+ 5 * hasMember 3..3 MS
+ 6   * ^slicing.discriminator.type = #pattern
+ 7   * ^slicing.discriminator.path = "$this.resolve().code"
+ 8   * ^slicing.description = "Slicing based on referenced resource code attribute."
+ 9   * ^slicing.rules = #closed
+10 * hasMember contains
+11     pathology 1..1 MS and
+12     severeDysplasia 1..1 MS and
+13     noMalignancy 1..1 MS
+14 * hasMember[pathology] only Reference(CPPathology)
+15 * hasMember[severeDysplasia] only Reference(CPDysplasia)
+16 * hasMember[noMalignancy] only Reference(CPNoMalignantNeoplasm)
+
+```
+
+... with walkthrough:
+
+```
+    1 There must be a subject. 
+    2 The subject must be a cpPatient. 
+    3 The code must be SNOMEDCT#122645001
+    4 The specimen can only refer to a cpSpecimen. 
+		5 There must be exactly three members. 
+  6-9 The members must follow a certain pattern. 
+10-16 Each member must contain a reference, and those references must have one to a cpPathology profile, one to a cpDysplasia profile and one to a cpMalignantNeoplasm profile. 
+```
+
+These constraints look more complicated because they use a FHIR feature called _slicing_. Slicing is an advanced concept, but for our purposes it is just a way to work with lists in FHIR. 
+
+#### Down to the finer datails. 
+
+Now we have the overall structure of cpDiagnosticReport. It remains to discuss cpPathology, cpDysplasia and cpMalignantNeoplasm. 
+
+Here is cpPathology:
+
+```
+* status from cp-final-or-amended
+* category 1..1
+* category = http://terminology.hl7.org/CodeSystem/observation-category#laboratory "Laboratory"
+* code = $LOINC#34574-4 "Pathology report final diagnosis"
+* value[x] 1..1 
+* value[x] only CodeableConcept
+* valueCodeableConcept from cp-histopathology-vs (required)
+* subject 1..1
+* subject only Reference(cp-patient) 
+```
+
+Here is cpDysplasia:
+
+```
+* status from cp-final-or-amended
+* category 1..1
+* category = $OBSCAT#laboratory "Laboratory"
+* code = $SNOMEDCT#55237006 "Severe dysplasia (morphologic abnormality)"
+* value[x] 1..1
+* value[x] only boolean
+* subject 1..1
+* subject only Reference(cp-patient) 
+```
+
+And here is cpMalignantNeoplasm:
+
+```
+* status from cp-final-or-amended
+* category 1..1
+* category = http://terminology.hl7.org/CodeSystem/observation-category#laboratory "Laboratory"
+* code = $SNOMEDCT#110396000 "No evidence of malignant neoplasm (finding)"
+* value[x] 1..1
+* value[x] only boolean
+* subject 1..1
+* subject only Reference(cp-patient) 
+```
+
+### Samples
 <!---specimen element to describe the source location of the polyp along with its size and method of removal. cpResult involves nested Observation resources. cpResult is itself an Observation resource with three hasMember elements which are in turn based on the Observation resource. These are all tied together by FHIR References which essentially act as primary keys, connecting the appropriate Observation and Specimen details together under the umbrella of the DiagnosticReport. -->
 
 <!---Now for examples. Again we will skip over Patient and Procedure, which are proforma. Fhir resources are typically represented with JSON, XML or Turtle. With examples we will use [FHIR Shorthand](https://hl7.org/fhir/uv/shorthand/) for readability. -->
