@@ -36,3 +36,5 @@ Invariant: result-refers-to-cpSpecimen
 Severity: #error
 Description: "Each result must refer to a CPSpecimen"
 Expression: "result.reference.resolve().resourceType = CPSpecimen"
+
+// DH can you require that the result refers to the nth i.e. the correspondeing or same-numbered specimen? So far it could be any cpSpecimen includine one from another report. 

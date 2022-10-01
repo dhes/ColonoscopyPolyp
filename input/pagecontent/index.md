@@ -502,12 +502,12 @@ And here is cpMalignantNeoplasm:
 
 Again, this is a true/false answer to "Does this polyp have NO evidence of malignant neoplasm?". Please take note: false means there IS evidence of malignant neoplasm! This somewhat backward situation occurs because SNOMEDCT has no code for "Evidence of malignant neoplasm (finding)" so we have little choice but to accept a double-negative. (Like the old song "Yes, we have no bananas.")
 
-### Samples
+### Examples
 <!---specimen element to describe the source location of the polyp along with its size and method of removal. cpResult involves nested Observation resources. cpResult is itself an Observation resource with three hasMember elements which are in turn based on the Observation resource. These are all tied together by FHIR References which essentially act as primary keys, connecting the appropriate Observation and Specimen details together under the umbrella of the DiagnosticReport. -->
 
 <!---Now for examples. Again we will skip over Patient and Procedure, which are proforma. Fhir resources are typically represented with JSON, XML or Turtle. With examples we will use [FHIR Shorthand](https://hl7.org/fhir/uv/shorthand/) for readability. -->
 
-Now we return to the data from our narrative procedure and pathology report and present it in the FHIR data model in shorthand form. Date are added for completeness.
+Now we return to the data from our narrative procedure and pathology report and present it in a shorthand version of FHIR. 
 
 Example DiagnosticReport: 
 <!-- need code and category, make sure is correct DH -->
@@ -729,7 +729,7 @@ We have to tell ou patient when their next colonoscopy should be.
 
 The procedure is done, the patient has gone home and it is a new day. The doctor notices a new pathology report in her in-box. It's from the colonoscopy the day before. Looking back at the previous day's procedure report while she reads the pathology reports, she thinks about what the surveillance interval should be. Because she's done this day-in and day-out for years she can do that in her head. But we need to look it up. 
 
-Here are the guidelines as published by the [US Multi-Society Task Force on Colorectal Cancer (USMSTFCC)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7687298/pdf/nihms-1645693.pdf), summarized here: 
+Here are the guidelines as published by the [US Multi-Society Task Force on Colorectal Cancer (USMSTFCC)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7687298/pdf/nihms-1645693.pdf): 
 
 <span class="caption">Table 2. Practice Guideline for Follow-up Colonoscopy</span>
 
@@ -750,11 +750,20 @@ You are already familiar with most of the terms in the table as explained above.
 
 Tubular Adenoma and Hyperplastic Polyp are histology terms that you've seen. Adenoma is a general term that includes Tubular Adenoma, Villous Adenoma and Tubulovillous Adenoma. Adenomas that have tubulovillous or villous histology are more likely to transform into cancer and therefore require closer follow-up. They are [less common](https://emedicine.medscape.com/article/170283-overview) than Tubular Adenoma and Hyperplastic Polyps. If a polyp has villous or tubulovillous features it will be called Villous Adenoma or Tubulovillous Adenoma in the pathology report. If our fictional patient had a Tubulovillous Adenoma (instead of a Tubular Adenoma) it would be represented like so in the FHIR data model: 
 
-```
-- DiagnosticReport.result.hasMember[pathology].valueCodeableConcept = $SNOMEDCT#448428002 "Tubulovillous adenoma of rectum (disorder)"
-```
+<pre><code>
+DiagnosticReport.result.hasMember[pathology].valueCodeableConcept = $SNOMEDCT#448428002 "Tubulovillous adenoma of rectum (disorder)"</code></pre>
 
-In our example case the patient has two polyps in the rectum that are both Tubular Adenomas. Both are less that 10mm. You will recall that none of the polyps was resected piecemeal, none had high-grade dysplasia, and none showed any signs of malignancy. (Malignancy is not mentioned expressly in this table because because this protocol would not longer apply). 
+In our example case the patient has two polyps in the rectum that are both Tubular Adenomas. Both are less that 10mm. You will recall that none of the polyps was resected piecemeal, none had high-grade dysplasia, and none showed any signs of malignancy. (Malignancy is not mentioned expressly in this table because because this protocol would not longer apply). One aspect the cpPatient profile that we have not discussed so far is the requirement that a cpPatient must have a deceased[x] element. If the patient is living (we hope), it will be boolean: 
 
-When is the next colonoscopy?
+<pre><code>Patient.deceased = false</code></pre>
+
+In the other case it can be boolean or a dateTime: 
+
+<pre><code>Patient.deceased = false
+Patient.deceased = 2001-09-11
+</code><pre>
+
+Eight way the cpPatient profile requires that it be expressly stated whether the patient is alive or dead, because in the latter case there is obviously no colonoscopy.
+
+Given that information and the reassuring advise that the patient is still with us: When should the next colonoscopy be? What about if the patient had two Tubulovillous Adenomas instead of Tubular Adenomas? 
 

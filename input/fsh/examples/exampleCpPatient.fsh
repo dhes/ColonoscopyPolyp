@@ -12,3 +12,4 @@ Description: "Example of a patient who underwent Colonoscopy."
 * identifier
   * system = "http://example.com"
   * value = "1325364"
+* deceasedBoolean = false
