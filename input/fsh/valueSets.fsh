@@ -2,9 +2,12 @@ ValueSet: CPHistopathology
 Id: cp-histopathology-vs
 Title: "Histopathology"
 Description: "Possible values for colon polyp histopathology"
-* $SNOMEDCT#444408007 "Tubular adenoma (disorder)"
-* $SNOMEDCT#89452002 "Hyperplastic polyp of intestine (disorder)"
 * $SNOMEDCT#68534000 "Intestinal mucous membrane structure (body structure)"
+* $SNOMEDCT#89452002 "Hyperplastic polyp of intestine (disorder)"
+* $SNOMEDCT#444408007 "Tubular adenoma (disorder)"
+* $SNOMEDCT#309084001 "Villous adenoma of colon (disorder)"
+* $SNOMEDCT#312823001 "Villous adenoma of rectum (disorder)"
+* $SNOMEDCT#448428002 "Tubulovillous adenoma of rectum (disorder)"
 * $SNOMEDCT#269533000 "Carcinoma of colon"
 
 ValueSet: CPFinalorAmended

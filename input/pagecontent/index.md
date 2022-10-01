@@ -725,9 +725,9 @@ If you are going to be authoring FHIR resources you will have to become familiar
 
 ### We have to decide. 
 
-We have to tell a patient who just had colonoscopy when the _next_ one should be. 
+We have to tell ou patient when their next colonoscopy should be. 
 
-The procedure is done, the patient has gone home and it is a new day. The doctor notices a new pathology report in her in-box. It's from the colonoscopy the day before. Look back at the previous day's procedure report while she reads the pathology reports, she decides what the _surveillance interval_ should be. Because she's done this day-in and day-out for years she can do that in her head. But we need to look it up. 
+The procedure is done, the patient has gone home and it is a new day. The doctor notices a new pathology report in her in-box. It's from the colonoscopy the day before. Looking back at the previous day's procedure report while she reads the pathology reports, she thinks about what the surveillance interval should be. Because she's done this day-in and day-out for years she can do that in her head. But we need to look it up. 
 
 Here are the guidelines as published by the [US Multi-Society Task Force on Colorectal Cancer (USMSTFCC)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7687298/pdf/nihms-1645693.pdf), summarized here: 
 
@@ -748,11 +748,11 @@ Here are the guidelines as published by the [US Multi-Society Task Force on Colo
 
 You are already familiar with most of the terms in the table as explained above. We have not yet talked about 'villous' or 'tubulovillous'. 
 
-Tubular Adenoma and Hyperplastic Polyp are histology terms that you've seen. Adenoma is a general term that includes Tubular Adenoma, Villous Adenoma and Tubulovillous Adenoma. Adenomas that have tubulovillous or villous histology are more likely to transform into cancer and therefore require closer follow-up. They are [less common](https://emedicine.medscape.com/article/170283-overview) than Tubular Adenoma and Hyperplastic Polyps. If a polyp has villous or tubulovillous feature it will be called Villous Adenoma or Tubulovillous Adenoma in the pathology report. It would be represented like so in the data model: 
+Tubular Adenoma and Hyperplastic Polyp are histology terms that you've seen. Adenoma is a general term that includes Tubular Adenoma, Villous Adenoma and Tubulovillous Adenoma. Adenomas that have tubulovillous or villous histology are more likely to transform into cancer and therefore require closer follow-up. They are [less common](https://emedicine.medscape.com/article/170283-overview) than Tubular Adenoma and Hyperplastic Polyps. If a polyp has villous or tubulovillous features it will be called Villous Adenoma or Tubulovillous Adenoma in the pathology report. If our fictional patient had a Tubulovillous Adenoma (instead of a Tubular Adenoma) it would be represented like so in the FHIR data model: 
 
-- valueCodeableConcept = $SNOMEDCT#309084001 "Villous adenoma of colon (disorder)"
-- valueCodeableConcept = $SNOMEDCT#312823001 "Villous adenoma of rectum (disorder)"
-- valueCodeableConcept = $SNOMEDCT#448428002 "Tubulovillous adenoma of rectum (disorder)"
+```
+- DiagnosticReport.result.hasMember[pathology].valueCodeableConcept = $SNOMEDCT#448428002 "Tubulovillous adenoma of rectum (disorder)"
+```
 
 In our example case the patient has two polyps in the rectum that are both Tubular Adenomas. Both are less that 10mm. You will recall that none of the polyps was resected piecemeal, none had high-grade dysplasia, and none showed any signs of malignancy. (Malignancy is not mentioned expressly in this table because because this protocol would not longer apply). 
 
