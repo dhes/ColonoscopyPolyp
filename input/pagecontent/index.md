@@ -143,7 +143,7 @@ Merging the procedure and pathology reports together, we have:
   - histopathology: tubular adenoma
   - severe dysplasia: false
   - no evidence of malignancy: true
-  - E. COLD BIOPSY: RECTAL POLYPS X 2 #1
+  - note: E. COLD BIOPSY: RECTAL POLYPS X 2 #1
 - Polyp 2
   - location: rectum
   - size: 3-4 mm
@@ -151,7 +151,7 @@ Merging the procedure and pathology reports together, we have:
   - histopathology: hyperplastic polyp
   - severe dysplasia: false
   - no evidence of malignancy: true
-  - E. COLD BIOPSY: RECTAL POLYPS X 2 #1
+  - note: E. COLD BIOPSY: RECTAL POLYPS X 2 #1
 
 This example describes two polyps. Every colonoscopy polyp report will have at least one polyp specimen, but can contain many more. Generalizing this model accordingly: 
 
@@ -247,12 +247,6 @@ We will start with the cpSpecimen profile.
 
 #### The cpSpecimen Profile
 
-<span class="caption">Table n. cpSpecimen Profile</span>
-
-| Name | Parent |
-| --- | --- 
-| cpSpecimen | Specimen | 
-
 cpSpecimen constrains the Specimen resource as follows: 
 
 ```
@@ -270,7 +264,7 @@ Here's a walkthrough:
 
 ```
 1 The specimen status must equal "available".
-2 The collection element
+2 (The collection element)
 3 The specimen collection bodySite must be selected from the _value set_ cp-polyp-excision-method (more on value sets in a minute). 
 4 The collection method must be selected from the value set cp-polyp-excision-method. 
 5 The collection quantity must be from the value set cp-polyp-length-units.
@@ -279,7 +273,7 @@ Here's a walkthrough:
 8 The specimen subject must be present. 
 9 The specimen subject must refer to a patient which conforms to the cpPatient profile. 
 ```
-Lets take one step back and look at value sets. FHIR _implement guides_ (IGs) define _value sets_ which are used to constrain profiles. Value sets are lists of _codes_. When a value set constraint is applied, the value of the FHIR element must be selected from the codes in the value set. Let us step back a second time and discuss _codes_. 
+Lets take one step back and look at value sets. FHIR _implement guides_ (IGs) define _value sets_ which are used to constrain profiles. Value sets are lists of _codes_. When a value set constraint is applied, the value of the FHIR element must be selected from the codes in the value set. Let us take another step back and discuss _codes_. 
 
 Codes are a core component of medical information and an essential feature of FHIR. Code systems for medical billing and diagnosis are ubiquitous in health systems worldwide. Health workers in the US are very familiar with CPT and ICD codes. More general code system exist that address health and science concepts to a granular level such as LOINC and SNOMEDCT. There is a UCUM code system that defines units of measure. There are also terminology code systems defined specifically for use in FHIR. Here is a list of the code systems used in this IG along with links to introductory materials: 
 
@@ -321,7 +315,7 @@ cp-polyp-length-units
 * UCUM#mm 'millimeter'
 ```
 
-<aside>The date information of the cpSpecimen is expressed here as collected[x]. The [x] indicates that more than one FHIR datatype may be used. In the case of specimen effective values, that data type can be either a dateTime or a _Period_ i.e. effectiveDateTime or effectivePeriod. The [Period](https://www.hl7.org/fhir/datatypes.html#Period) data type contains two dateTimes, called _start_ and _end_. Technically a colonoscopy procedure has a beginning and end, so a Period datatype is appropriate. On the other hand most procedures begin and end on the same day, and many don't have beginning and ending times recorded, so a simple dateTime would also be acceptable. So either dateTime or Period should be fine in this context. </aside>
+The date information of the cpSpecimen is expressed here as collected[x]. The [x] indicates that more than one FHIR datatype may be used. In the case of specimen effective values, that data type can be either a dateTime or a _Period_ i.e. effectiveDateTime or effectivePeriod. The [Period](https://www.hl7.org/fhir/datatypes.html#Period) data type contains two dateTimes, called _start_ and _end_. Technically a colonoscopy procedure has a beginning and end, so a Period datatype is appropriate. On the other hand most procedures begin and end on the same day, and many don't have beginning and ending times recorded, so a simple dateTime would also be acceptable. So either dateTime or Period should be fine in this context. 
 
 This is how the core FHIR Specimen resource is adapted for the narrow use case of a cpSpecimen. In brief, a cpSpecimen is a Specimen that is collected from the large intestine of a human subject, where the size of the specimen measured in mm. 
 
@@ -329,9 +323,9 @@ This is how the core FHIR Specimen resource is adapted for the narrow use case o
 
 We started with cpSpecimen because the name of the base resource is a good representation of the profile. The base resource is Specimen and this is, well, a specimen. Now we will shift to cpDiagnosticReport and put cpSpecimen in the context of the nested FHIR data model. 
 
-So the first FHIR resource we bring into play is the DiagnosticReport. The DiagnosticReport resource will serve as the center of our data structure. The patient reference becomes DiagnosticReport.subject, the procedure date will become DiagnosticReport.effective and the pathology report date will become the DiagnosticReport.issued. So far we have: 
+So the next FHIR resource we bring into play is the DiagnosticReport. The DiagnosticReport resource will serve as the center of our data structure. <!--- The patient reference becomes DiagnosticReport.subject, the procedure date will become DiagnosticReport.effective and the pathology report date will become the DiagnosticReport.issued. So far we have: 
 
-<span class="caption">Table 1. Logical Model to DiagnosticReport Resource</span>
+<span class="caption">Table n. Logical Model to DiagnosticReport Resource</span>
 
 | Logical Model |  FHIR Resource | FHIR Data Type |
 | --------------| -------------- |----------------|
@@ -359,9 +353,9 @@ There's some nesting here which needs explanation. The FHIR standard allows you 
 - cpDysplasia
 - cpNoMalignantNeoplasm
 
-Each of these Profiles are constrained by their Categories and CodeableConcepts. You can example the details in the Artifacts Summary provided with this implementation guide. 
+Each of these Profiles are constrained by their Categories and CodeableConcepts. You can example the details in the Artifacts Summary provided with this implementation guide. -->
 
-The overall structure of the report is: 
+The overall structure of the FHIR model is: 
 
 <pre><code>
 Patient
@@ -378,7 +372,7 @@ Patient
 |              └── cpNoMalignantNeoplasm
 </code></pre>
 
-See how cpSpecimen is now showing as cpSpecimen[n] indicating there may be more than one specimen. Note also that cpSpecimen is an element in the cpDiagnosticReport profile. 
+See how cpSpecimen is now shown as cpSpecimen[n] indicating there may be more than one specimen. Note also that cpSpecimen is an element of the cpDiagnosticReport profile. 
 
 The model patterned after the [FHIR DiagnosticReport example showing a laboratory report with multiple specimens and panels](https://hl7.org/fhir/diagnosticreport-example-ghp.json.html). It uses the base DiagnosticReport resource to pull the report together. 
 
@@ -417,11 +411,11 @@ Here are the constraints:
 13 Each result must refer to a specific specimen. 
 ```
 
-IN brief, the cpDiagnosticReport is a surgical pathology report about polyps from the large intestine obtained by polypectomy on a human subject, which contains specimen and result elements that are paired to each other. 
+In brief, the cpDiagnosticReport is a surgical pathology report about polyps from the large intestine obtained by polypectomy on a human subject, which contains specimen and result elements that are paired to each other. 
 
 #### An Observation inside an Observation
 
-So far we have covered cpSpecimen and cpDiagnosticReport. With cpResult it gets more interesting. A DiagnosticStudy has results, and results are Observation resources. Observations have 'hasMember' elements which can be Observations. So in effect the cpResult profile is an Observation that refers to other Observations which are named cpPathology, cpDysplasia and cpNoMalignantNeoplasm. This is perfectly acceptable in FHIR. As is the case with cpSpecimen, there my be more than one cpResult. As mentioned in the previous section the number n is the same for cpSpecimen and cpResult. As we shall see, cpResult as a reference to its corresponding cpSpecimen. 
+So far we have covered cpSpecimen and cpDiagnosticReport. With cpResult it gets more interesting. A DiagnosticStudy has results, and results are Observation resources. Observations have 'hasMember' elements which in this case are Observations. So in effect the cpResult profile is an Observation that refers to other Observations which are named cpPathology, cpDysplasia and cpNoMalignantNeoplasm. This is perfectly acceptable in FHIR. The number of cpResults is the same as cpSpecimens. As we shall see, cpResult has a reference to its corresponding cpSpecimen. 
 
 Here are the cpResult constraints:
 
@@ -442,7 +436,6 @@ Here are the cpResult constraints:
 14 * hasMember[pathology] only Reference(CPPathology)
 15 * hasMember[severeDysplasia] only Reference(CPDysplasia)
 16 * hasMember[noMalignancy] only Reference(CPNoMalignantNeoplasm)
-
 ```
 
 ... with walkthrough:
@@ -457,11 +450,11 @@ Here are the cpResult constraints:
 10-16 Each member must contain a reference, and those references must have one to a cpPathology profile, one to a cpDysplasia profile and one to a cpMalignantNeoplasm profile. 
 ```
 
-These constraints look more complicated because they use a FHIR feature called _slicing_. Slicing is an advanced concept, but for our purposes it is just a way to work with lists in FHIR. 
+These constraints look more complicated because they use a FHIR feature called _slicing_. Slicing is an advanced concept, but for our purposes it is just a way to work with lists in FHIR profiles. 
 
-#### Down to the finer datails. 
+#### Down to the fine details
 
-Now we have the overall structure of cpDiagnosticReport. It remains to discuss cpPathology, cpDysplasia and cpMalignantNeoplasm. 
+Now we have the overall structure of cpDiagnosticReport. It remains to drill down to cpPathology, cpDysplasia and cpMalignantNeoplasm. 
 
 Here is cpPathology:
 
@@ -477,6 +470,8 @@ Here is cpPathology:
 * subject only Reference(cp-patient) 
 ```
 
+In short, cpPathology is the histopathology of the polyp. 
+
 Here is cpDysplasia:
 
 ```
@@ -489,6 +484,8 @@ Here is cpDysplasia:
 * subject 1..1
 * subject only Reference(cp-patient) 
 ```
+
+Briefly put, cpDysplasia give a true false answer to the question "Does this polyp have severe dysplasia?".
 
 And here is cpMalignantNeoplasm:
 
@@ -503,12 +500,17 @@ And here is cpMalignantNeoplasm:
 * subject only Reference(cp-patient) 
 ```
 
+Again, this is a true/false answer to "Does this polyp have NO evidence of malignant neoplasm?". Please take note: false means there IS evidence of malignant neoplasm! This somewhat backward situation occurs because SNOMEDCT has no code for "Evidence of malignant neoplasm (finding)" so we have little choice but to accept a double-negative. (Like the old song "Yes, we have no bananas.")
+
 ### Samples
 <!---specimen element to describe the source location of the polyp along with its size and method of removal. cpResult involves nested Observation resources. cpResult is itself an Observation resource with three hasMember elements which are in turn based on the Observation resource. These are all tied together by FHIR References which essentially act as primary keys, connecting the appropriate Observation and Specimen details together under the umbrella of the DiagnosticReport. -->
 
 <!---Now for examples. Again we will skip over Patient and Procedure, which are proforma. Fhir resources are typically represented with JSON, XML or Turtle. With examples we will use [FHIR Shorthand](https://hl7.org/fhir/uv/shorthand/) for readability. -->
-Example DiagnosticReport: 
 
+Now we return to the data from our narrative procedure and pathology report and present it in the FHIR data model in shorthand form. Date are added for completeness.
+
+Example DiagnosticReport: 
+<!-- need code and category, make sure is correct DH -->
 <pre><code>
 1  * subject.reference = "Patient/example-cpPatient"
 2  * status = #final
@@ -546,7 +548,7 @@ Line-by-line walkthrough:
 15 The Reference cpResult's id is example-cpResult1.
 16 The narrative description of this polyp from the pathology report</code></pre>
 
-Here is the first example CPSpecimen from the above DiagnosticReport; 
+Here is the first example CPSpecimen from the above DiagnosticReport;  <!--- need type code and category DH -->
 
 <pre><code>
 1  * subject.reference = "Patient/example-cpPatient"
@@ -572,7 +574,7 @@ Here is the first example CPSpecimen from the above DiagnosticReport;
 8  The narrative description of this polyp from the pathology report
 </code></pre>
 
-Here is the corresponding CPReport0 from the above DiagnosticReport:
+Here is the corresponding CPResult0 from the above DiagnosticReport:
 
 <pre><code>1  * subject.reference = "Patient/example-cpPatient"
 2  * status = #final
@@ -610,6 +612,8 @@ Here is the corresponding CPReport0 from the above DiagnosticReport:
 
 And finally at the most granular level, the cpPathology, cpDysplasia and cpNoMalignancy Observations: 
 
+<!--- need ids DH-->
+
 CPPathology: 
 
 <pre><code>
@@ -639,6 +643,8 @@ CPNoMalignantNeoplasm:
 * code = $SNOMEDCT#110396000 "No evidence of malignant neoplasm (finding)"
 * valueBoolean = true
 </code></pre>
+
+<!--- place here or earlier an entity-relationship diagram that maps simple model to FHIR model; or a table doing the same. -->
 
 #### Welcome to the Real World
 
@@ -702,67 +708,20 @@ If you are new to JSON, here is a [good place to begin learning](https://www.w3s
 
 If you are going to be authoring FHIR resources you will have to become familiar with JSON, unless you prefer one of the alternatives. If you visit any FHIR resource page and click on the Examples tab, you will be directed to a page that [lists examples in JSON](https://www.hl7.org/fhir/patient-examples.html) as well as two other format: XML and Turtle. You may happen to be experienced with one of those formats. If that is that case how you work is your choice. Whatever format you choose, it is much easier to work with shorthand and let the computer translate it for you. 
 
-<!--- With training the data entry form should be fairly intuitive to fill out. The data model itself is fairly simple, but the FHIR model becomes rather complicated. The following core resources are used: 
+#### Table n. Mapping the Polyp Logical Model to FHIR
 
+| Polyp Logical Model | FHIR Profile |
+| --- | --- | 
+| location | cpDiagnosticReport.specimen.bodySite |
+| size | cpDiagnosticReport.specimen.quantity |
+| piecemeal resection | cpDiagnosticReport.specimen.method |
+| histopathology | cpDiagnosticReport.result.hasMember[pathology] |
+| severe dysplasia | cpDiagnosticReport.result.hasMember[severeDysplasia] |
+| no evidence of malignancy | cpDiagnosticReport.result.hasMember[noMalignancy] |
+| note (to specimen) | pDiagnosticReport.specimen.note.text |
+| note (to result) | pDiagnosticReport.result.specimen.display |
+{: class="grid"}
 
-These new resource are created with profiles. The required information is just that that is needed to apply the USMSTFCC guidelines. The term ColonoscopyPolyp is used to describe the context of the required information. The required information is obtained entirely from the colonoscopy procedure report and the pathology reports describing the polyps obtained during the colonoscopy. We are not concerned with polyps from any other type or procedure; we are not concerned with any other kind of specimen collected during the colonoscopy, nor for that matter with any other finding of the colonoscopy. Thus the name ColonoscopyPolyp. 
-
-We will use "CP" to stand in for Colonoscopy Polyp: 
-
-* CPDiagnosticReport
-* CPSpecimen
-* CPResultObservation
-* CPPolypDetailObservation
-* CPPathology
-* CPPolypDetailObservationSevereDysplasia
-* CPPolypDetailObservationPiecemealExcision
-* CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm
-
-The USMSTFCC guidelines for follow-up are summarized as follows:
-
-
-FHIR version 4.01 is used for FHIR resources. FHIR U.S. Core 4.0.0 profiles will be used where possible, considering that we are using a U.S. practice guideline. 
---->
-
-<!---
-
-#### Mapping to FHIR resources
-
-| Profile Name                                          | FHIR element name / Path                                           | Use Case Data Element | Comments                                                                                                                                                                                                   |
-| ----------------------------------------------------- | ------------------------------------------------------------------ | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| CPPatient                                             | Patient.id                                                         | Patient               | A patient with an id must exist for FHIR resources to reference                                                                                                                                            |
-| CPDiagnosticReport                                    | CPDiagnosticReport.category                                        |                       | http://terminology.hl7.org/CodeSystem/v2-0074#SP Surgical Pathology                                                                                                                                        |
-| CPDiagnosticReport                                    | CPDiagnosticReport.code                                            |                       | LOINC#11529-5 Surgical pathology study                                                                                                                                                                     |
-| CPDiagnosticReport                                    | CPDiagnosticReport.effectiveDateTime                               |                       |
-| CPDiagnosticReport                                    | CPDiagnosticReport.issued                                          |                       |
-| CPDiagnosticReport                                    | CPDiagnosticReport.specimen.reference                              |                       | link to specimen id                                                                                                                                                                                        |
-| CPDiagnosticReport                                    | CPDiagnosticReport.specimen.display                                |                       | short description of specimen from narrative pathology report                                                                                                                                              |
-| CPDiagnosticReport                                    | CPDiagnosticReport.result.reference                                |                       | link to CPResultObservation.id                                                                                                                                                                             |
-| CPDiagnosticReport                                    | CPDiagnosticReport.result.display                                  |                       | short description of specimen from narrative pathology report                                                                                                                                              |
-| CPSpecimen                                            | CPSpecimen.collection.bodySite                                     |                       | SNOMED code for location in large intestine e.g. SNOMEDCT#32713005 Cecum structure (body structure)                                                                                                        |
-| CPSpecimen                                            | CPSpecimen.collection.method                                       |                       | SNOMEDCT#129304002 Excision - action                                                                                                                                                                       |
-| CPSpecimen                                            | CPSpecimen.collection.quantity                                     |                       | specimen size in mm                                                                                                                                                                                        |
-| CPSpecimen                                            | CPSpecimen.collection.collectionDateTime                           |                       |
-| CPSpecimen                                            | CPSpecimen.type                                                    |                       | http://terminology.hl7.org/CodeSystem/v2-0487#POL Polyps                                                                                                                                                   |
-| CPSpecimen                                            | CPSpecimen.note                                                    |                       | short description of specimen from narrative pathology report                                                                                                                                              |
-| CPResultObservation                                   | CPResultObservation.code                                           |                       | SNOMEDCT#404684003 Polyp from large intestine obtained by polypectomy (specimen)                                                                                                                           |
-| CPResultObservation                                   | CPResultObservation.specimen.reference                             |                       | link to id of corresponding Specimen resource                                                                                                                                                              |
-| CPResultObservation                                   | CPResultObservation.specimen.display                               |                       | short description of specimen from narrative pathology report                                                                                                                                              |
-| CPResultObservation                                   | CPResultObservation.hasMember.reference                            |                       | reference to id of CPPolypDetailObservation. Four members: histopathology (codeable concept), severe dysplasia?  (boolean), resected piecemeal?  (boolean), no evidence of malignancy? (boolean)           |
-| CPResultObservation                                   | CPResultObservation.hasMember.display                              |                       | short description of detail CPPolypDetailObservation                                                                                                                                                       |
-| CPPathology                                           | CPPolypDetailObservation.category                                  |                       | http://terminology.hl7.org/CodeSystem/observation-category#laboratory Laboratory                                                                                                                           |
-| CPPathology                                           | CPPolypDetailObservation.code                                      |                       | LOINC#34574-4 Pathology report final diagnosis                                                                                                                                                             |
-| CPPathology                                           | CPPolypDetailObservation.valueCodeableConcept                      |                       | One of three values:  SNOMEDCT#444408007 Tubular adenoma (disorder), SNOMEDCT#89452002 Hyperplastic polyp of intestine (disorder), SNOMEDCT#68534000 Intestinal mucous membrane structure (body structure) |
-| CPPolypDetailObservationSevereDysplasia               | CPPolypDetailObservationSevereDysplasia.category                   |                       | http://terminology.hl7.org/CodeSystem/observation-category#laboratory Laboratory                                                                                                                           |
-| CPPolypDetailObservationSevereDysplasia               | CPPolypDetailObservationSevereDysplasia.code                       |                       | SNOMEDCT#55237006 Severe dysplasia (morphologic abnormality)                                                                                                                                               |
-| CPPolypDetailObservationSevereDysplasia               | CPPolypDetailObservationSevereDysplasia.valueBoolean               |                       | true/false                                                                                                                                                                                                 |
-| CPPolypDetailObservationPiecemealExcision             | CPPolypDetailObservationPiecemealExcision.category                 |                       | http://terminology.hl7.org/CodeSystem/observation-category#procedure Procedure                                                                                                                             |
-| CPPolypDetailObservationPiecemealExcision             | CPPolypDetailObservationPiecemealExcision.code                     |                       | SNOMEDCT#787139004 Piecemeal excision                                                                                                                                                                      |
-| CPPolypDetailObservationPiecemealExcision             | CPPolypDetailObservationPiecemealExcision.valueBoolean             |                       | true/false                                                                                                                                                                                                 |
-| CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm | CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm.category     |                       | http://terminology.hl7.org/CodeSystem/observation-category#laboratory Laboratory                                                                                                                           |
-| CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm | CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm.code         |                       | SNOMEDCT#110396000 No evidence of malignant neoplasm (finding)                                                                                                                                             |
-| CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm | CPPolypDetailObservationNoEvidenceOfMalignantNeoplasm.valueBoolean |                       | true/false                                                                                                                                                                                                 |
--->
 
 ### We have to decide. 
 
