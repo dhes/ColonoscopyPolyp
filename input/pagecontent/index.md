@@ -746,20 +746,15 @@ Here are the guidelines as published by the [US Multi-Society Task Force on Colo
 | piecemeal resection of adenoma ≥20 mm           |           1/2            |
 {: class="grid"}
 
-You are already familiar with most of the terms in the table as explained above. We have not yet talked about 'villous' or 'tubulovillous' or the term 'histology'. 'Histology' means "The anatomical study of the microscopic structure of animal and plant tissues" per [TheFreeDictionary](https://medical-dictionary.thefreedictionary.com/histology). 
+You are already familiar with most of the terms in the table as explained above. We have not yet talked about 'villous' or 'tubulovillous'. 
 
-Tubular Adenoma and Hyperplastic Polyp are histology terms that you've seen. Adenoma is a general term that includes Tubular Adenoma, Villous Adenoma and Tubulovillous Adenoma. Adenomas that have tubulovillous or villous histology are more likely to transform into cancer and therefore require closer follow-up. They are [less common](https://emedicine.medscape.com/article/170283-overview) than Tubular Adenoma and Hyperplastic Polyps. If a polyp has villous or tubulovillous feature it will be called Villous Adenoma or Tubulovillous Adenoma in the pathology report and would be represented like so in the data model: 
+Tubular Adenoma and Hyperplastic Polyp are histology terms that you've seen. Adenoma is a general term that includes Tubular Adenoma, Villous Adenoma and Tubulovillous Adenoma. Adenomas that have tubulovillous or villous histology are more likely to transform into cancer and therefore require closer follow-up. They are [less common](https://emedicine.medscape.com/article/170283-overview) than Tubular Adenoma and Hyperplastic Polyps. If a polyp has villous or tubulovillous feature it will be called Villous Adenoma or Tubulovillous Adenoma in the pathology report. It would be represented like so in the data model: 
 
-valueCodeableConcept = $SNOMEDCT#309084001 "Villous adenoma of colon (disorder)"
-valueCodeableConcept = $SNOMEDCT#312823001 "Villous adenoma of rectum (disorder)"
-valueCodeableConcept = $SNOMEDCT#448428002 "Tubulovillous adenoma of rectum (disorder)"
+- valueCodeableConcept = $SNOMEDCT#309084001 "Villous adenoma of colon (disorder)"
+- valueCodeableConcept = $SNOMEDCT#312823001 "Villous adenoma of rectum (disorder)"
+- valueCodeableConcept = $SNOMEDCT#448428002 "Tubulovillous adenoma of rectum (disorder)"
 
-In our example case the patient has two polyps that are both Tubular Adenomas from the rectum. Both are less that 10mm. You will recall that none of the polyps was resected piecemeal, none had high-grade dysplasia, and none showed any signs of malignancy. (Malignancy is not mentioned expressly in this table because because this protocol would not longer apply). 
+In our example case the patient has two polyps in the rectum that are both Tubular Adenomas. Both are less that 10mm. You will recall that none of the polyps was resected piecemeal, none had high-grade dysplasia, and none showed any signs of malignancy. (Malignancy is not mentioned expressly in this table because because this protocol would not longer apply). 
 
 When is the next colonoscopy?
-
-### Semantic Mappings
-
-To do: explanation. 
-To do: explain coding systems
 
