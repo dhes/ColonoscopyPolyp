@@ -1,8 +1,8 @@
-Profile: CPProcdeure
+Profile: CPProcedure
 Parent: Procedure
-Id: cp-patient
-Title: "Patient (Patient)"
-Description: "A patient who has undergone colonoscopy."
+Id: cp-procedure
+Title: "Procedure (Procedure)"
+Description: "Colonoscopy procedure"
 * ^version = "0.0.1"
 * ^publisher = "Not published"
 * ^contact.name = "Dan Heslinga"
@@ -12,3 +12,4 @@ Description: "A patient who has undergone colonoscopy."
 * subject only Reference(cp-patient)
 * performed[x] 1..1 MS
 * performed[x] only Period or dateTime // basically we need a date. If it's a period presumably it will be begina end on the same day or perhaps begin on a day and end the next day in the case of a midnight colonoscopy. 
+* code from cp-colonoscopy-procedure

@@ -48,6 +48,26 @@ Description: "Excised whole or piecemeal? Excision without qualifier is taken to
 * $SNOMEDCT#65801008 "Excision (procedure)"
 * $SNOMEDCT#787139004 "Piecemeal Excision (procedure)"
 
+ValueSet: CPColonoscopyProcedure
+Id: cp-colonoscopy-procedure
+Title: "Colonoscopy procedure"
+Description: "A myriad of ways to described essentially the same thing"
+* $SNOMEDCT#28939002 "Endoscopic polypectomy of large intestine (procedure)"
+// OK fine. But nobody calls it that.
+* $SNOMEDCT#6019008 "Endoscopy of large intestine (procedure)"
+// but didn't you take something out? 
+* $SNOMEDCT#80050006 "Endoscopic biopsy of large intestine (procedure)"
+// Isn't the biopsy really a polypectomy?
+* $SNOMEDCT#609279008 "Endoscopic excision of tissue of large intestine (procedure)"
+// Excision as in "piecemeal" or "whole"?
+* $SNOMEDCT#78133002 "Endoscopic excision of lesion of large intestine (procedure) "
+// OK that's it!
+* $SNOMEDCT#446170008 "Colonoscopic excision of lesion of large intestine (procedure)"
+// I'm not going to complain any more!
+* $SNOMEDCT#73761001 "Colonoscopy (procedure) "
+* $SNOMEDCT#444783004 "Screening colonoscopy (procedure)"
+// There may be many more. 
+
 // other codes to be aware of:
 // $SNOMEDCT#235340004 "Excision of polyp of large intestine (procedure)"
 // $SNOMED#28939002 "Endoscopic polypectomy of large intestine (procedure)"

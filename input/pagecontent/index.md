@@ -129,8 +129,8 @@ Figure 1 illustrates what we have discussed so far:
 
 ![](HighLevelInformationModel2.svg){: style="float:right; width:100%; height:auto"}
 
-### Putting It Together
-#### A Logical Data Model
+#### Putting It Together
+### A Logical Data Model
 
 Now that we have a general idea of the types of information that we need to make our surveillance colonoscopy decision, we will collect it all in preparation for the next step -- translating it into _FHIR_. FHIR® (Fast Healthcare Interoperability Resources) is an industry-standard medical information modeling system. More on this later. 
 
@@ -212,7 +212,7 @@ Endoscopies for this designated Endoscopist will be performed and recorded as us
 
 --->
 
-#### Translating the Logical Model to FHIR
+### Translating the Logical Model to FHIR
 
 From this point we get technical. It's time to map this logical model to FHIR. From here you will need to know a little about FHIR. 
 
@@ -236,6 +236,8 @@ We will use these FHIR resources:
 
 This implementation guide defines a set of FHIR profiles needed to construct the data model. Each of these is based on a Parent which is a native FHIR resource. Each of these profiles is prefixed with cp to indicate that it is a Colonoscopy Polyp profile. Here is the list: 
 
+- cpPatient
+- cpProcedure
 - cpDiagnosticReport
 - cpSpecimen
 - cpResult 
