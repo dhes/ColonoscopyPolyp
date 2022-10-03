@@ -6,7 +6,7 @@
 id: fhir.colonoscopyPolyp
 canonical: https://build.fhir.org/ig/dhes/ColonoscopyPolyp
 name: ColonoscopyPolypReport
-title: Make Colonoscopy Computable
+title: Making Colonoscopy Computable
 description: A method of recording colonoscopy polyp reports compatible with CQL. 
 status: draft # draft | active | retired | unknown
 version: 0.1.0
