@@ -10,7 +10,8 @@ Description: "Results of tests on a polyp including histopathology and other det
 * ^jurisdiction = urn:iso:std:iso:3166#US "United States of America"
 * subject 1..1
 * subject only Reference(cp-patient) 
-* code = $SNOMEDCT#122645001 "Polyp from large intestine obtained by polypectomy (specimen)"
+// * code = $SNOMEDCT#122645001 "Polyp from large intestine obtained by polypectomy (specimen)"
+* code = $SNOMEDCT#250537006 "Histopathology finding (finding)"
 * specimen only Reference(cp-specimen) 
 * hasMember 3..3 MS
   * ^slicing.discriminator.type = #pattern
