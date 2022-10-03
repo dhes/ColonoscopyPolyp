@@ -34,6 +34,7 @@ Description: "Location in the large intestine from which the specimen was excise
 * $SNOMEDCT#32622004 "Descending colon structure (body structure)"
 * $SNOMEDCT#60184004 "Sigmoid colon structure (body structure)"
 * $SNOMEDCT#34402009 "Rectum structure (body structure)"
+* $SNOMEDCT#34381000 "Anal canal structure (body structure)"
 
 ValueSet: CPPolypLengthUnits
 Id: cp-polyp-length-units

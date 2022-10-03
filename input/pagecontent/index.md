@@ -220,6 +220,8 @@ There is a general introduction to FHIR [here](https://www.hl7.org/fhir/). The b
 
 We will use these FHIR resources: 
 
+* [Patient](https://www.hl7.org/fhir/patient.html)
+* [Procedure](https://www.hl7.org/fhir/procedure.html)
 * [DiagnosticReport](https://www.hl7.org/fhir/diagnosticreport.html)
 * [Specimen](https://www.hl7.org/fhir/specimen.html)
 * [Observation](https://www.hl7.org/fhir/observation.html)
@@ -234,7 +236,7 @@ We will use these FHIR resources:
 - Reference]
 - SimpleQuantity
 
-This implementation guide defines a set of FHIR profiles needed to construct the data model. Each of these is based on a Parent which is a native FHIR resource. Each of these profiles is prefixed with cp to indicate that it is a Colonoscopy Polyp profile. Here is the list: 
+This implementation guide defines a set of FHIR profiles needed to construct the data model. Each of these is based on a Parent which is a FHIR resource. Each of these profiles is prefixed with cp to indicate that it is a Colonoscopy Polyp profile. Here is the list: 
 
 - cpPatient
 - cpProcedure
@@ -245,11 +247,51 @@ This implementation guide defines a set of FHIR profiles needed to construct the
 - cpDysplasia
 - cpNoMalignantNeoplasm
 
-We will start with the cpSpecimen profile. 
+#### The cpPatient Profile
+
+We'll begin with the cpPatient profile. This profile only constrains the Patient resources in one respect: there must be an indication whether the patient is alive (or not). In shorthand this is expressed like so: 
+
+```
+* deceased[x] 1..1 MS  // If alive then deceasedBoolean = false. If dead deceasedBoolean = true or deceasedDateTime = 09-11-2001.
+```
+
+As noted in the comments this can be a boolean or dateTime. 
+
+#### The cpProcedure Profile
+
+Next is the cpProcedure profile. 
+
+```
+1 * subject only Reference(cp-patient)
+2 * performed[x] 1..1 MS
+3 * performed[x] only Period or dateTime 
+4 * code from cp-colonoscopy-procedure
+```
+Walkthrough: 
+```
+1 The subject can only be a cpPatient
+2 The performed date/Period must be present. 
+3 The performed value can be a dateTime or Period. A Period has two datetime values like Period.start = 2021-10-04T00:23:40.000 and Period.end = 2021-10-05T00:00:57.000. 
+4 The code for the procedure must come from the value set cp-colonoscopy-procedure. 
+```
+
+Here is the cp-colonoscopy-procedure list: 
+
+```
+* $SNOMEDCT#28939002 "Endoscopic polypectomy of large intestine (procedure)"
+* $SNOMEDCT#6019008 "Endoscopy of large intestine (procedure)"
+* $SNOMEDCT#80050006 "Endoscopic biopsy of large intestine (procedure)"
+* $SNOMEDCT#609279008 "Endoscopic excision of tissue of large intestine
+* $SNOMEDCT#78133002 "Endoscopic excision of lesion of large intestine (procedure) "
+* $SNOMEDCT#446170008 "Colonoscopic excision of lesion of large intestine (procedure)"
+* $SNOMEDCT#73761001 "Colonoscopy (procedure) "
+* $SNOMEDCT#444783004 "Screening colonoscopy (procedure)"
+
+Next is the the cpSpecimen profile. 
 
 #### The cpSpecimen Profile
 
-cpSpecimen constrains the Specimen resource as follows: 
+cpSpecimen constrains the Specimen resource as follows. We'll take a deep dive with this profile. 
 
 ```
 1 * status = #available
@@ -265,13 +307,13 @@ cpSpecimen constrains the Specimen resource as follows:
 Here's a walkthrough:
 
 ```
-1 The specimen status must equal "available".
+1 The specimen status must be "available".
 2 (The collection element)
-3 The specimen collection bodySite must be selected from the _value set_ cp-polyp-excision-method (more on value sets in a minute). 
+3 The specimen collection bodySite must be selected from the _value set_ cp-body-site (more on value sets in a minute). 
 4 The collection method must be selected from the value set cp-polyp-excision-method. 
 5 The collection quantity must be from the value set cp-polyp-length-units.
 6 The collected[x] value must be present. 
-7 The specimen is a polyp
+7 The specimen musted be coded as a polyp
 8 The specimen subject must be present. 
 9 The specimen subject must refer to a patient which conforms to the cpPatient profile. 
 ```
@@ -304,6 +346,7 @@ cp-body-site
 * SNOMEDCT#32622004 "Descending colon structure (body structure)"
 * SNOMEDCT#60184004 "Sigmoid colon structure (body structure)"
 * SNOMEDCT#34402009 "Rectum structure (body structure)"
+* $SNOMEDCT#34381000 "Anal canal structure (body structure)"
 ```
 
 ```
@@ -376,14 +419,14 @@ Patient
 
 See how cpSpecimen is now shown as cpSpecimen[n] indicating there may be more than one specimen. Note also that cpSpecimen is an element of the cpDiagnosticReport profile. 
 
-The model patterned after the [FHIR DiagnosticReport example showing a laboratory report with multiple specimens and panels](https://hl7.org/fhir/diagnosticreport-example-ghp.json.html). It uses the base DiagnosticReport resource to pull the report together. 
+The model patterned after the [FHIR DiagnosticReport example showing a laboratory report with multiple specimens and panels](https://hl7.org/fhir/diagnosticreport-example-ghp.json.html). It uses the  DiagnosticReport resource to pull the information together. 
 
 Here are the constraints: 
 
 ```
  1 * status from cp-diagnostic-report-final-or-amended
  2 * category 1..1
- 3 * category = $DiagnosticServiceSectionId#SP "Surgical Pathology" // $DiagnosticServiceSectionId a.k.a. HL-7 v2-0074
+ 3 * category = $DiagnosticServiceSectionId#SP "Surgical Pathology"
  4 * code = $SNOMEDCT#122645001 "Polyp from large intestine obtained by polypectomy (specimen)"
  5 * effective[x] 1..1
  6 * effective[x] only dateTime
@@ -413,18 +456,18 @@ Here are the constraints:
 13 Each result must refer to a specific specimen. 
 ```
 
-In brief, the cpDiagnosticReport is a surgical pathology report about polyps from the large intestine obtained by polypectomy on a human subject, which contains specimen and result elements that are paired to each other. 
+In brief, the cpDiagnosticReport is a surgical pathology report about polyps from the large intestine obtained by polypectomy on a human subject, which contains specimen and result elements that are paired to one another. 
 
-#### An Observation inside an Observation
+#### cpResult - An Observation inside an Observation
 
-So far we have covered cpSpecimen and cpDiagnosticReport. With cpResult it gets more interesting. A DiagnosticStudy has results, and results are Observation resources. Observations have 'hasMember' elements which in this case are Observations. So in effect the cpResult profile is an Observation that refers to other Observations which are named cpPathology, cpDysplasia and cpNoMalignantNeoplasm. This is perfectly acceptable in FHIR. The number of cpResults is the same as cpSpecimens. As we shall see, cpResult has a reference to its corresponding cpSpecimen. 
+So far we have covered cpSpecimen and cpDiagnosticReport. With cpResult it gets more interesting. A the FHIR DiagnosticStudy resource has a specimen element, which we have discussed. It also has a result element which must consist or FHIR Observation resources. I can be a single resource or a list of resources, one for each polyp. Results constructed from Observation resources in turn have 'hasMember' elements which are References to a FHIR Observation, QuestionnaireResponse or MolecularSequence. In our case the reference will be constrained to the Observation resource. So in effect the cpResult profile is an Observation that refers to another Observations (or list of observation) called cpResults which which in turn has member Observations are named cpPathology, cpDysplasia and cpNoMalignantNeoplasm. This is nesting of Observation resource is permitted in FHIR and can be useful for modelling things like laboratory panels. The number of cpResults is the same as cpSpecimens. As we shall see, cpResult has a reference to its corresponding cpSpecimen. 
 
 Here are the cpResult constraints:
 
 ```
  1 * subject 1..1
  2 * subject only Reference(cp-patient) 
- 3 * code = $SNOMEDCT#122645001 "Polyp from large intestine obtained by polypectomy (specimen)"
+ 3 * code = $SNOMEDCT#250537006 "Histopathology finding (finding)"
  4 * specimen only Reference(cp-specimen) 
  5 * hasMember 3..3 MS
  6   * ^slicing.discriminator.type = #pattern
@@ -445,14 +488,14 @@ Here are the cpResult constraints:
 ```
     1 There must be a subject. 
     2 The subject must be a cpPatient. 
-    3 The code must be SNOMEDCT#122645001
+    3 The code must be SNOMEDCT#250537006
     4 The specimen can only refer to a cpSpecimen. 
 		5 There must be exactly three members. 
-  6-9 The members must follow a certain pattern. 
+  6-9 The members must follow a certain pattern as detailed in the subsequent lines. 
 10-16 Each member must contain a reference, and those references must have one to a cpPathology profile, one to a cpDysplasia profile and one to a cpMalignantNeoplasm profile. 
 ```
 
-These constraints look more complicated because they use a FHIR feature called _slicing_. Slicing is an advanced concept, but for our purposes it is just a way to work with lists in FHIR profiles. 
+These constraints look more complicated because they use a FHIR feature called _slicing_. Both cpSpecimen and cpResult are lists. Slicing is an advanced concept, but for our purposes it is just a way to work with lists in FHIR. 
 
 #### Down to the fine details
 
