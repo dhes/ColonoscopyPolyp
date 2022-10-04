@@ -267,7 +267,9 @@ Next is the cpProcedure profile.
 3 * performed[x] only Period or dateTime 
 4 * code from cp-colonoscopy-procedure
 ```
+
 Walkthrough: 
+
 ```
 1 The subject can only be a cpPatient
 2 The performed date/Period must be present. 
@@ -286,6 +288,7 @@ Here is the cp-colonoscopy-procedure list:
 * $SNOMEDCT#446170008 "Colonoscopic excision of lesion of large intestine (procedure)"
 * $SNOMEDCT#73761001 "Colonoscopy (procedure) "
 * $SNOMEDCT#444783004 "Screening colonoscopy (procedure)"
+```
 
 Next is the the cpSpecimen profile. 
 
@@ -403,18 +406,20 @@ Each of these Profiles are constrained by their Categories and CodeableConcepts.
 The overall structure of the FHIR model is: 
 
 <pre><code>
-Patient
-├── cpDiagnosticReport
-|    ├── cpSpecimen[n]
-|    |    └── collection
-|    |         └── bodySite
-|    |         ├── quantity
-|    |         └── method
-|    └── cpResult[n]
-|         └── hasMember
-|              └── cpPathology
-|              ├── cpDysplasia
-|              └── cpNoMalignantNeoplasm
+cpPatient
+|
+├── cpProcedure
+|    └── cpDiagnosticReport
+|         ├── cpSpecimen[n]
+|         |    └── collection
+|         |    └── bodySite
+|         |    ├── quantity
+|         |    └── method
+|         └── cpResult[n]
+|              └── hasMember
+|                   └── cpPathology
+|                   ├── cpDysplasia
+|                   └── cpNoMalignantNeoplasm
 </code></pre>
 
 See how cpSpecimen is now shown as cpSpecimen[n] indicating there may be more than one specimen. Note also that cpSpecimen is an element of the cpDiagnosticReport profile. 
@@ -552,52 +557,81 @@ Again, this is a true/false answer to "Does this polyp have NO evidence of malig
 
 <!---Now for examples. Again we will skip over Patient and Procedure, which are proforma. Fhir resources are typically represented with JSON, XML or Turtle. With examples we will use [FHIR Shorthand](https://hl7.org/fhir/uv/shorthand/) for readability. -->
 
-Now we return to the data from our narrative procedure and pathology report and present it in a shorthand version of FHIR. 
+Now we return to the data from our narrative example procedure and pathology reports and present them in FHIR shorthand. 
+
+Example cpPatient: 
+
+<pre><code>
+* name
+  * given = "Ferd"
+  * family = "Berfel" 
+* extension[birthsex].valueCode = #M
+* gender = #male
+* birthDate = "1987-02-03"
+* identifier
+  * system = "http://example.com"
+  * value = "1325364"
+* deceasedBoolean = false
+</code></pre>
+
+Example cpProcedure: 
+
+<pre><code>
+* subject = Reference(example-cpPatient)
+* status = #completed
+* performedDateTime = "2021-10-04T00:00:00.000Z"
+* </code></pre>
+
 
 Example DiagnosticReport: 
 <!-- need code and category, make sure is correct DH -->
 <pre><code>
 1  * subject.reference = "Patient/example-cpPatient"
 2  * status = #final
-3  * effectiveDateTime = "2021-10-04T00:00:00.000Z"
-4  * issued = "2021-10-05T00:00:00.000Z"
-5  * specimen[0]
-6    * reference = "Specimen/example-cpSpecimen0"
-7    * display = "E. COLD BIOPSY: RECTAL POLYPS X 2 #1"
-8  * result[0]
-9    * reference = "Observation/example-cpResult0"
-10   * display = "E. COLD BIOPSY: RECTAL POLYPS X 2 #1"
-11 * specimen[1]
-12   * reference = "Specimen/example-cpSpecimen1"
-13   * display = "E. COLD BIOPSY: RECTAL POLYPS X 2 #2"
-14 * result[1]
-15   * reference = "Observation/example-cpResult1"
-16   * display = "E. COLD BIOPSY: RECTAL POLYPS X 2 #2"</code></pre>
+3  * category = $DiagnosticServiceSectionId#SP "Surgical Pathology"
+4  * code = $SNOMEDCT#122645001 "Polyp from large intestine obtained by polypectomy (specimen)"
+5  * effectiveDateTime = "2021-10-04T00:00:00.000Z"
+6  * issued = "2021-10-05T00:00:00.000Z"
+7  * specimen[0]
+8    * reference = "Specimen/example-cpSpecimen0"
+9    * display = "E. COLD BIOPSY: RECTAL POLYPS X 2 #1"
+10 * result[0]
+11   * reference = "Observation/example-cpResult0"
+12   * display = "E. COLD BIOPSY: RECTAL POLYPS X 2 #1"
+13 * specimen[1]
+14   * reference = "Specimen/example-cpSpecimen1"
+15   * display = "E. COLD BIOPSY: RECTAL POLYPS X 2 #2"
+16 * result[1]
+17   * reference = "Observation/example-cpResult1"
+18   * display = "E. COLD BIOPSY: RECTAL POLYPS X 2 #2"</code></pre>
   
 Line-by-line walkthrough:
 
 <pre><code>1  The subject of the report is a patient with id=example-cpPatient
 2  This report is final. 
-3  The procedure date
-4  The pathology report date
-5  The first cpSpecimen
-6  The Reference cpSpecimen's id is example-cpSpecimen0.
-7  The narrative description of this polyp from the pathology report
-8  The first CPResult
-9  The Reference cpResult's id is example-cpResult0.
-10 The narrative description of this polyp from the pathology report
-11 The second cpSpecimen
-12 The Reference cpSpecimen's id is example-cpSpecimen1.
-13 The narrative description of this polyp from the pathology report
-14 The second CPResult
-15 The Reference cpResult's id is example-cpResult1.
-16 The narrative description of this polyp from the pathology report</code></pre>
+3  The report category. 
+4  The report code. 
+5  The procedure date
+6  The pathology report date
+7  The first cpSpecimen
+8  The Reference cpSpecimen's id is example-cpSpecimen0.
+9  The narrative description of this polyp from the pathology report
+10 The first CPResult
+11 The Reference cpResult's id is example-cpResult0.
+12 The narrative description of this polyp from the pathology report
+13 The second cpSpecimen
+14 The Reference cpSpecimen's id is example-cpSpecimen1.
+15 The narrative description of this polyp from the pathology report
+16 The second CPResult
+17 The Reference cpResult's id is example-cpResult1.
+18 The narrative description of this polyp from the pathology report</code></pre>
 
-Here is the first example CPSpecimen from the above DiagnosticReport;  <!--- need type code and category DH -->
+Here is the first example cpSpecimen0 from the above DiagnosticReport;
 
 <pre><code>
 1  * subject.reference = "Patient/example-cpPatient"
 2  * status = #available
+* type = $Hl7VSSpecimenType#POL "Polyps"
 3  * collection
 4    * bodySite = $SNOMEDCT#34402009 "Rectum structure (body structure)""
 5    * quantity = 4 'mm'
@@ -619,40 +653,42 @@ Here is the first example CPSpecimen from the above DiagnosticReport;  <!--- nee
 8  The narrative description of this polyp from the pathology report
 </code></pre>
 
-Here is the corresponding CPResult0 from the above DiagnosticReport:
+Here is the corresponding cpResult0 from the above DiagnosticReport:
 
 <pre><code>1  * subject.reference = "Patient/example-cpPatient"
 2  * status = #final
-3  * specimen
-4    * reference = "Specimen/example-cpSpecimen0"
-5    * display = "E. COLD BIOPSY: RECTAL POLYPS X 2 #1"
-6  * hasMember[pathology]
-7    * reference = "Observation/example-cpPathology-tubular-adenoma"
-8    * display = "Tubular adenoma of colon"
-9  * hasMember[severeDysplasia]
-10   * reference = "Observation/example-cpDysplasia-false"
-11   * display = "Severe dysplasia false"
-12 * hasMember[noMalignancy]
-13   * reference = "Observation/example-cpNoMalignantNeoplasm-true"
-14   * display = "No evidence of malignant neoplasm true"</code></pre>
+3  * code = $SNOMEDCT#250537006 "Histopathology finding (finding)"
+4  * specimen
+5    * reference = "Specimen/example-cpSpecimen0"
+6    * display = "E. COLD BIOPSY: RECTAL POLYPS X 2 #1"
+7  * hasMember[pathology]
+8    * reference = "Observation/example-cpPathology-tubular-adenoma"
+9    * display = "Tubular adenoma of colon"
+10 * hasMember[severeDysplasia]
+11   * reference = "Observation/example-cpDysplasia-false"
+12   * display = "Severe dysplasia false"
+13 * hasMember[noMalignancy]
+14   * reference = "Observation/example-cpNoMalignantNeoplasm-true"
+15   * display = "No evidence of malignant neoplasm true"</code></pre>
 
 ...with walkthrough:
 
 <pre><code>
 1  The subject of this report
 2  This report is final.
-3  The Specimen that this result corresponds to 
-4  The Reference to the corresponding Specimen which has id example-cpSpecimen0
-5  The narrative description of this polyp from the pathology report
-6  The pathology member
-7  Reference to the Observation that contains the histopathology of the specimen
-8  The narrative description of this polyp from the pathology report
-9  The dysplasia member
-10 The reference to the Observation that contains the dysplasia value
-11 The narrative description of this polyp from the pathology report
-12 the noMalignancy member
-13 Reference to the Observation that contains the noMalignancy value
-14 The narrative description of this polyp from the pathology report
+3   All cpResults have this code. 
+4  The Specimen that this result corresponds to 
+5  The Reference to the corresponding Specimen which has id example-cpSpecimen0
+6  The narrative description of this polyp from the pathology report
+7  The pathology member
+8  Reference to the Observation that contains the histopathology of the specimen
+9  The narrative description of this polyp from the pathology report
+10 The dysplasia member
+11 The reference to the Observation that contains the dysplasia value
+12 The narrative description of this polyp from the pathology report
+13 the noMalignancy member
+14 Reference to the Observation that contains the noMalignancy value
+15 The narrative description of this polyp from the pathology report
 </code></pre>
 
 And finally at the most granular level, the cpPathology, cpDysplasia and cpNoMalignancy Observations: 
@@ -732,7 +768,7 @@ So far we've showed shorthand versions of these resources. In case you're curiou
 }
 ```
 
-If you are new to JSON, here is a [good place to begin learning](https://www.w3schools.com/js/js_json_syntax.asp). In short, JSON is a lightweight data-interchange format. It is written in plain text and used to send information between computers. It is based on name/value pairs separated by colons. As you glance through the above JSON you will notice names from the previous section like status, category, code, subject and others. You will also notice that JSON is more verbose than the shorthand that was used in the previous sections. What took a single line in shorthand:
+If you are new to JSON, here is a [good place to begin learning](https://www.w3schools.com/js/js_json_syntax.asp). JSON is a lightweight data-interchange format. It is written in plain text and used to send information between computers. It is based on name/value pairs separated by colons. As you glance through the above JSON you will notice names from the previous section like status, category, code, subject and others. You will also notice that JSON is more verbose than the shorthand that was used in the previous sections. What took a single line in shorthand:
 
 ```
 * code = $SNOMEDCT#55237006 "Severe dysplasia (morphologic abnormality)"
@@ -751,7 +787,9 @@ If you are new to JSON, here is a [good place to begin learning](https://www.w3s
   },
 ```
 
-If you are going to be authoring FHIR resources you will have to become familiar with JSON, unless you prefer one of the alternatives. If you visit any FHIR resource page and click on the Examples tab, you will be directed to a page that [lists examples in JSON](https://www.hl7.org/fhir/patient-examples.html) as well as two other format: XML and Turtle. You may happen to be experienced with one of those formats. If that is that case how you work is your choice. Whatever format you choose, it is much easier to work with shorthand and let the computer translate it for you. 
+If you are going to be authoring FHIR resources you will have to become familiar with JSON, unless you prefer one of the alternatives. If you visit any FHIR resource page and click on the Examples tab, you will be directed to a page that [lists examples in JSON](https://www.hl7.org/fhir/patient-examples.html) as well as two other format: XML and Turtle. It may happen that you are experienced with one of those formats. If that is that case how you work is your choice. Whatever format you choose, it is generally easier to work with shorthand and let the computer translate it for you. 
+
+As a recap, here is how we ended up mapping our logical model to FHIR profiles: 
 
 #### Table n. Mapping the Polyp Logical Model to FHIR
 
@@ -768,13 +806,13 @@ If you are going to be authoring FHIR resources you will have to become familiar
 {: class="grid"}
 
 
-### We have to decide. 
+### You have to decide. 
 
-We have to tell ou patient when their next colonoscopy should be. 
+The point of this data model is to format our test result so that the computer can process it by algorithm. No that we have a data model, we need to apply the algorithm.  
 
-The procedure is done, the patient has gone home and it is a new day. The doctor notices a new pathology report in her in-box. It's from the colonoscopy the day before. Looking back at the previous day's procedure report while she reads the pathology reports, she thinks about what the surveillance interval should be. Because she's done this day-in and day-out for years she can do that in her head. But we need to look it up. 
+Imagine that you are the doctor and the colonoscopy procedure is done. The following date you notice a the pathology report in your in-box. Reviewing the previous day's procedure report along with the pathology report you ponder what the surveillance interval should be. 
 
-Here are the guidelines as published by the [US Multi-Society Task Force on Colorectal Cancer (USMSTFCC)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7687298/pdf/nihms-1645693.pdf): 
+Here are the guidelines for follow-up colonoscopy as published by the [US Multi-Society Task Force on Colorectal Cancer (USMSTFCC)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7687298/pdf/nihms-1645693.pdf) or [this alternate presentation](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7389642/table/T4/?report=objectonly): 
 
 <span class="caption">Table 2. Practice Guideline for Follow-up Colonoscopy</span>
 
@@ -791,6 +829,8 @@ Here are the guidelines as published by the [US Multi-Society Task Force on Colo
 | piecemeal resection of adenoma ≥20 mm           |           1/2            |
 {: class="grid"}
 
+(Please note that for simplicity sake this discussion does not include serrated polyps, which is often presented as a [separate algorithm](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7389642/table/T5/?report=objectonly)). 
+
 You are already familiar with most of the terms in the table as explained above. We have not yet talked about 'villous' or 'tubulovillous'. 
 
 Tubular Adenoma and Hyperplastic Polyp are histology terms that you've seen. Adenoma is a general term that includes Tubular Adenoma, Villous Adenoma and Tubulovillous Adenoma. Adenomas that have tubulovillous or villous histology are more likely to transform into cancer and therefore require closer follow-up. They are [less common](https://emedicine.medscape.com/article/170283-overview) than Tubular Adenoma and Hyperplastic Polyps. If a polyp has villous or tubulovillous features it will be called Villous Adenoma or Tubulovillous Adenoma in the pathology report. If our fictional patient had a Tubulovillous Adenoma (instead of a Tubular Adenoma) it would be represented like so in the FHIR data model: 
@@ -798,17 +838,18 @@ Tubular Adenoma and Hyperplastic Polyp are histology terms that you've seen. Ade
 <pre><code>
 DiagnosticReport.result.hasMember[pathology].valueCodeableConcept = $SNOMEDCT#448428002 "Tubulovillous adenoma of rectum (disorder)"</code></pre>
 
-In our example case the patient has two polyps in the rectum that are both Tubular Adenomas. Both are less that 10mm. You will recall that none of the polyps was resected piecemeal, none had high-grade dysplasia, and none showed any signs of malignancy. (Malignancy is not mentioned expressly in this table because because this protocol would not longer apply). One aspect the cpPatient profile that we have not discussed so far is the requirement that a cpPatient must have a deceased[x] element. If the patient is living (we hope), it will be boolean: 
+In our example case the patient has two polyps in the rectum that are both Tubular Adenomas. Both are less that 10mm. You will recall that none of the polyps was resected piecemeal, none had high-grade dysplasia, and none showed any signs of malignancy. (Malignancy is not mentioned expressly in this table because because this protocol would not longer apply). 
 
-<pre><code>Patient.deceased = false</code></pre>
+Given all of the modelling and information, when should the next colonoscopy be? 
 
-In the other case it can be boolean or a dateTime: 
+### Workflow Considerations
 
-<pre><code>Patient.deceased = false
-Patient.deceased = 2001-09-11
-</code><pre>
+Given that colonoscopy procedure reports and pathology report are not typically structured in current practice in the United States, what sort of workflow will be needed to automate this decision? Most like for the time being there will have to be a trained person making the data entry by hand, ideally in a purpose-made form. As you recall from the logical model, there are after all only ten type of data elements: patient id, procedure date, pathology report date, polyp location, size, histopathology, dysplasia, malignancy and notes. Once structure colonoscopy data entry becomes more common one could reasonably expect vendor of electronic medical records system to create the appropriate forms for their system - automatically mapping their entries to meet a requirements of a FHIR implementation guide such as this one. 
 
-Eight way the cpPatient profile requires that it be expressly stated whether the patient is alive or dead, because in the latter case there is obviously no colonoscopy.
+Some might ask what such a system of structure data and algorithms is really necessary in this use case. After all, our dedicated colonoscopists have been doing just fine learning the guidelines and doing the math in their heads. I imagine that it would become second nature rather quickly for most GI specialists. 
 
-Given that information and the reassuring advise that the patient is still with us: When should the next colonoscopy be? What about if the patient had two Tubulovillous Adenomas instead of Tubular Adenomas? 
+I undertook this IG mostly an a exercise to help me learn FHIR, IG authoring and to better understand the colonoscopy guidelines. It always surprises me as I work through these sorts of challenges how ofter I encounter something that I thought I understood but really didn't; or something that sounds clear in the guideline but really isn't once you get down to the business of coding. It seems to me that process of modelling and coding deepens ones understanding of the decision-making process and opens new avenues of inquiry in refining the guidelines. 
 
+Another advantage or structure colonoscopy polyp data would be the notion of a national (international?) registry. This would permit public health official to monitor trend in colon cancer screening and perhaps might inform their policy recommendations. Are the follow-up intervals adequate? Are patient with certain characteristics turning up with cancer more often than expected? Do the guidelines need to be reviseD?
+
+Another aspect would be informed patient decision making. Algorithms are cold and heartless. Patient ultimately decide what sort of follow-up is right for them, with the coaching of their colonoscopist. It would be very interesting to compare the algorithmic advice with the colonoscopist's advise with the actual timing of the follow-up.  One can imagine a system of continuous improvement where the public health data is fed back to the guideline developers to improve the algorithm in continuous loops. Likewise we might continue to refine our understanding of patient preferences and articulate scenarios where the guideline may need to be adjusted. As an example as our understanding of attenuated familial polyposis syndrome and their genetic basis is evolving. 

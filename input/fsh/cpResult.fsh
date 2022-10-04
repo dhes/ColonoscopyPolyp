@@ -12,6 +12,7 @@ Description: "Results of tests on a polyp including histopathology and other det
 * subject only Reference(cp-patient) 
 // * code = $SNOMEDCT#122645001 "Polyp from large intestine obtained by polypectomy (specimen)"
 * code = $SNOMEDCT#250537006 "Histopathology finding (finding)"
+// I have chosen not to require a category. It is implicitly inherited from the cpDiagnosticReport
 * specimen only Reference(cp-specimen) 
 * hasMember 3..3 MS
   * ^slicing.discriminator.type = #pattern
