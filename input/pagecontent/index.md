@@ -233,10 +233,10 @@ We will use these FHIR resources:
 - Period
 - boolean
 - CodeableConcept
-- Reference]
+- Reference
 - SimpleQuantity
 
-This implementation guide defines a set of FHIR profiles needed to construct the data model. Each of these is based on a Parent which is a FHIR resource. Each of these profiles is prefixed with cp to indicate that it is a Colonoscopy Polyp profile. Here is the list: 
+This implementation guide defines a set of FHIR profiles needed to construct the data model. Each of these profiles is based on a Parent which is a FHIR resource. Each is prefixed with cp to indicate that it is a Colonoscopy Polyp profile. Here is the list: 
 
 - cpPatient
 - cpProcedure
@@ -249,7 +249,7 @@ This implementation guide defines a set of FHIR profiles needed to construct the
 
 #### The cpPatient Profile
 
-We'll begin with the cpPatient profile. This profile only constrains the Patient resources in one respect: there must be an indication whether the patient is alive (or not). In shorthand this is expressed like so: 
+We'll begin with the cpPatient profile. This profile only constrains the Patient resources in one respect: we need to know that the patient is alive. In shorthand this is expressed like so: 
 
 ```
 * deceased[x] 1..1 MS  // If alive then deceasedBoolean = false. If dead deceasedBoolean = true or deceasedDateTime = 09-11-2001.
@@ -277,16 +277,16 @@ Walkthrough:
 4 The code for the procedure must come from the value set cp-colonoscopy-procedure. 
 ```
 
-Here is the cp-colonoscopy-procedure list: 
+Here is the cp-colonoscopy-procedure value set: 
 
 ```
 * $SNOMEDCT#28939002 "Endoscopic polypectomy of large intestine (procedure)"
 * $SNOMEDCT#6019008 "Endoscopy of large intestine (procedure)"
 * $SNOMEDCT#80050006 "Endoscopic biopsy of large intestine (procedure)"
-* $SNOMEDCT#609279008 "Endoscopic excision of tissue of large intestine
-* $SNOMEDCT#78133002 "Endoscopic excision of lesion of large intestine (procedure) "
+* $SNOMEDCT#609279008 "Endoscopic excision of tissue of large intestine"
+* $SNOMEDCT#78133002 "Endoscopic excision of lesion of large intestine (procedure)"
 * $SNOMEDCT#446170008 "Colonoscopic excision of lesion of large intestine (procedure)"
-* $SNOMEDCT#73761001 "Colonoscopy (procedure) "
+* $SNOMEDCT#73761001 "Colonoscopy (procedure)"
 * $SNOMEDCT#444783004 "Screening colonoscopy (procedure)"
 ```
 
@@ -312,7 +312,7 @@ Here's a walkthrough:
 ```
 1 The specimen status must be "available".
 2 (The collection element)
-3 The specimen collection bodySite must be selected from the _value set_ cp-body-site (more on value sets in a minute). 
+3 The specimen collection bodySite must be selected from the _value set_ cp-body-site
 4 The collection method must be selected from the value set cp-polyp-excision-method. 
 5 The collection quantity must be from the value set cp-polyp-length-units.
 6 The collected[x] value must be present. 
@@ -320,9 +320,10 @@ Here's a walkthrough:
 8 The specimen subject must be present. 
 9 The specimen subject must refer to a patient which conforms to the cpPatient profile. 
 ```
+
 Lets take one step back and look at value sets. FHIR _implement guides_ (IGs) define _value sets_ which are used to constrain profiles. Value sets are lists of _codes_. When a value set constraint is applied, the value of the FHIR element must be selected from the codes in the value set. Let us take another step back and discuss _codes_. 
 
-Codes are a core component of medical information and an essential feature of FHIR. Code systems for medical billing and diagnosis are ubiquitous in health systems worldwide. Health workers in the US are very familiar with CPT and ICD codes. More general code system exist that address health and science concepts to a granular level such as LOINC and SNOMEDCT. There is a UCUM code system that defines units of measure. There are also terminology code systems defined specifically for use in FHIR. Here is a list of the code systems used in this IG along with links to introductory materials: 
+Codes are a core component of medical information and an essential feature of FHIR. Code systems for medical billing and diagnosis are ubiquitous in health systems worldwide. Health workers in the US are very familiar with CPT and ICD codes. s exist that address health and science concepts to a granular level such as LOINC and SNOMEDCT. There is a UCUM code system that defines units of measure. There are also terminology code systems defined specifically for use in FHIR. Here is a list of the code systems used in this IG along with links to introductory materials: 
 
 <span class="caption">Table n. Code Systems</span>
 
@@ -363,7 +364,7 @@ cp-polyp-length-units
 * UCUM#mm 'millimeter'
 ```
 
-The date information of the cpSpecimen is expressed here as collected[x]. The [x] indicates that more than one FHIR datatype may be used. In the case of specimen effective values, that data type can be either a dateTime or a _Period_ i.e. effectiveDateTime or effectivePeriod. The [Period](https://www.hl7.org/fhir/datatypes.html#Period) data type contains two dateTimes, called _start_ and _end_. Technically a colonoscopy procedure has a beginning and end, so a Period datatype is appropriate. On the other hand most procedures begin and end on the same day, and many don't have beginning and ending times recorded, so a simple dateTime would also be acceptable. So either dateTime or Period should be fine in this context. 
+Returning to cpSpecimen: The date information of the cpSpecimen is expressed here as collected[x]. The [x] indicates that more than one FHIR datatype may be used. In the case of specimen effective values, that data type can be either a dateTime or a _Period_ i.e. effectiveDateTime or effectivePeriod. The [Period](https://www.hl7.org/fhir/datatypes.html#Period) data type contains two dateTimes, called _start_ and _end_. Technically a colonoscopy procedure has a beginning and end, so a Period datatype is appropriate. On the other hand most procedures begin and end on the same day, and many don't have beginning and ending times recorded, so a simple dateTime would also be acceptable. So either dateTime or Period should be fine in this context. 
 
 This is how the core FHIR Specimen resource is adapted for the narrow use case of a cpSpecimen. In brief, a cpSpecimen is a Specimen that is collected from the large intestine of a human subject, where the size of the specimen measured in mm. 
 
@@ -371,7 +372,8 @@ This is how the core FHIR Specimen resource is adapted for the narrow use case o
 
 We started with cpSpecimen because the name of the base resource is a good representation of the profile. The base resource is Specimen and this is, well, a specimen. Now we will shift to cpDiagnosticReport and put cpSpecimen in the context of the nested FHIR data model. 
 
-So the next FHIR resource we bring into play is the DiagnosticReport. The DiagnosticReport resource will serve as the center of our data structure. <!--- The patient reference becomes DiagnosticReport.subject, the procedure date will become DiagnosticReport.effective and the pathology report date will become the DiagnosticReport.issued. So far we have: 
+So the next FHIR resource we bring into play is the DiagnosticReport. The DiagnosticReport resource will serve as the center of our data structure. 
+<!-- The patient reference becomes DiagnosticReport.subject, the procedure date will become DiagnosticReport.effective and the pathology report date will become the DiagnosticReport.issued. So far we have: 
 
 <span class="caption">Table n. Logical Model to DiagnosticReport Resource</span>
 
@@ -401,7 +403,7 @@ There's some nesting here which needs explanation. The FHIR standard allows you 
 - cpDysplasia
 - cpNoMalignantNeoplasm
 
-Each of these Profiles are constrained by their Categories and CodeableConcepts. You can example the details in the Artifacts Summary provided with this implementation guide. -->
+Each of these Profiles are constrained by their Categories and CodeableConcepts. You can example the details in the Artifacts Summary provided with this implementation guide. --->
 
 The overall structure of the FHIR model is: 
 
@@ -420,11 +422,12 @@ cpPatient
 |                   └── cpPathology
 |                   ├── cpDysplasia
 |                   └── cpNoMalignantNeoplasm
+
 </code></pre>
 
 See how cpSpecimen is now shown as cpSpecimen[n] indicating there may be more than one specimen. Note also that cpSpecimen is an element of the cpDiagnosticReport profile. 
 
-The model patterned after the [FHIR DiagnosticReport example showing a laboratory report with multiple specimens and panels](https://hl7.org/fhir/diagnosticreport-example-ghp.json.html). It uses the  DiagnosticReport resource to pull the information together. 
+The model patterned after a FHIR DiagnosticReport example showing a [laboratory report with multiple specimens and panels](https://hl7.org/fhir/diagnosticreport-example-ghp.json.html). It uses the  DiagnosticReport resource to pull the information together. 
 
 Here are the constraints: 
 
@@ -452,7 +455,7 @@ Here are the constraints:
  4 The code must be SNOMEDCT#122645001. 
  5 There must be an effective[x] value. 
  6 The effective value must be a dateTime
- 7 There must be a issued value. 
+ 7 There must be an 'issued' value. 
  8 There must be at least one specimen.
  9 There must be at least one result. 
 10 There must be a subject. 
@@ -465,7 +468,7 @@ In brief, the cpDiagnosticReport is a surgical pathology report about polyps fro
 
 #### cpResult - An Observation inside an Observation
 
-So far we have covered cpSpecimen and cpDiagnosticReport. With cpResult it gets more interesting. A the FHIR DiagnosticStudy resource has a specimen element, which we have discussed. It also has a result element which must consist or FHIR Observation resources. I can be a single resource or a list of resources, one for each polyp. Results constructed from Observation resources in turn have 'hasMember' elements which are References to a FHIR Observation, QuestionnaireResponse or MolecularSequence. In our case the reference will be constrained to the Observation resource. So in effect the cpResult profile is an Observation that refers to another Observations (or list of observation) called cpResults which which in turn has member Observations are named cpPathology, cpDysplasia and cpNoMalignantNeoplasm. This is nesting of Observation resource is permitted in FHIR and can be useful for modelling things like laboratory panels. The number of cpResults is the same as cpSpecimens. As we shall see, cpResult has a reference to its corresponding cpSpecimen. 
+So far we have covered cpSpecimen and cpDiagnosticReport. With cpResult it gets more interesting. The FHIR DiagnosticReport resource has a specimen element, which we have introduced. It also has a result element which must consist of FHIR Observation resources. It can be a single resource or a list of resources, one entry for each polyp. Results constructed from Observation resources in turn have 'hasMember' elements which can be References to a FHIR Observation, QuestionnaireResponse or MolecularSequence resource. In our case the reference will be constrained to the Observation resource. So in effect the cpResult profile is an Observation that refers to another Observations (or list of observations) called cpResults which which in turn has member Observations. These member Observations are named cpPathology, cpDysplasia and cpNoMalignantNeoplasm. This nesting of Observation resources is permitted in FHIR and can be very useful for modelling things like laboratory panels. The number of cpResults is the same as the number of cpSpecimens. As we shall see, each cpResult will have a reference to its corresponding cpSpecimen. 
 
 Here are the cpResult constraints:
 
@@ -487,17 +490,14 @@ Here are the cpResult constraints:
 15 * hasMember[severeDysplasia] only Reference(CPDysplasia)
 16 * hasMember[noMalignancy] only Reference(CPNoMalignantNeoplasm)
 ```
-
 ... with walkthrough:
-
-```
-    1 There must be a subject. 
-    2 The subject must be a cpPatient. 
-    3 The code must be SNOMEDCT#250537006
-    4 The specimen can only refer to a cpSpecimen. 
-		5 There must be exactly three members. 
-  6-9 The members must follow a certain pattern as detailed in the subsequent lines. 
-10-16 Each member must contain a reference, and those references must have one to a cpPathology profile, one to a cpDysplasia profile and one to a cpMalignantNeoplasm profile. 
+  1 There must be a subject. 
+  2 The subject must be a cpPatient. 
+  3 The code must be SNOMEDCT#250537006. 
+  4 The specimen can only refer to a cpSpecimen. 
+  5 There must be exactly three members. 
+ 6+ The members must follow a certain pattern as detailed in the subsequent lines. 
+10+ Each member must contain a reference, and those references must have one to a cpPathology profile, one to a cpDysplasia profile and one to a cpMalignantNeoplasm profile. 
 ```
 
 These constraints look more complicated because they use a FHIR feature called _slicing_. Both cpSpecimen and cpResult are lists. Slicing is an advanced concept, but for our purposes it is just a way to work with lists in FHIR. 
@@ -535,7 +535,7 @@ Here is cpDysplasia:
 * subject only Reference(cp-patient) 
 ```
 
-Briefly put, cpDysplasia give a true false answer to the question "Does this polyp have severe dysplasia?".
+Briefly put, cpDysplasia give a true/false answer to the question "Does this polyp have severe dysplasia?".
 
 And here is cpMalignantNeoplasm:
 
@@ -609,8 +609,8 @@ Line-by-line walkthrough:
 
 <pre><code>1  The subject of the report is a patient with id=example-cpPatient
 2  This report is final. 
-3  The report category. 
-4  The report code. 
+3  The report category
+4  The report code
 5  The procedure date
 6  The pathology report date
 7  The first cpSpecimen
@@ -844,12 +844,12 @@ Given all of the modelling and information, when should the next colonoscopy be?
 
 ### Workflow Considerations
 
-Given that colonoscopy procedure reports and pathology report are not typically structured in current practice in the United States, what sort of workflow will be needed to automate this decision? Most like for the time being there will have to be a trained person making the data entry by hand, ideally in a purpose-made form. As you recall from the logical model, there are after all only ten type of data elements: patient id, procedure date, pathology report date, polyp location, size, histopathology, dysplasia, malignancy and notes. Once structure colonoscopy data entry becomes more common one could reasonably expect vendor of electronic medical records system to create the appropriate forms for their system - automatically mapping their entries to meet a requirements of a FHIR implementation guide such as this one. 
+Given that colonoscopy procedure reports and pathology report are not typically structured in current practice in the United States, what sort of workflow will be needed to automate this decision? Most like for the time being there will have to be a trained person making the data entry by hand, ideally in a purpose-made form. As you recall from the logical model, there are after all only ten types of data elements: patient id, procedure date, pathology report date, polyp location, size, histopathology, dysplasia, malignancy and notes. Once structured colonoscopy data entry becomes more common one could reasonably expect vendors of electronic medical records system to create the appropriate forms for their system - automatically mapping their entries to meet a requirements of a FHIR implementation guide such as this one. 
 
-Some might ask what such a system of structure data and algorithms is really necessary in this use case. After all, our dedicated colonoscopists have been doing just fine learning the guidelines and doing the math in their heads. I imagine that it would become second nature rather quickly for most GI specialists. 
+Some might ask what whether such a system of structure data and algorithms is really necessary in this use case. After all, our dedicated colonoscopists have been doing just fine doing the work in their heads. I imagine that it is second nature for most GI specialists. 
 
-I undertook this IG mostly an a exercise to help me learn FHIR, IG authoring and to better understand the colonoscopy guidelines. It always surprises me as I work through these sorts of challenges how ofter I encounter something that I thought I understood but really didn't; or something that sounds clear in the guideline but really isn't once you get down to the business of coding. It seems to me that process of modelling and coding deepens ones understanding of the decision-making process and opens new avenues of inquiry in refining the guidelines. 
+I undertook this IG mostly an a exercise to help me learn FHIR, IG authoring and to better understand the colonoscopy guidelines. It always surprises me as I work through these sorts of exercise how often I find new meaning in something I thought I already understood. It sometimes happens that something that sounds clear in the narrative guideline but really isn't clear once you get down to the business of coding. It seems to me that process of modelling and coding deepens ones understanding of the decision-making process and opens new avenues of inquiry in refining the guidelines. 
 
-Another advantage or structure colonoscopy polyp data would be the notion of a national (international?) registry. This would permit public health official to monitor trend in colon cancer screening and perhaps might inform their policy recommendations. Are the follow-up intervals adequate? Are patient with certain characteristics turning up with cancer more often than expected? Do the guidelines need to be reviseD?
+Another advantage or structure colonoscopy polyp data would be the notion of a national registry. This would permit public health officials to monitor trends in colon cancer screening and perhaps might inform their policy recommendations. Are the follow-up intervals adequate? Are patient with certain characteristics turning up with cancer more often than expected? Do the guidelines need to be revised? One can imagine a system of continuous improvement where the public health data is fed back to the guideline developers to improve the algorithm, with outcomes again measured by epidemiologists. 
 
-Another aspect would be informed patient decision making. Algorithms are cold and heartless. Patient ultimately decide what sort of follow-up is right for them, with the coaching of their colonoscopist. It would be very interesting to compare the algorithmic advice with the colonoscopist's advise with the actual timing of the follow-up.  One can imagine a system of continuous improvement where the public health data is fed back to the guideline developers to improve the algorithm in continuous loops. Likewise we might continue to refine our understanding of patient preferences and articulate scenarios where the guideline may need to be adjusted. As an example as our understanding of attenuated familial polyposis syndrome and their genetic basis is evolving. 
+Another aspect would be that of patient choice. Algorithms sometimes seem cold and heartless. Patients ultimately decide what sort of follow-up is right for them, with the coaching of their doctor. It would be very interesting to compare the algorithmic advice with the colonoscopist's advise with the actual timing of the follow-up; and those data with medical outcomes. Likewise we might continue to refine our understanding of patient preferences and articulate scenarios where the guidelines may need to be adjusted. 
