@@ -57,7 +57,7 @@ Description: "Data sufficient to compute the recommended surveillance interval u
   * ^definition = "Does this Colonoscopy Polyp have severe dysplasia?"
   * resource only CPDysplasia
 * entry contains cpNoMalignantNeoplasm 1..1
-* entry[cpNoMalignantNeoplasm] 1..1
+* entry[cpNoMalignantNeoplasm] // 1..1
   * ^short = "Colonoscopy Polyp No Malignant Neoplasm"
   * ^definition = "Does this Colonoscopy Polyp have evidence of malignant neoplasm?"
   * resource only CPNoMalignantNeoplasm

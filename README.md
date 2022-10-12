@@ -8,3 +8,12 @@ Boxwala has introduced a [knowledge representation framework](https://academic.o
 <sub>From https://cds.ahrq.gov/cdsconnect/about (scroll down to Knowledge Levels)</sub>
 
  Note: input/tests/cpBundle/result/passForTransaction.json is for uploading to the LogicaHealth sandbox. 
+
+ Update 2022-10-22: 
+
+ The IG author tool takes fsh-formatted Profiles and examples (which live in the _input/fsh_ directory) and creates new files, which it places in the _output_ directory. One fsh example file of special interest is exampleCpBundle.fsh. From this example file is created a file named Bundle-example-cpBundle.json. This file is available in the IG in the examples tab of the cbBundle profile page. This file brings together all resources for one example patient and all of the information needed to run the next-colonoscopy CQL. The purpose of this is to facilitate import the bundle to a FHIR server such as [_HAPI_](https://hapi.fhir.org/baseR4/swagger-ui/) or [Logica Health](https://sandbox.logicahealth.org) Using this IG authoring tool it is not possible to automatically create an import-ready file. A request object needs to be added to each bundle entry. For this you use collection-to-transaction.js which is located in the root directory, like so:
+
+ ```
+ node collection-to-transaction.js
+ ```
+ This script takes loads output/Bundle-example-cpBundle.json and adds a request object to each entry. The result is a newly created file called Bundle-example-cpBundle-transaction.json, also in the output directory. This file gets overwritten every time you run the script. As of 2022-10-12 Bundle-example-cpBundle-transaction.json successfully uploads to the Logica Health sandbox. 
