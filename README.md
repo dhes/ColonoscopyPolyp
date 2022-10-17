@@ -80,3 +80,17 @@ Check out the references at the bottom. This is a vendor-based web site.
 - "The major EHR vendors now have app store equivalents, like the Epic App Orchard, Cerner App Gallery, or AllScripts Application Store, as do new entrant companies constructing proprietary health care app ecosystems separate from the EHR vendors"
 - "Health system leaders would be right to ask how much they should be expected to pay to get their own data out of EHR products they have already purchased."
 - "EHR vendors may circumvent the spirit of the Cures Act and ONC rule by levying prohibitive revenue-sharing schemes for apps that access a modified version of the public API, charge for favorable placement in EHR-associated app stores, or limit important usability features, for example, requiring nonpreferred apps to frequently “log back in” to receive updated data."
+
+[Nice historical intro to FHIR](https://youtu.be/MMfe181tmwU)
+
+[Intersystems FHIR developer resources](https://www.intersystems.com/fhir/develop-with-intersystems-fhir/)
+- they have a sandbox....
+- Their product is HealthConnect
+- This is an Intersystems presentation directed toward thier current customers. 
+- The presenter mentions the JASON Report Task Force Final Report which set the direction for Health APIs (see next topic)
+
+[JASON Report Task Force Final Report](https://www.healthit.gov/sites/default/files/facas/Joint_HIT_JTF%20Final%20Report%20v2_2014-10-15.pdf)
+
+[Who is JASON?](https://en.wikipedia.org/wiki/JASON_(advisory_group))
+
+[2018 SMART on FHIR tutorial](https://xela7.github.io/smart-on-fhir-tutorial/)
