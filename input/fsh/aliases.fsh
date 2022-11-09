@@ -18,5 +18,7 @@ Alias: $USCorePatient = http://hl7.org/fhir/us/core/StructureDefinition/us-core-
 // Alias: $USCoreCondition = http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition // obsolete
 // Alias: $DiagnosticReportStatus = http://hl7.org/fhir/ValueSet/diagnostic-report-status
 Alias: $DiagnosticReportStatus = http://hl7.org/fhir/diagnostic-report-status
+Alias: $RxNorm = http://www.nlm.nih.gov/research/umls/rxnorm
+Alias: $CVX = http://hl7.org/fhir/sid/cvx
 
 
