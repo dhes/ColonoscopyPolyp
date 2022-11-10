@@ -13,6 +13,8 @@ Description: "Results of tests on a polyp including histopathology and other det
 // * code = $SNOMEDCT#122645001 "Polyp from large intestine obtained by polypectomy (specimen)"
 * code = $SNOMEDCT#250537006 "Histopathology finding (finding)"
 // I have chosen not to require a category. It is implicit from the cpDiagnosticReport. Fixing the code as SNOMEDCT#250537006 as part of the profile should make searching with FhirPath straigtforward.
+// OK, maybe I will....
+* category = $OBSCAT#laboratory "Laboratory"
 * specimen only Reference(cp-specimen) 
 * hasMember 3..3 MS
   * ^slicing.discriminator.type = #pattern
