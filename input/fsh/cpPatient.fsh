@@ -1,7 +1,7 @@
 // CP = ColonscopyPolyp
 // template mcodeCancerPatient
 Profile: CPPatient
-Parent: $USCorePatient
+Parent: USCorePatientProfile
 Id: cp-patient
 Title: "Patient (Patient)"
 Description: "A patient who has undergone colonoscopy."

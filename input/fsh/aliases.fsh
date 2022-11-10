@@ -14,7 +14,7 @@ Alias:   $Hl7VSSpecimenType = http://terminology.hl7.org/CodeSystem/v2-0487 // P
 // Alias:   $AdminGender = http://hl7.org/fhir/ValueSet/administrative-gender
 Alias: $UCUM = http://unitsofmeasure.org
 // US Core
-Alias: $USCorePatient = http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+// Alias: $USCorePatient = http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
 // Alias: $USCoreCondition = http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition // obsolete
 // Alias: $DiagnosticReportStatus = http://hl7.org/fhir/ValueSet/diagnostic-report-status
 Alias: $DiagnosticReportStatus = http://hl7.org/fhir/diagnostic-report-status
