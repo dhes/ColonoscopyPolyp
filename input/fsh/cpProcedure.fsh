@@ -1,5 +1,5 @@
 Profile: CPProcedure
-Parent: Procedure
+Parent: USCoreProcedureProfile
 Id: cp-procedure
 Title: "Procedure (Procedure)"
 Description: "Colonoscopy procedure"

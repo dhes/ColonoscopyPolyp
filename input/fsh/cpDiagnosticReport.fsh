@@ -1,7 +1,7 @@
 // CP = ColonscopyPolyp
 // template mcodeCancerPatient
 Profile: CPDiagnosticReport
-Parent: DiagnosticReport
+Parent: USCoreDiagnosticReportProfileNoteExchange
 Id: cp-diagnostic-report
 Title: "DiagnosticReport"
 Description: "A diagnostic report summarizing all polyps collected at the time of colonoscopy."
@@ -11,8 +11,9 @@ Description: "A diagnostic report summarizing all polyps collected at the time o
 * ^contact.telecom[0].system = #email
 * ^jurisdiction = urn:iso:std:iso:3166#US "United States of America"
 * status from cp-diagnostic-report-final-or-amended
-* category 1..1
-* category = $DiagnosticServiceSectionId#SP "Surgical Pathology" // $DiagnosticServiceSectionId a.k.a. HL-7 v2-0074
+* category[us-core] 1..1
+// * category[us-core] = $DiagnosticServiceSectionId#SP "Surgical Pathology" // $DiagnosticServiceSectionId a.k.a. HL-7 v2-0074
+* category[us-core] = $LOINC#LP7839-6 "Pathology" 
 // * category = $v2-0074#SP "Surgical Pathology"
 // * code 1..1 //redundant
 * code = $SNOMEDCT#122645001 "Polyp from large intestine obtained by polypectomy (specimen)" // use this for specimen
@@ -23,7 +24,7 @@ Description: "A diagnostic report summarizing all polyps collected at the time o
 * specimen 1..
 * result 1..
 * subject 1..1
-* subject only Reference(cp-patient) 
+* subject only Reference(cp-patient)
 * obeys specimen-count-equals-result-count
 * obeys result-refers-to-cpSpecimen
 
