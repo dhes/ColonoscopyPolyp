@@ -11,7 +11,8 @@ Description: "Is evidence absent of malignant neoplasm in this polyp?"
 * ^jurisdiction = urn:iso:std:iso:3166#US "United States of America"
 * status from cp-final-or-amended
 * category 1..1
-* category = http://terminology.hl7.org/CodeSystem/observation-category#laboratory "Laboratory"
+* category = $OBSCAT#laboratory "Laboratory"
+// this laboratory category expressly includes histology
 * code = $SNOMEDCT#110396000 "No evidence of malignant neoplasm (finding)"
 * value[x] 1..1
 * value[x] only boolean

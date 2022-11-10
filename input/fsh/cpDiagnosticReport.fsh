@@ -2,6 +2,8 @@
 // template mcodeCancerPatient
 Profile: CPDiagnosticReport
 Parent: USCoreDiagnosticReportProfileNoteExchange
+// both USCoreDiagnosticReportProfileLaboratoryReporting and USCoreDiagnosticReportProfileNoteExchange seem to work OK here. 
+// ... but the former only allows category = Lab where the latter allows category = pathology
 Id: cp-diagnostic-report
 Title: "DiagnosticReport"
 Description: "A diagnostic report summarizing all polyps collected at the time of colonoscopy."

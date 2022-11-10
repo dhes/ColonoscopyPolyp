@@ -12,6 +12,7 @@ Description: "Is this polyp severely dysplastic?"
 * category 1..1
 // * category = http://terminology.hl7.org/CodeSystem/observation-category#laboratory "Laboratory"
 * category = $OBSCAT#laboratory "Laboratory"
+// this laboratory category expressly includes histology
 // * code 1..1 // redundant, code is 1..1 in Observation. 
 * code = $SNOMEDCT#55237006 "Severe dysplasia (morphologic abnormality)"
 * value[x] 1..1
