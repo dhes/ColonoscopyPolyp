@@ -1,5 +1,6 @@
 Profile: CPResult
-Parent: Observation
+// Parent: Observation
+Parent: USCoreLaboratoryResultObservationProfile
 Id: cp-result
 Title: "Result (Observation)"
 Description: "Results of tests on a polyp including histopathology and other details."
@@ -14,7 +15,7 @@ Description: "Results of tests on a polyp including histopathology and other det
 * code = $SNOMEDCT#250537006 "Histopathology finding (finding)"
 // I have chosen not to require a category. It is implicit from the cpDiagnosticReport. Fixing the code as SNOMEDCT#250537006 as part of the profile should make searching with FhirPath straigtforward.
 // OK, maybe I will....
-* category = $OBSCAT#laboratory "Laboratory"
+* category[Laboratory] = $OBSCAT#laboratory "Laboratory"
 * specimen only Reference(cp-specimen) 
 * hasMember 3..3 MS
   * ^slicing.discriminator.type = #pattern
