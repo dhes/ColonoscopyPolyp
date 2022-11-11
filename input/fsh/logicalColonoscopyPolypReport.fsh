@@ -1,5 +1,6 @@
 Logical: ColonoscopyPolypReport
-Id: colonoscopy-polyp-report
+// Id: colonoscopy-polyp-report breaks ELD-20 rule
+Id: colonoscopyPolypReport
 Title: "Colonoscopy Polyp Report"
 Description: "All of the ColonoscopyPolyps excised during one procedure"
 * patient 1..1 SU CPPatient "The patient who contributed the polyps"

@@ -373,6 +373,7 @@ This is how the core FHIR Specimen resource is adapted for the narrow use case o
 We started with cpSpecimen because the name of the base resource is a good representation of the profile. The base resource is Specimen and this is, well, a specimen. Now we will shift to cpDiagnosticReport and put cpSpecimen in the context of the nested FHIR data model. 
 
 So the next FHIR resource we bring into play is the DiagnosticReport. The DiagnosticReport resource will serve as the center of our data structure. 
+
 <!-- The patient reference becomes DiagnosticReport.subject, the procedure date will become DiagnosticReport.effective and the pathology report date will become the DiagnosticReport.issued. So far we have: 
 
 <span class="caption">Table n. Logical Model to DiagnosticReport Resource</span>
@@ -403,7 +404,7 @@ There's some nesting here which needs explanation. The FHIR standard allows you 
 - cpDysplasia
 - cpNoMalignantNeoplasm
 
-Each of these Profiles are constrained by their Categories and CodeableConcepts. You can example the details in the Artifacts Summary provided with this implementation guide. --->
+Each of these Profiles are constrained by their Categories and CodeableConcepts. You can example the details in the Artifacts Summary provided with this implementation guide. -->
 
 The overall structure of the FHIR model is: 
 

@@ -28,16 +28,17 @@ Description: "A diagnostic report summarizing all polyps collected at the time o
 * subject 1..1
 * subject only Reference(cp-patient)
 * obeys specimen-count-equals-result-count
-* obeys result-refers-to-cpSpecimen
+// * obeys result-refers-to-cpSpecimen // this belongs in CPResult...
 
 Invariant: specimen-count-equals-result-count
 Severity: #error
 Description: "There must be the same number of results as number of specimens"
 Expression: "specimen.count() = result.count()"
 
-Invariant: result-refers-to-cpSpecimen
-Severity: #error
-Description: "Each result must refer to a CPSpecimen"
-Expression: "result.reference.resolve().resourceType = CPSpecimen"
+// this belongs in CPResult...
+// Invariant: result-refers-to-cpSpecimen
+// Severity: #error
+// Description: "Each result must refer to a CPSpecimen"
+// Expression: "result.reference.resolve().resourceType = CPSpecimen"
 
 // DH can you require that the result refers to the nth i.e. the correspondeing or same-numbered specimen? So far it could be any cpSpecimen includine one from another report. 

@@ -1,5 +1,7 @@
 Logical: ColonoscopyPolyp
-Id: colonoscopy-polyp
+Id: colonoscopyPolyp
+// validator doesn't seem to like dashes in Id because it creares elements with dashes
+// e.g. Id: colonoscopy-polyp
 Title: "Colonoscopy Polyp"
 Description: "The natural way most people would think about the data needed about a polyp to compute surveillance colonoscopy"
 * bodySite 1..1 SU CodeableConcept "What portion of the large intestine was the polyp excised from?"

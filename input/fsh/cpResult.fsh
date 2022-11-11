@@ -43,4 +43,12 @@ Description: "Results of tests on a polyp including histopathology and other det
   * ^short = "Was there no evidence of malignancy in this polyp?"
   * ^definition = "Was there no evidence of malignancy in this polyp?"
   * ^comment = "When using this element, the Observation must validate against the specified profile."
+// * obeys result-refers-to-cpSpecimen //redundant
+
+// Invariant: result-refers-to-cpSpecimen
+// Severity: #error
+// Description: "Each result must refer to a CPSpecimen"
+// Expression: "result.reference.resolve().resourceType = CPSpecimen"
+
+
 
