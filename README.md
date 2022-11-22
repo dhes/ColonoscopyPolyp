@@ -94,3 +94,5 @@ Check out the references at the bottom. This is a vendor-based web site.
 [Who is JASON?](https://en.wikipedia.org/wiki/JASON_(advisory_group))
 
 [2018 SMART on FHIR tutorial](https://xela7.github.io/smart-on-fhir-tutorial/)
+
+Files that end in .scale were .fsh files that are now obsolete. 
