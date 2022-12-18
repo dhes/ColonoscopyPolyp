@@ -41,7 +41,7 @@ After colonoscopy the doctor as a matter of course discusses the results with th
 
 Screening colonoscopy is not a one-time procedure. Once colon cancer screening is started, it generally continues until an advanced age. The formal term for timing of follow-up is _surveillance interval_. This surveillance interval is determined according to widely-used practice guidelines which happen to lend themselves nicely to computer algorithms. 
 
-There are many different kinds of computer application that could determine the surveillance interval, all of them have one thing in common: They require structured data. 
+There are many different kinds of computer applications that could determine the surveillance interval, all of them have one thing in common: They require structured data. 
 <!---
 While the details are not import in this context, there exists programming language call Clinical Quality Language (CQL) that works well with algorithms such as this one. 
 --->
@@ -69,31 +69,22 @@ Medical procedure reports in general -- and colonoscopy reports in particular --
 > Two sessile polyps were found in the rectum. The polyps were 3 to 4 mm in size. These polyps were
 removed with a cold biopsy forceps. Resection and retrieval were complete. Estimated blood loss was minimal.
 
-Nothing difficult to understand here (other than the technical terms). There are no cryptic word, vertical lines or caret symbols. Just word and sentences. A human who understands medical vocabulary can easy extract meaning. But you can't feed it into a computer algorithm. 
+Nothing difficult to understand here (other than the technical terms). There are no vertical lines or caret symbols. Just word and sentences. A human who understands medical vocabulary can easy extract meaning. But you can't feed it into a computer algorithm. 
 
-Now a brief discussion of these technical terms. Polyps come in different shapes, one of which is _sessile_, which just means flat. The first sentence in this report indicates that both polyps were flat; he next sentence reports this size; the next describes how the polyps were removed; the next asserts that the polyps were completely _resected_ (cut out) and _retrieved_ (removed from the colon). All of the details in this section are important procedural details, but only three properties of the polyps are important for follow-up colonoscopy: What part of the intestine are they from? How big are they? Were they removed in a single piece or many pieces? 
+Now a brief discussion of these technical terms. Polyps come in different shapes, one of which is _sessile_, which just means flat. The first sentence in this report indicates that both polyps were flat; he next sentence reports the size; the next describes how the polyps were removed; the next asserts that the polyps were completely _resected_ (cut out) and _retrieved_ (removed from the colon). All of the details in this section are important procedural details, but only three properties of the polyps are important for follow-up colonoscopy: What part of the intestine are they from? How big are they? Were they removed in a single piece or many pieces? 
 
 We restate the report like so:
 
 - Polyp 1
   - location: rectum
   - size: 3-4 mm
-  - piecemeal resection (implied)
+  - piecemeal resection?: false
 - Polyp 2
   - location: rectum
   - size: 3-4 mm
-  - piecemeal resection (implied)  
-  
-A word of explanation here about _piecemeal resection_. This means that the polyp was cut into pieces before it was removed from the intestine. As you can see, there is no comment in the  narrative regarding piecemeal resection. Generally it is assumed that resection was whole unless described as piecemeal. So a truer representation would be: 
-
-- Polyp 1
-  - location: rectum
-  - size: 3-4 mm
   - piecemeal resection: false
-- Polyp 2	
-  - location: rectum
-  - size: 3-4 mm
-  - piecemeal resection: false  
+  
+A word of explanation here about _piecemeal resection_. This means that the polyp was cut into pieces before it was removed from the intestine. As you can see, there is no comment in the  narrative regarding piecemeal resection. Generally it is assumed that resection was whole unless described as piecemeal. So in our case piecemeal resection was not performed, and we enter 'false'.
 
 This begins to illustrate the difference between structured and narrative reports. Narratives read like a book or a newspaper article, as previously mentioned. Structured reports in contrast read more like an outline. 
 
@@ -106,9 +97,9 @@ Here is an excerpt from a fictional pathology report:
 > E. COLD BIOPSY: RECTAL POLYPS X 2:
  TUBULAR ADENOMA (X1) AND HYPERPLASTIC POLYP (X1).
 
-This segment of a pathology report corresponds to the procedure report already discussed. The pathologist who created the report has labelled groups of polyps in outline fashion. This group "E. " contains the two polyps from the rectum of size 3-4 mm that were resected whole.  Pathology reports tend to be terse and more technical. In a more conversational style it might read: "Regarding the two polyps removed from the rectum as per the procedure report, which we have enumerated as E. COLD BIOPSY: RECTAL POLYPS x 2: one is a TUBULAR ADENOMA and the other is a HYPERPLASTIC POLYP."The pathology report ties itself into the procedure report by repeating back the location of the polyps before removal, the method of removal and the number of polyps. In that fashion anyone comparing the two reports can tell which polyps the pathologist is talking about.  
+This segment of a pathology report corresponds to the procedure report already discussed. The pathologist who created the report has labelled groups of polyps in outline fashion. This group "E. " contains the two polyps from the rectum of size 3-4 mm that were resected whole.  Pathology reports tend to be terse and more technical. In a more conversational style it might read: "Regarding the two polyps removed from the rectum as per the procedure report, which we have enumerated as E. COLD BIOPSY: RECTAL POLYPS x 2: one is a TUBULAR ADENOMA and the other is a HYPERPLASTIC POLYP." The pathology report ties itself into the procedure report by repeating back the location of the polyps before removal, the method of removal and the number of polyps. In that fashion anyone comparing the two reports can tell which polyps the pathologist is talking about.  
 
-If we are determining the surveillance interval, the only expressed information of concern is _histopathology_ of the polyps. _Histology_ means "The anatomical study of the microscopic structure of animal and plant tissues" per [TheFreeDictionary](https://medical-dictionary.thefreedictionary.com/histology).  _Histopathology_ means "The study of the microscopic anatomical changes in diseased tissue". [Wordnik](https://www.wordnik.com/words/histopathology.) _TUBULAR ADENOMA_ and _HYPERPLASTIC POLYP_ are two kinds of histopathology commonly found in colon polyps. A tubular adenoma is a benign growth which can transform into cancer. A hyperplastic polyp is also a benign growth but is less likely to lead to cancer. To learn more about these terms read [here](https://www.webmd.com/colorectal-cancer/colorectal-tubular-adenoma) and [this](https://www.webmd.com/cancer/ss/slideshow-polyps). 
+If we are determining the surveillance interval, the only expressed information of concern is _histopathology_ of the polyps. _Histology_ means "The anatomical study of the microscopic structure of animal and plant tissues" per [TheFreeDictionary](https://medical-dictionary.thefreedictionary.com/histology).  _Histopathology_ means "The study of the microscopic anatomical changes in diseased tissue". [Wordnik](https://www.wordnik.com/words/histopathology.) _TUBULAR ADENOMA_ and _HYPERPLASTIC POLYP_ are two kinds of histopathology commonly found in colon polyps. A tubular adenoma is a growth which can transform into cancer. A hyperplastic polyp is also a growth but is less likely to lead to cancer. To learn more about these terms read [here](https://www.webmd.com/colorectal-cancer/colorectal-tubular-adenoma) and [here](https://www.webmd.com/cancer/ss/slideshow-polyps). 
 
 There are two more elements of concern from the pathology report which are conspicuous by their absence: _severe dysplasia_ and _no evidence of malignancy_. _Dysplasia_ means "Abnormal development or growth of tissues, organs, or cells." (Source: [Wordnik](https://www.wordnik.com/words/dysplasia)). Tissue that has dysplasia is not cancerous but is more likely to develop into cancer. _No evidence of malignancy_ just means that no cancer was found in the polyps. The convention in pathology is generally to report these features only when they are present. In this report nothing is mentioned about dysplasia or malignancy, which means there is no severe dysplasia and no evidence of malignancy. Another way of presenting this would be: 
 
@@ -845,14 +836,14 @@ Given all of the modelling and information, when should the next colonoscopy be?
 
 ### Workflow Considerations
 
-Given that colonoscopy procedure reports and pathology report are not typically structured in current practice in the United States, what sort of workflow will be needed to automate this decision? Most like for the time being there will have to be a trained person making the data entry by hand, ideally in a purpose-made form. As you recall from the logical model, there are after all only ten types of data elements: patient id, procedure date, pathology report date, polyp location, size, histopathology, dysplasia, malignancy and notes. Once structured colonoscopy data entry becomes more common one could reasonably expect vendors of electronic medical records system to create the appropriate forms for their system - automatically mapping their entries to meet a requirements of a FHIR implementation guide such as this one. 
+Given that colonoscopy procedure reports and pathology report are not typically structured in current practice in the United States, what sort of workflow will be needed to automate this decision? Most likely there will have to be a trained person making the data entry by hand, preferably using a purpose-made form. As you recall from the logical model, there are only ten types of data elements--patient id, procedure date, pathology report date, polyp location, size, histopathology, dysplasia, malignancy and notes--so it shouldn't be vary time consuming. Once structured colonoscopy data entry becomes more common one might expect vendors of electronic medical records system to create the appropriate forms for their system - automatically mapping their entries to meet a requirements of a FHIR implementation guide such as this one. 
 
 Some might ask what whether such a system of structure data and algorithms is really necessary in this use case. After all, our dedicated colonoscopists have been doing just fine doing the work in their heads. I imagine that it is second nature for most GI specialists. 
 
 I undertook this IG mostly an a exercise to help me learn FHIR, IG authoring and to better understand the colonoscopy guidelines. It always surprises me as I work through these sorts of exercise how often I find new meaning in something I thought I already understood. It sometimes happens that something that sounds clear in the narrative guideline but really isn't clear once you get down to the business of coding. It seems to me that process of modelling and coding deepens ones understanding of the decision-making process and opens new avenues of inquiry in refining the guidelines. 
 
-Another advantage or structure colonoscopy polyp data would be the notion of a national registry. This would permit public health officials to monitor trends in colon cancer screening and perhaps might inform their policy recommendations. Are the follow-up intervals adequate? Are patient with certain characteristics turning up with cancer more often than expected? Do the guidelines need to be revised? One can imagine a system of continuous improvement where the public health data is fed back to the guideline developers to improve the algorithm, with outcomes again measured by epidemiologists. 
+Another use case of structured colonoscopy polyp data would be the the possibility of a national colon cancer screening registry. This would permit public health officials to monitor trends in colon cancer screening and perhaps might inform their policy recommendations. Are the follow-up intervals adequate? Are patient with certain characteristics turning up with cancer more often than expected? Do the guidelines need to be revised? One can imagine a system of continuous improvement where the public health data is fed back to the guideline developers to improve the algorithm, with outcomes again measured by epidemiologists. 
 
-Another aspect would be that of patient choice. Algorithms sometimes seem cold and heartless. Patients ultimately decide what sort of follow-up is right for them, with the coaching of their doctor. It would be very interesting to compare the algorithmic advice with the colonoscopist's advise with the actual timing of the follow-up; and those data with medical outcomes. Likewise we might continue to refine our understanding of patient preferences and articulate scenarios where the guidelines may need to be adjusted. 
+Another aspect would be that of patient choice. Algorithms sometimes seem cold and heartless. Patients ultimately decide what sort of follow-up is right for them, with the coaching of their practitioner. It would be very interesting to compare the algorithmic advice with the colonoscopist's advise with the actual timing of the follow-up, and those data with medical outcomes. Likewise we might continue to refine our understanding of patient preferences and articulate scenarios where the guidelines may need to be adjusted. 
 
 <!-- DH add references to fshschool.org hl7 FHIR and FSH deep dive -->
